@@ -16,7 +16,7 @@ import yaml
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field, field_validator
 
-from .prompts import EVIDENCE_MODES, SECONDARY_EVIDENCE_MODES
+from .prompts import ELICITATION_MODES, EVIDENCE_MODES, SECONDARY_EVIDENCE_MODES
 from .treatments import FAMILIES
 
 PROVIDERS = ["openai", "anthropic", "google", "openai_compatible", "mock"]
@@ -119,6 +119,7 @@ class ExperimentConfig(BaseModel):
     scenarios: ScenarioConfig = Field(default_factory=ScenarioConfig)
     treatments: TreatmentConfig = Field(default_factory=TreatmentConfig)
     evidence_modes: list[str] = Field(default_factory=lambda: ["text", "structured"])
+    elicitation_modes: list[str] = Field(default_factory=lambda: ["naturalistic", "separated"])
     sampling: SamplingConfig = Field(default_factory=SamplingConfig)
     run: RunConfig = Field(default_factory=RunConfig)
     experiments: ExperimentsConfig = Field(default_factory=ExperimentsConfig)
@@ -133,6 +134,16 @@ class ExperimentConfig(BaseModel):
         unknown = set(v) - allowed
         if unknown:
             raise ValueError(f"unknown evidence modes: {sorted(unknown)} (allowed: {sorted(allowed)})")
+        return v
+
+    @field_validator("elicitation_modes")
+    @classmethod
+    def _elicitations(cls, v: list[str]) -> list[str]:
+        unknown = set(v) - set(ELICITATION_MODES)
+        if unknown:
+            raise ValueError(f"unknown elicitation modes: {sorted(unknown)} (allowed: {ELICITATION_MODES})")
+        if not v:
+            raise ValueError("at least one elicitation mode is required")
         return v
 
     # -- derived paths -----------------------------------------------------

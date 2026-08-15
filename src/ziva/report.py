@@ -75,21 +75,33 @@ def build_report(cfg: ExperimentConfig) -> str:
     add("")
     parse = summary.get("parse_stats", {})
     add(f"- Models: {', '.join(summary.get('models', []))} (providers: {', '.join(summary.get('providers', []))})")
-    add(f"- Trials: {parse.get('total_trials', 'n/a')}")
+    add(f"- Trials: {parse.get('total_trials', 'n/a')}; independent physical scenarios: "
+        f"{summary.get('n_physical_scenarios', 'n/a')}")
+    add(f"- Experiment fingerprint(s) in data: {summary.get('experiment_fingerprints_in_data', [])}")
     add(f"- Malformed-response rate: {parse.get('malformed_rate_overall', 'n/a')}"
         f" (by model: {parse.get('malformed_by_model', {})})")
+    add("- Primary endpoint: locatability (find the Moon within two minutes knowing its "
+        "approximate direction), NOT detection conditional on exact fixation.")
+    add(f"- Inferential unit: {summary.get('inferential_unit_note', 'physical scenario')}")
     add("- Astronomy: local, reproducible computation (astronomy-engine analytic ephemeris); "
         "see docs/methodology.md.")
     add("")
 
     add("## Primary result (preregistered)")
     add("")
-    add(f"**Pooled excited - neutral shift in visible_probability:** "
+    add(f"**Pooled excited - neutral shift in visible_probability** (one value per physical "
+        f"scenario, aggregated across model/evidence/elicitation cells): "
         f"{_fmt_summary(summary.get('primary_pooled_excited_minus_neutral'))}")
     add("")
-    by_cell = summary.get("primary_by_model_and_mode", {})
+    add(f"Row-level (cell-pooled) mean, descriptive only -- rows are correlated within "
+        f"scenario: {summary.get('primary_pooled_rowlevel_mean_descriptive_only', 'n/a')} pts")
+    add("")
+    by_cell = summary.get("primary_by_model_mode_elicitation", {})
     if by_cell:
-        add("| model \\| mode | excited-neutral | skeptical-neutral | flip rate | valence range |")
+        add("Per-cell results below pair over scenarios within one model x evidence x "
+            "elicitation cell (each scenario contributes exactly one pair):")
+        add("")
+        add("| model \\| evidence \\| elicitation | excited-neutral | skeptical-neutral | flip rate | valence range |")
         add("|---|---|---|---|---|")
         for key in sorted(by_cell):
             e = by_cell[key]
@@ -98,14 +110,27 @@ def build_report(cfg: ExperimentConfig) -> str:
                 f"| {e.get('binary_flip_rate', 'n/a')} "
                 f"| {e.get('valence_range_mean', 'n/a')} |")
         add("")
+    by_elic = summary.get("effect_by_elicitation_regime", {})
+    if by_elic:
+        add("### Elicitation regimes")
+        add("")
+        add("A null under `separated` is NOT evidence about ordinary naturalistic "
+            "conversations; the `naturalistic` regime measures those.")
+        add("")
+        for k in sorted(by_elic):
+            add(f"- **{k}**: {_fmt_summary(by_elic[k])}")
+        add("")
 
     var = summary.get("variance_comparison") or {}
     if var:
-        add("### Effect size vs sampling variance (falsification check)")
+        add("### Effect size vs variance components (falsification check)")
         add("")
-        add(f"- Mean within-condition repeated-sampling SD: {var.get('mean_within_cell_sd_points')} pts")
+        add(f"- Generation noise (SD across repeats of the EXACT same prompt): "
+            f"{var.get('sampling_sd_mean_points')} pts (n={var.get('sampling_sd_n_cells')} cells)")
+        add(f"- Paraphrase (template) variance within families: "
+            f"{var.get('template_sd_mean_points')} pts (n={var.get('template_sd_n_cells')} cells)")
         add(f"- Pooled valence effect: {var.get('pooled_excited_minus_neutral_points')} pts")
-        add(f"- |effect| / within-SD ratio: {var.get('abs_effect_over_within_sd_ratio')}")
+        add(f"- |effect| / generation-noise ratio: {var.get('abs_effect_over_sampling_sd_ratio')}")
         add(f"- {var.get('interpretation')}")
         add("")
 

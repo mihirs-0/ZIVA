@@ -17,6 +17,11 @@ treatments:
 
 evidence_modes: [text, structured]   # add "image" for the multimodal arm
 
+# naturalistic = plain conversational ask; separated = explicit instruction to
+# separate the factual estimate from preferences/recommendations. A null under
+# "separated" is not evidence about ordinary naturalistic conversations.
+elicitation_modes: [naturalistic, separated]
+
 sampling:
   repeats: 2               # independent samples per (scenario, treatment, mode, model)
   temperature: 1.0         # only sent to models whose config allows temperature

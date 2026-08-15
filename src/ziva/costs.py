@@ -59,7 +59,7 @@ def _trial_request_tokens(row: dict, scenario: dict) -> list[int]:
     sys_tokens = estimate_tokens(SYSTEM_PROMPT)
     if exp in ("primary", "web"):
         t = get_treatment(row["treatment_id"])
-        cp = compile_prompt(scenario, t, row["evidence_mode"])
+        cp = compile_prompt(scenario, t, row["evidence_mode"], row.get("elicitation_mode", "separated"))
         tokens = sys_tokens + estimate_tokens(cp.user_text)
         if row["evidence_mode"] == "image":
             tokens += IMAGE_TOKENS_ESTIMATE
@@ -77,6 +77,20 @@ def _trial_request_tokens(row: dict, scenario: dict) -> list[int]:
             return [t1, t2]
         return [sys_tokens + estimate_tokens(commitment_b_single_turn(scenario))]
     raise ValueError(f"unknown experiment type: {exp}")
+
+
+def estimate_trial_cost(row: dict, scenario: dict, model: ModelConfig) -> float:
+    """Approximate cost of one trial, used to reserve budget before execution.
+
+    Deliberately a slight over-estimate for shared-turn-1 trials (the shared
+    baseline is billed once but reserved per arm) -- reservations err safe.
+    """
+    req_tokens = _trial_request_tokens(row, scenario)
+    out_tokens = DEFAULT_OUTPUT_TOKENS * len(req_tokens)
+    return (
+        sum(req_tokens) / 1e6 * model.pricing.input_per_mtok
+        + out_tokens / 1e6 * model.pricing.output_per_mtok
+    )
 
 
 def estimate_cost(

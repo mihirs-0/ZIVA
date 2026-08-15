@@ -87,7 +87,19 @@ separate `*_mock` data namespace that can never contaminate real results.
 
 * **Paired design integrity.** A compiled prompt is `treatment text ⊕ invariant
   block`; the invariant block (facts + elicitation) is byte-identical across all
-  treatments of a scenario/mode, verified by hashes at validate time and frozen.
+  treatments of a scenario/mode/elicitation cell, verified by hashes at validate time
+  and frozen. Primary valence treatments are preference-only (never a request for a
+  particular answer — explicit answer pressure is a separate secondary family).
+* **Locatability endpoint.** The elicited probability is operationally "could an
+  ordinary observer, knowing the Moon's approximate direction but not its exact
+  position, locate it within two minutes" — the human task that actually failed in
+  the motivating anecdote, visual search included.
+* **Scenario-level inference.** The physical scenario is the experimental unit:
+  pooled statistics aggregate to one value per scenario before bootstrap/permutation,
+  per-cell contrasts pair over scenarios, and power analysis counts scenarios.
+* **Two elicitation regimes.** `naturalistic` (plain conversational ask) and
+  `separated` (explicit fact/recommendation separation) run as crossed cells, so a
+  debiasing-instruction null is never mistaken for a claim about ordinary chats.
 * **Belief ≠ recommendation.** Every trial elicits `visible_probability`,
   `binary_prediction`, `confidence`, `evidence_sufficiency`,
   `would_recommend_attempt`, and a short explanation, as one JSON object.
@@ -97,12 +109,19 @@ separate `*_mock` data namespace that can never contaminate real results.
   Sun–Moon separation — deliberately weighted toward ambiguous daylight regimes, never
   collapsing into easy nighttime cases. Deterministic under the recorded seed.
 * **Pre-registration-style freeze** (`ziva freeze`): hypotheses, scoring spec, prompt
-  templates, manifest, stimuli hashes, model snapshot, seeds, git commit, package
-  versions. `ziva run` refuses a modified freeze unless `--allow-dirty` (recorded).
-* **Cost safety**: projected cost before execution, hard budget guard during it
-  (`run.max_cost_usd`, `--max-cost-usd`, `--allow-over-budget`), per-provider
-  concurrency and rate limits, retries with backoff.
-* **Resumability**: deterministic trial IDs; completed trials are never re-run.
+  templates, manifest, stimuli hashes, model snapshot, science config, scoring code
+  hash, seeds, git commit, package versions. `ziva run` verifies all of it and
+  refuses a modified freeze unless `--allow-dirty` (recorded).
+* **Fingerprint isolation**: raw data is stamped with a fingerprint over the science
+  config, actual provider model strings, sampling parameters, prompts, and scoring
+  code; a run under a different fingerprint hard-fails, so one experiment can never
+  silently mix Model A and Model B (or old and new prompts/parameters).
+* **Cost safety**: `max_cost_usd` caps the EXPERIMENT total — prior spend is counted
+  on resume and each trial reserves its estimated cost before any request is sent
+  (`--max-cost-usd`, `--allow-over-budget`), plus per-provider concurrency and rate
+  limits and retries with backoff.
+* **Resumability**: deterministic trial IDs; terminally-completed trials are never
+  re-run, while transient `request_failed` trials are automatically retried.
 * **Provenance**: raw responses, parse status, request params, token usage, latency,
   model version strings, execution order and timestamps — all stored per trial.
 * **No LLM judge** anywhere in the primary scoring; malformed outputs are counted,
@@ -123,8 +142,9 @@ Evidence modalities: `text` (situation only), `structured` (exact ephemeris JSON
 
 ## Configuration
 
-* `configs/pilot.yaml` — small: ~32 scenarios × 3 families × 2 paraphrases × 2 modes ×
-  2 repeats per model. Use it to test parsing, saturation, variance, and cost.
+* `configs/pilot.yaml` — small: ~32 scenarios × 3 families × 2 paraphrases × 2 evidence
+  modes × 2 elicitation regimes × 2 repeats per model. Use it to test parsing,
+  saturation, variance, and cost.
 * `configs/confirmatory.yaml` — larger frozen design with all six treatment families
   (including the `anti_sycophancy` instruction control and the `negative_preference`
   symmetry control), all modalities, and experiments 2–3. Size `scenarios.count` with

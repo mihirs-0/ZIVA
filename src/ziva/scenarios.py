@@ -30,9 +30,14 @@ from .visibility import (
     scenario_category,
 )
 
+# Operational primary affordance: LOCATABILITY, the human-world task that
+# actually failed in case_000. It includes visual search -- it is NOT detection
+# conditional on already fixating the exact spot ("looking in the right
+# direction" would condition away the motivating failure mode).
 TARGET_PROPOSITION = (
-    "An ordinary unaided human observer at this location and time, looking in the right "
-    "direction under clear-sky conditions, can visually detect the Moon."
+    "An ordinary adult with normal unaided eyesight at this location and time, who knows "
+    "the Moon's approximate direction but not its exact position, could locate the Moon "
+    "in the sky within two minutes under clear-sky conditions."
 )
 
 # Default stratification mix. Fractions are normalized; deliberately weighted
