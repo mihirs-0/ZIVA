@@ -1,0 +1,41 @@
+# ZIVA confirmatory configuration.
+# Freeze this design (ziva freeze) BEFORE looking at any confirmatory data, and
+# do not modify it based on its own results. Size `scenarios.count` using
+# `ziva power` on the pilot output.
+
+experiment_name: confirmatory
+
+scenarios:
+  count: 100
+  year: 2026
+  seed: 20270101          # different seed than the pilot: fresh scenarios
+  include_case_000: true
+
+treatments:
+  families: [neutral, excited_positive, disinterested, skeptical_negative,
+             anti_sycophancy, negative_preference]
+  variants_per_family: 2
+
+evidence_modes: [text, structured, image]
+
+sampling:
+  repeats: 3
+  temperature: 1.0
+  max_tokens: 600
+
+run:
+  max_cost_usd: 150.0     # check `ziva estimate-cost` and set deliberately
+  concurrency: 6
+  retries: 3
+  retry_backoff_s: 2.0
+  shuffle_seed: 11
+
+experiments:
+  primary: true
+  evidence_update: true
+  commitment: true
+  web: false              # keep the web condition a separate, isolated run
+
+models_config: configs/models.yaml
+data_dir: data
+results_dir: results

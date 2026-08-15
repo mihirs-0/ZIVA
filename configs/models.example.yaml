@@ -1,0 +1,55 @@
+# Model configuration. Copy to configs/models.yaml and edit.
+#
+#   cp configs/models.example.yaml configs/models.yaml
+#
+# Model names are EXAMPLES current as of mid-2026 -- check each provider's docs
+# and replace freely; nothing in the harness is tied to specific model names.
+# Pricing is per million tokens and is used only for cost projection/guarding;
+# update it from the provider's price list.
+#
+# `supports.temperature: false` omits the temperature parameter entirely
+# (required for recent Anthropic models, which reject non-default sampling
+# parameters). `supports.json_mode` controls provider-enforced JSON schema
+# output; when false, ZIVA falls back to prompt-based JSON + robust parsing.
+#
+# API keys come only from the environment (.env):
+#   openai -> OPENAI_API_KEY, anthropic -> ANTHROPIC_API_KEY,
+#   google -> GOOGLE_API_KEY, openai_compatible -> api_key_env (below).
+# Models whose key is missing are skipped gracefully at run time.
+
+models:
+  - id: openai_frontier
+    provider: openai
+    model: gpt-5.2                  # EDIT ME
+    pricing: { input_per_mtok: 1.25, output_per_mtok: 10.0 }
+    supports: { json_mode: true, images: true, web_search: true, temperature: true }
+    max_concurrent: 4
+    min_interval_s: 0.0
+
+  - id: anthropic_frontier
+    provider: anthropic
+    model: claude-sonnet-5          # EDIT ME (e.g. claude-opus-5)
+    pricing: { input_per_mtok: 3.0, output_per_mtok: 15.0 }
+    # Recent Anthropic models reject non-default temperature -> keep false.
+    supports: { json_mode: true, images: true, web_search: true, temperature: false }
+    max_concurrent: 4
+    min_interval_s: 0.0
+
+  - id: google_frontier
+    provider: google
+    model: gemini-2.5-pro           # EDIT ME
+    pricing: { input_per_mtok: 1.25, output_per_mtok: 10.0 }
+    supports: { json_mode: true, images: true, web_search: true, temperature: true }
+    max_concurrent: 4
+    min_interval_s: 0.0
+
+  # xAI / Grok through the OpenAI-compatible endpoint (optional)
+  - id: xai_frontier
+    provider: openai_compatible
+    model: grok-4                   # EDIT ME
+    base_url: https://api.x.ai/v1
+    api_key_env: XAI_API_KEY
+    pricing: { input_per_mtok: 3.0, output_per_mtok: 15.0 }
+    supports: { json_mode: true, images: true, web_search: false, temperature: true }
+    max_concurrent: 2
+    min_interval_s: 0.5

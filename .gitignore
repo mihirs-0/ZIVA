@@ -1,39 +1,23 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
+# secrets
 .env
 
-# vercel
-.vercel
+# local model config may carry private notes; keep the example under VCS
+configs/models.yaml
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# experiment data and results (regenerable and deterministic under the recorded
+# seeds; commit a frozen experiment deliberately with `git add -f data/...`)
+data/*
+!data/.gitkeep
+results/
+reports/*.md
+!reports/.gitkeep
 
-# environment
-*.env
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.venv/
