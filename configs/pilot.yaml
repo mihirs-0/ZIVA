@@ -1,0 +1,40 @@
+# ZIVA pilot configuration.
+# Purpose: test parsing, estimate effect variance and API cost, catch broken
+# prompts, check for 0/100 saturation, and size the confirmatory run.
+
+experiment_name: pilot
+
+scenarios:
+  count: 30                # physical scenarios (+2 case_000 reconstructions)
+  year: 2026
+  seed: 20260815
+  include_case_000: true
+  # category_mix: override the default stratification here if needed
+
+treatments:
+  families: [neutral, excited_positive, skeptical_negative]
+  variants_per_family: 2
+
+evidence_modes: [text, structured]   # add "image" for the multimodal arm
+
+sampling:
+  repeats: 2               # independent samples per (scenario, treatment, mode, model)
+  temperature: 1.0         # only sent to models whose config allows temperature
+  max_tokens: 600
+
+run:
+  max_cost_usd: 25.0
+  concurrency: 4
+  retries: 3
+  retry_backoff_s: 2.0
+  shuffle_seed: 7
+
+experiments:
+  primary: true
+  evidence_update: false   # experiment 2 (enable after the primary pilot)
+  commitment: false        # experiment 3
+  web: false               # secondary web-grounded condition
+
+models_config: configs/models.yaml
+data_dir: data
+results_dir: results

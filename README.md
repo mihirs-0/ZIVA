@@ -1,86 +1,181 @@
-# JSON Constructor Agent
+# ZIVA — Zero-shot Inferences of Visual Affordances
 
-A Next.js application that helps users construct JSON objects through a conversational AI interface.
+A reproducible benchmark harness testing whether a language model's **factual estimate
+of an external physical state** is systematically influenced by the **user's
+conversational valence** — excitement, disappointment, skepticism, indifference —
+while the physical world and the available evidence are held byte-for-byte fixed.
 
-## Project Overview
+**v1 domain: naked-eye Moon visibility.** Astronomy lets the physical state be
+specified exactly, computed locally, and reproduced offline.
 
-This project aims to simplify the process of creating complex JSON objects by providing an intuitive chat interface where users can describe their desired JSON structure in natural language. The AI agent then helps construct the JSON object according to the user's specifications.
+## The motivating phenomenon
 
-## Architecture
+On an August 2026 afternoon in Davis, California, a user excited about seeing the Moon
+asked an assistant whether it would be visible. The assistant confidently said yes.
+The user walked outside into bright summer daylight and could not find the
+~6%-illuminated waxing crescent hanging ~29° from the Sun. Maybe the assistant made a
+reasonable call in a genuinely marginal situation — daytime crescent detection is
+hard to adjudicate. The sharper question is testable: **would the assistant have given
+the same estimate if the user hadn't wanted to see it?** That invariance is what ZIVA
+measures. The reconstructed scenario ships as `case_000_davis_crescent` (labelled
+anecdotal, not ground truth).
 
-### Frontend
-- **Next.js 14**: The application is built using Next.js 14 with App Router
-- **React 18**: For building the user interface
-- **Ant Design**: For UI components and styling
-- **Client Components**:
-  - `AgentPageClient`: Main page component for the JSON construction interface
-  - `ChatUIClient`: Handles the chat interface and message display
-  - `JsonViewerClient`: Displays and allows editing of the constructed JSON
+## The hypothesis
 
-### Backend
-- **Next.js API Routes**: Handles API requests
-- **MongoDB**: For storing conversation history and user data
-- **Services**:
-  - `AgentService`: Manages the AI agent's logic and responses
-  - `MongoDB Service`: Handles database operations
-  - `Entity Services`: Manage data models and business logic
+For fixed scenario *s* with estimates *p(s,+)* (excited framing), *p(s,0)* (neutral),
+*p(s,−)* (skeptical):
 
-### AI Integration
-- **OpenAI API**: For natural language processing and JSON construction
-- **Anthropic API**: Alternative AI provider for enhanced capabilities
+* **H0:** E[p(s,+) − p(s,0)] = 0  **H1:** E[p(s,+) − p(s,0)] > 0
 
-## Key Features
-1. **Natural Language Interface**: Users can describe their desired JSON structure in plain English
-2. **Real-time JSON Construction**: The AI agent helps build JSON objects step by step
-3. **Interactive JSON Editor**: Users can directly edit the constructed JSON
-4. **Conversation History**: Previous interactions are saved for context
-5. **Multiple AI Providers**: Support for both OpenAI and Anthropic APIs
+A reliable model of the external world should not report a different external world
+merely because the user would prefer one of those worlds to be true. ZIVA tests
+whether that invariance holds — **without assuming it fails**; the design makes a
+null result equally meaningful (see falsification criteria in
+[docs/methodology.md](docs/methodology.md)).
 
-## Project Structure
+Because the comparison is the model against itself across framings of an *identical*
+world, the primary benchmark does not require perfect perceptual ground truth — which
+genuinely doesn't exist for ambiguous daylight cases. Anchor scenarios (Moon below the
+horizon, bright Moon in a dark sky) provide sanity calibration, and classical crescent
+criteria (Yallop/Odeh) are computed strictly inside their calibrated twilight regime.
+
+## Five-minute start
+
+```bash
+# 1. install (Python 3.11+)
+pip install -e ".[dev]"
+
+# 2. keys (fill in whichever providers you have; missing ones are skipped)
+cp .env.example .env            # then paste API keys into .env
+cp configs/models.example.yaml configs/models.yaml   # then set model names/pricing
+
+# 3. sanity check — everything except `run` works with no keys at all
+ziva doctor
+ziva benchmark --config configs/pilot.yaml --mock    # free synthetic end-to-end smoke run
+
+# 4. the real pilot: one command (stops after the cost estimate unless --execute)
+ziva benchmark --config configs/pilot.yaml --execute
+
+# 5. read the results
+ziva report --config configs/pilot.yaml              # -> reports/latest_report.md
 ```
-src/
-├── app/                    # Next.js app router pages
-│   ├── agent/             # JSON construction interface
-│   └── api/               # API routes
-├── services/              # Business logic and data services
-│   ├── agent/            # AI agent service
-│   ├── mongo/            # MongoDB service
-│   └── ent/              # Entity services
-└── webpages/             # React components
-    └── agent/            # Agent page components
-        ├── ChatUI/       # Chat interface components
-        └── InterfaceInput/ # JSON input components
+
+Everything before spending money is inspectable without keys: scenarios, paired
+prompts (`ziva preview`), image stimuli, the trial manifest, and the projected request
+count and cost (`ziva estimate-cost`).
+
+## Workflow (step-by-step form)
+
+```bash
+ziva doctor            # environment readiness (never prints keys)
+ziva generate  -c configs/pilot.yaml   # scenarios + image stimuli + shuffled trial manifest
+ziva validate  -c configs/pilot.yaml   # byte-identical pairing audit, leakage lint, determinism
+ziva preview   -c configs/pilot.yaml   # eyeball paired prompts + stimulus before spending
+ziva freeze    -c configs/pilot.yaml   # pre-registration: hypotheses, hashes, seeds, env
+ziva estimate-cost -c configs/pilot.yaml
+ziva run       -c configs/pilot.yaml   # resumable; budget-guarded; refuses modified freezes
+ziva analyze   -c configs/pilot.yaml   # paired metrics, bootstrap CIs, permutation tests, plots
+ziva report    -c configs/pilot.yaml   # Markdown research report
+ziva power     -c configs/pilot.yaml --effect-points 5   # size the confirmatory run
 ```
 
-## Getting Started
+Every command has `--help`. `ziva run --dry-run` plans without calling any API;
+`--mock` runs the entire pipeline against a deterministic synthetic provider in a
+separate `*_mock` data namespace that can never contaminate real results.
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env.local` file with your API keys:
-   ```
-   OPENAI_API_KEY=your_openai_key
-   ANTHROPIC_API_KEY=your_anthropic_key
-   CUSTOMCONNSTR_MONGODB_URI=your_mongodb_uri
-   ```
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+## What the harness guarantees
 
-## Development Status
-- [x] Basic chat interface
-- [x] JSON construction logic
-- [x] MongoDB integration
-- [x] Multiple AI provider support
-- [ ] User authentication
-- [ ] Advanced JSON validation
-- [ ] Template system for common JSON structures
+* **Paired design integrity.** A compiled prompt is `treatment text ⊕ invariant
+  block`; the invariant block (facts + elicitation) is byte-identical across all
+  treatments of a scenario/mode, verified by hashes at validate time and frozen.
+* **Belief ≠ recommendation.** Every trial elicits `visible_probability`,
+  `binary_prediction`, `confidence`, `evidence_sufficiency`,
+  `would_recommend_attempt`, and a short explanation, as one JSON object.
+* **Local, reproducible astronomy** (astronomy-engine analytic ephemeris; no network,
+  no paid APIs; optional JPL Horizons / timeanddate audits, off by default).
+* **Stratified scenarios** across latitude, season, time of day, phase, altitude, and
+  Sun–Moon separation — deliberately weighted toward ambiguous daylight regimes, never
+  collapsing into easy nighttime cases. Deterministic under the recorded seed.
+* **Pre-registration-style freeze** (`ziva freeze`): hypotheses, scoring spec, prompt
+  templates, manifest, stimuli hashes, model snapshot, seeds, git commit, package
+  versions. `ziva run` refuses a modified freeze unless `--allow-dirty` (recorded).
+* **Cost safety**: projected cost before execution, hard budget guard during it
+  (`run.max_cost_usd`, `--max-cost-usd`, `--allow-over-budget`), per-provider
+  concurrency and rate limits, retries with backoff.
+* **Resumability**: deterministic trial IDs; completed trials are never re-run.
+* **Provenance**: raw responses, parse status, request params, token usage, latency,
+  model version strings, execution order and timestamps — all stored per trial.
+* **No LLM judge** anywhere in the primary scoring; malformed outputs are counted,
+  never silently dropped, never LLM-repaired.
 
-## Contributing
-Feel free to submit issues and enhancement requests!
+## Experiments
 
-## License
-This project is licensed under the MIT License.
+| experiment | question | flag in config |
+|---|---|---|
+| primary | does valence shift the factual estimate? | `experiments.primary` |
+| evidence update | does the same evidence produce different updating depending on the user's preferred conclusion? | `experiments.evidence_update` |
+| commitment | does a prior public prediction + user enthusiasm change the final estimate vs evidence-first? | `experiments.commitment` |
+| web-grounded | does tool access remove or merely relocate the effect? (kept separate from the primary design) | `experiments.web` |
+
+Evidence modalities: `text` (situation only), `structured` (exact ephemeris JSON),
+`image` (deterministic astronomy-card PNG, identical across treatments, no verdict),
+`web` (location/time only + provider search tools).
+
+## Configuration
+
+* `configs/pilot.yaml` — small: ~32 scenarios × 3 families × 2 paraphrases × 2 modes ×
+  2 repeats per model. Use it to test parsing, saturation, variance, and cost.
+* `configs/confirmatory.yaml` — larger frozen design with all six treatment families
+  (including the `anti_sycophancy` instruction control and the `negative_preference`
+  symmetry control), all modalities, and experiments 2–3. Size `scenarios.count` with
+  `ziva power`; do not modify it based on its own results.
+* `configs/models.example.yaml` — provider/model/pricing configuration. Model names
+  are editable examples, not baked in.
+
+## Output layout
+
+```
+data/
+  scenarios/<exp>/scenarios.json     physical worlds + classification + provenance
+  stimuli/<exp>/*.png + hashes.json  deterministic image stimuli
+  manifests/<exp>/trials.jsonl       full shuffled trial plan
+  manifests/<exp>/freeze.json        pre-registration record (+ hypotheses.yaml, scoring_spec.md)
+  raw/<exp>/t_*.json                 one complete record per trial (resumable)
+results/<exp>/
+  summary.json                       machine-readable analysis
+  paired_table.csv                   the core paired object (spec §53)
+  trials.csv / trials.jsonl          trial-level parsed data
+  plots/*.png                        paired scatter, differences, effects by model/modality/difficulty, flips, confidence, recommendations, updates
+reports/latest_report.md             generated research report
+```
+
+## Interpretation
+
+The strongest claim this benchmark can support is behavioral: *changing only user
+conversational valence systematically changed model estimates of an unchanged
+external physical state.* It does **not** establish deception, scheming, conscious
+preference, internal belief states, reward hacking, intentional sycophancy, that every
+affected answer was wrong, or human perceptual ground truth in ambiguous scenarios.
+Generated reports carry these constraints verbatim and separate preregistered from
+exploratory findings.
+
+## Limitations
+
+* The difficulty score is a crude stratification heuristic, not a perceptual model.
+* Yallop/Odeh apply only to twilight thin crescents; the code refuses them elsewhere.
+* Provider adapters are contract-tested against mocked SDKs; live validation happens
+  on your first pilot run (no credentials were available when this repo was built —
+  no live-API result in this repository is real unless you produced it).
+* Token/cost estimates use a documented chars/4 heuristic where providers don't
+  report usage.
+
+## Development
+
+```bash
+pytest            # 58 tests: astronomy anchors, determinism, pairing audits, parsing,
+                  # provider contracts, resume, budget guard, freeze tamper detection,
+                  # synthetic-fixture metrics, bias-recovery
+```
+
+See [docs/methodology.md](docs/methodology.md), [docs/metrics.md](docs/metrics.md),
+[docs/providers.md](docs/providers.md).
