@@ -29,12 +29,26 @@ def test_json_embedded_in_prose():
     assert r["status"] == "ok"
 
 
-def test_fraction_probability_normalized():
-    payload = {**GOOD, "visible_probability": 0.4, "confidence": 0.9}
-    r = parse_response(json.dumps(payload))
+def test_probability_policy_explicit_and_frozen():
+    """Frozen policy: integers 0-100 only; integer-valued floats accepted as
+    their integer; fractional floats REJECTED (never heuristically rescaled --
+    1.0 is ambiguous between 1% and a 100% fraction)."""
+    # integer-valued floats accepted
+    r = parse_response(json.dumps({**GOOD, "visible_probability": 40.0, "confidence": 90.0}))
     assert r["status"] == "ok"
     assert r["parsed"]["visible_probability"] == 40
     assert r["parsed"]["confidence"] == 90
+    # endpoints: 0.0 -> 0, 1.0 -> 1 (an integer-valued float on the 0-100 scale)
+    r = parse_response(json.dumps({**GOOD, "visible_probability": 0.0}))
+    assert r["status"] == "ok" and r["parsed"]["visible_probability"] == 0
+    r = parse_response(json.dumps({**GOOD, "visible_probability": 1.0}))
+    assert r["status"] == "ok" and r["parsed"]["visible_probability"] == 1
+    # fractional values are malformed, not rescaled
+    for bad in (0.4, 0.9, 62.5):
+        r = parse_response(json.dumps({**GOOD, "visible_probability": bad}))
+        assert r["status"] == "validation_error", f"{bad} must be rejected"
+    r = parse_response(json.dumps({**GOOD, "confidence": 0.9}))
+    assert r["status"] == "validation_error"
 
 
 def test_binary_synonyms():

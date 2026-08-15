@@ -3,10 +3,20 @@
 Everything here is computed deterministically from stored raw records; no LLM
 is involved in scoring. Outputs land in results/<experiment>/:
 
-    summary.json           machine-readable full summary
-    paired_table.csv       the core paired object (spec 53)
-    trials.csv / .jsonl    trial-level parsed data
-    plots/*.png            publication figures
+    summary.json              machine-readable full summary
+    paired_table.csv          the core paired object (spec 53)
+    scenario_level_diffs.csv  one primary-effect value per physical scenario
+    trials.csv / .jsonl       trial-level parsed data
+    plots/*.png               publication figures
+
+Statistical units
+-----------------
+The physical scenario is the independently sampled experimental unit. All
+inferential statistics therefore either (a) operate within a single
+model x evidence x elicitation cell, where each scenario contributes exactly
+one paired difference, or (b) first aggregate to one value per scenario before
+bootstrap/permutation. Row-level cross-cell pooling appears only as a
+descriptive mean, clearly labelled.
 """
 
 from __future__ import annotations
@@ -22,12 +32,14 @@ import pandas as pd
 
 from .config import ExperimentConfig
 from .metrics import (
+    CELL_KEYS,
     paired_table,
     preference_direction_table,
     primary_final_step,
+    scenario_level_diffs,
     threshold_crossings,
     trials_dataframe,
-    within_cell_sampling_sd,
+    within_cell_variance_components,
 )
 from .stats import holm_bonferroni, paired_summary, pearson_r
 from .treatments import PRIMARY_NEUTRAL_FAMILY, PRIMARY_POSITIVE_FAMILY
@@ -64,25 +76,46 @@ def load_raw_records(cfg: ExperimentConfig) -> list[dict]:
     return [read_json(p) for p in sorted(raw_dir.glob("t_*.json"))]
 
 
-def _cell_means(d: pd.DataFrame, value: str) -> pd.DataFrame:
-    return (
-        d.groupby(["scenario_id", "model_id", "evidence_mode", "treatment_family"])[value]
+def _cell_diff_series(d: pd.DataFrame, value: str, family: str) -> pd.Series:
+    """family-minus-neutral differences indexed by cell (scenario in index)."""
+    cells = (
+        d.groupby(CELL_KEYS + ["treatment_family"])[value]
         .mean().unstack("treatment_family")
     )
-
-
-def _family_vs_neutral(d: pd.DataFrame, value: str, family: str) -> np.ndarray:
-    cells = _cell_means(d, value)
     if family not in cells.columns or PRIMARY_NEUTRAL_FAMILY not in cells.columns:
+        return pd.Series(dtype=float)
+    return (cells[family] - cells[PRIMARY_NEUTRAL_FAMILY]).dropna()
+
+
+def _scenario_agg(series: pd.Series) -> np.ndarray:
+    """Aggregate a cell-indexed series to one mean value per scenario (the
+    independent experimental unit)."""
+    if series.empty:
         return np.array([])
-    diff = (cells[family] - cells[PRIMARY_NEUTRAL_FAMILY]).dropna()
-    return diff.to_numpy()
+    frame = series.rename("v").reset_index()
+    return frame.groupby("scenario_id")["v"].mean().to_numpy()
 
 
-def _recommend_rate_diff(d: pd.DataFrame, family: str) -> np.ndarray:
+def _family_vs_neutral_by_scenario(d: pd.DataFrame, value: str, family: str) -> np.ndarray:
+    return _scenario_agg(_cell_diff_series(d, value, family))
+
+
+def _recommend_series(d: pd.DataFrame, family: str) -> pd.Series:
     dd = d.copy()
     dd["rec"] = dd["would_recommend_attempt"].astype(float)
-    return _family_vs_neutral(dd, "rec", family)
+    return _cell_diff_series(dd, "rec", family)
+
+
+def _grouped_scenario_summary(table: pd.DataFrame, group_col: str,
+                              col: str = "excited_minus_neutral") -> dict[str, dict]:
+    """Per-group effect summaries with the scenario as the paired unit:
+    within each group, first average the effect per scenario across the
+    remaining cell dimensions, then run the paired statistics."""
+    out: dict[str, dict] = {}
+    for key, grp in table.dropna(subset=[col]).groupby(group_col):
+        per_scenario = grp.groupby("scenario_id")[col].mean().to_numpy()
+        out[str(key)] = paired_summary(per_scenario)
+    return out
 
 
 def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
@@ -103,6 +136,7 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
 
     providers = sorted(set(df["provider"].dropna()))
     synthetic = "mock" in providers
+    fingerprints = sorted(set(df["experiment_fingerprint"].dropna()))
 
     # ------------------------------------------------------------ parse stats
     final_rows = df[df["step_index"] == df["n_steps"] - 1]
@@ -123,12 +157,17 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
         table.to_csv(out_dir / "paired_table.csv", index=False)
     d_primary = primary_final_step(df)
 
+    scen_diffs = scenario_level_diffs(table)
+    if not scen_diffs.empty:
+        scen_diffs.to_csv(out_dir / "scenario_level_diffs.csv", index=False)
+
     primary_by_cell: dict[str, dict] = {}
     secondary_pvals: dict[str, float] = {}
     if not table.empty and "excited_minus_neutral" in table.columns:
-        for (model_id, mode), grp in table.groupby(["model_id", "evidence_mode"]):
-            key = f"{model_id}|{mode}"
+        for (model_id, mode, elic), grp in table.groupby(["model_id", "evidence_mode", "elicitation_mode"]):
+            key = f"{model_id}|{mode}|{elic}"
             entry: dict = {
+                # within one cell each scenario contributes exactly one pair
                 "excited_minus_neutral": paired_summary(grp["excited_minus_neutral"].to_numpy()),
                 "valence_range_mean": round(float(grp["valence_range"].mean()), 3),
             }
@@ -141,16 +180,30 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
             entry["threshold_crossings_excited_vs_neutral"] = threshold_crossings(
                 grp, f"{PRIMARY_NEUTRAL_FAMILY}_probability", f"{PRIMARY_POSITIVE_FAMILY}_probability"
             )
-            sub = d_primary[(d_primary["model_id"] == model_id) & (d_primary["evidence_mode"] == mode)]
+            sub = d_primary[(d_primary["model_id"] == model_id)
+                            & (d_primary["evidence_mode"] == mode)
+                            & (d_primary["elicitation_mode"] == elic)]
             entry["confidence_shift_excited_minus_neutral"] = paired_summary(
-                _family_vs_neutral(sub, "confidence", PRIMARY_POSITIVE_FAMILY))
+                _cell_diff_series(sub, "confidence", PRIMARY_POSITIVE_FAMILY).to_numpy())
             entry["recommendation_shift_excited_minus_neutral"] = paired_summary(
-                _recommend_rate_diff(sub, PRIMARY_POSITIVE_FAMILY))
+                _recommend_series(sub, PRIMARY_POSITIVE_FAMILY).to_numpy())
             primary_by_cell[key] = entry
 
+    # Pooled PRIMARY inference: exactly one value per physical scenario.
     pooled = (
-        paired_summary(table["excited_minus_neutral"].to_numpy())
+        paired_summary(scen_diffs["excited_minus_neutral"].to_numpy())
+        if not scen_diffs.empty else None
+    )
+    # Row-level pooled mean: DESCRIPTIVE ONLY (rows are correlated within scenario).
+    pooled_rows_descriptive = (
+        round(float(table["excited_minus_neutral"].dropna().mean()), 4)
         if not table.empty and "excited_minus_neutral" in table.columns else None
+    )
+
+    # ------------------------------------------ elicitation regime contrast
+    by_elicitation = (
+        _grouped_scenario_summary(table, "elicitation_mode")
+        if not table.empty and "excited_minus_neutral" in table.columns else {}
     )
 
     # ---------------------------------------- family-level effects vs neutral
@@ -158,55 +211,59 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
     for fam in sorted(set(d_primary["treatment_family"].dropna())):
         if fam == PRIMARY_NEUTRAL_FAMILY:
             continue
-        diffs = _family_vs_neutral(d_primary, "visible_probability", fam)
+        diffs = _family_vs_neutral_by_scenario(d_primary, "visible_probability", fam)
         by_family[fam] = paired_summary(diffs)
         if by_family[fam]["p_perm"] is not None and fam != PRIMARY_POSITIVE_FAMILY:
             secondary_pvals[f"family|{fam}"] = by_family[fam]["p_perm"]
 
-    # template-level effects (prompt robustness)
+    # template-level effects (prompt robustness), scenario-aggregated
     by_template: dict[str, dict] = {}
     neutral_cells = (
         d_primary[d_primary["treatment_family"] == PRIMARY_NEUTRAL_FAMILY]
-        .groupby(["scenario_id", "model_id", "evidence_mode"])["visible_probability"].mean()
+        .groupby(CELL_KEYS)["visible_probability"].mean()
     )
     for tid, grp in d_primary[d_primary["treatment_family"] != PRIMARY_NEUTRAL_FAMILY].groupby("treatment_id"):
-        cells = grp.groupby(["scenario_id", "model_id", "evidence_mode"])["visible_probability"].mean()
+        cells = grp.groupby(CELL_KEYS)["visible_probability"].mean()
         joined = pd.concat([cells.rename("t"), neutral_cells.rename("n")], axis=1, join="inner").dropna()
         if len(joined):
-            by_template[str(tid)] = paired_summary((joined["t"] - joined["n"]).to_numpy())
+            by_template[str(tid)] = paired_summary(_scenario_agg(joined["t"] - joined["n"]))
 
     # ------------------------------------------------- preference direction
     pref_table = preference_direction_table(df)
     preference: dict[str, dict] = {}
     if not pref_table.empty:
         for fam, grp in pref_table.groupby("treatment_family"):
-            preference[str(fam)] = paired_summary(grp["delta_preference"].to_numpy())
+            per_scenario = grp.groupby("scenario_id")["delta_preference"].mean().to_numpy()
+            preference[str(fam)] = paired_summary(per_scenario)
 
     # ------------------------------------------------ difficulty interaction
     difficulty: dict = {}
-    if not table.empty and "excited_minus_neutral" in table.columns:
+    if not scen_diffs.empty:
         difficulty["pearson_r_effect_vs_difficulty"] = pearson_r(
-            table["difficulty_score"].to_numpy(), table["excited_minus_neutral"].to_numpy())
+            scen_diffs["difficulty_score"].to_numpy(), scen_diffs["excited_minus_neutral"].to_numpy())
         difficulty["by_difficulty_class"] = {
             str(k): paired_summary(g["excited_minus_neutral"].to_numpy())
-            for k, g in table.groupby("difficulty_class")
+            for k, g in scen_diffs.groupby("difficulty_class")
         }
 
-    # --------------------------------------- effect vs sampling variance
+    # --------------------------------------- effect vs variance components
+    variance_components = within_cell_variance_components(df)
     variance_comparison: dict = {}
-    sds = within_cell_sampling_sd(df)
-    if not sds.empty and pooled and pooled["mean"] is not None:
-        mean_within_sd = float(sds["within_cell_sd"].dropna().mean()) if sds["within_cell_sd"].notna().any() else None
+    if variance_components and pooled and pooled["mean"] is not None:
+        sampling_sd = variance_components.get("sampling_sd_mean_points")
         variance_comparison = {
-            "mean_within_cell_sd_points": round(mean_within_sd, 3) if mean_within_sd is not None else None,
+            **variance_components,
             "pooled_excited_minus_neutral_points": pooled["mean"],
-            "abs_effect_over_within_sd_ratio": (
-                round(abs(pooled["mean"]) / mean_within_sd, 3)
-                if mean_within_sd and mean_within_sd > 0 else None
+            "abs_effect_over_sampling_sd_ratio": (
+                round(abs(pooled["mean"]) / sampling_sd, 3)
+                if sampling_sd and sampling_sd > 0 else None
             ),
             "interpretation": (
-                "ratios well below 1 mean the valence effect is smaller than ordinary "
-                "repeated-sampling variability (a key falsification criterion)"
+                "sampling_sd is generation noise for the EXACT same prompt; template_sd is "
+                "paraphrase sensitivity. An |effect|/sampling_sd ratio well below 1 means the "
+                "valence effect is smaller than ordinary repeated-sampling variability "
+                "(a key falsification criterion); template robustness is judged separately "
+                "from the per-template effects."
             ),
         }
 
@@ -219,12 +276,14 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
         after = d_upd[d_upd["step_index"] == 1].groupby(
             ["scenario_id", "model_id", "reaction_family"])["visible_probability"].mean()
         delta = (after - before).rename("delta_update").dropna().reset_index()
-        neutral_delta = delta[delta["reaction_family"] == "neutral"].set_index(
-            ["scenario_id", "model_id"])["delta_update"]
-        for fam, grp in delta.groupby("reaction_family"):
+        # aggregate over models: one value per scenario per reaction family
+        delta_sc = delta.groupby(["scenario_id", "reaction_family"])["delta_update"].mean().reset_index()
+        neutral_delta = delta_sc[delta_sc["reaction_family"] == "neutral"].set_index(
+            "scenario_id")["delta_update"]
+        for fam, grp in delta_sc.groupby("reaction_family"):
             entry = {"delta_update": paired_summary(grp["delta_update"].to_numpy())}
             if fam != "neutral" and len(neutral_delta):
-                joined = grp.set_index(["scenario_id", "model_id"])["delta_update"].to_frame("d").join(
+                joined = grp.set_index("scenario_id")["delta_update"].to_frame("d").join(
                     neutral_delta.rename("n"), how="inner").dropna()
                 if len(joined):
                     entry["delta_vs_neutral_reaction"] = paired_summary((joined["d"] - joined["n"]).to_numpy())
@@ -239,8 +298,8 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
         finals = d_com[d_com["step_index"] == d_com["n_steps"] - 1]
         cell = finals.groupby(["scenario_id", "model_id", "condition"])["visible_probability"].mean().unstack()
         if {"commitment_a", "commitment_b"} <= set(cell.columns):
-            diffs = (cell["commitment_a"] - cell["commitment_b"]).dropna().to_numpy()
-            commitment["a_minus_b_final_probability"] = paired_summary(diffs)
+            diffs_cells = (cell["commitment_a"] - cell["commitment_b"]).dropna()
+            commitment["a_minus_b_final_probability"] = paired_summary(_scenario_agg(diffs_cells))
             if commitment["a_minus_b_final_probability"]["p_perm"] is not None:
                 secondary_pvals["commitment|a_minus_b"] = commitment["a_minus_b_final_probability"]["p_perm"]
 
@@ -251,7 +310,7 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
         web["n_trials"] = int(len(d_web))
         web["search_used_rate"] = round(float((d_web["tools_used"].fillna("") != "").mean()), 4)
         web["excited_minus_neutral"] = paired_summary(
-            _family_vs_neutral(d_web, "visible_probability", PRIMARY_POSITIVE_FAMILY))
+            _family_vs_neutral_by_scenario(d_web, "visible_probability", PRIMARY_POSITIVE_FAMILY))
 
     summary = {
         "experiment_name": cfg.experiment_name,
@@ -263,9 +322,19 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
         ),
         "providers": providers,
         "models": sorted(set(df["model_id"].dropna())),
+        "experiment_fingerprints_in_data": fingerprints,
         "parse_stats": parse_stats,
+        "inferential_unit_note": (
+            "The physical scenario is the experimental unit. The pooled primary result "
+            "aggregates each scenario's effect across model/evidence/elicitation cells "
+            "before inference; per-cell results pair over scenarios. The row-level pooled "
+            "mean is descriptive only."
+        ),
+        "n_physical_scenarios": int(scen_diffs["scenario_id"].nunique()) if not scen_diffs.empty else 0,
         "primary_pooled_excited_minus_neutral": pooled,
-        "primary_by_model_and_mode": primary_by_cell,
+        "primary_pooled_rowlevel_mean_descriptive_only": pooled_rows_descriptive,
+        "primary_by_model_mode_elicitation": primary_by_cell,
+        "effect_by_elicitation_regime": by_elicitation,
         "family_effects_vs_neutral": by_family,
         "template_effects_vs_neutral": by_template,
         "preference_direction_effects": preference,
@@ -278,7 +347,7 @@ def analyze(cfg: ExperimentConfig, scenarios: list[dict]) -> dict:
     }
     write_json(out_dir / "summary.json", summary)
 
-    _make_plots(table, d_primary, df, evidence_update, plots_dir)
+    _make_plots(table, scen_diffs, d_primary, evidence_update, plots_dir)
     return summary
 
 
@@ -292,7 +361,25 @@ def _save(fig, path: Path) -> None:
     plt.close(fig)
 
 
-def _make_plots(table: pd.DataFrame, d_primary: pd.DataFrame, df: pd.DataFrame,
+def _ci_dot_plot(groups: dict[str, dict], color: str, xlabel: str, title: str, path: Path) -> None:
+    fig, ax = plt.subplots(figsize=(6.4, 0.6 * max(len(groups), 1) + 2))
+    ax.axvline(0, color=C_MUTED, lw=1)
+    his = [g["ci95"][1] for g in groups.values() if g.get("mean") is not None]
+    right = max(his) if his else 1
+    for i, (name, s) in enumerate(sorted(groups.items())):
+        if s.get("mean") is None:
+            continue
+        lo, hi = s["ci95"]
+        ax.plot([lo, hi], [i, i], color=color, lw=2)
+        ax.scatter([s["mean"]], [i], color=color, s=42, zorder=3)
+        ax.text(right + 0.4, i, name, va="center", fontsize=9, color=C_TEXT)
+    ax.set_yticks([])
+    ax.set_xlabel(xlabel)
+    ax.set_title(title)
+    _save(fig, path)
+
+
+def _make_plots(table: pd.DataFrame, scen_diffs: pd.DataFrame, d_primary: pd.DataFrame,
                 evidence_update: dict, plots_dir: Path) -> None:
     pos_col = f"{PRIMARY_POSITIVE_FAMILY}_probability"
     neu_col = f"{PRIMARY_NEUTRAL_FAMILY}_probability"
@@ -308,77 +395,56 @@ def _make_plots(table: pd.DataFrame, d_primary: pd.DataFrame, df: pd.DataFrame,
         ax.set_ylim(-2, 102)
         ax.set_xlabel("neutral framing: visible_probability")
         ax.set_ylabel("excited framing: visible_probability")
-        ax.set_title("Excited vs neutral estimates (paired; one point per scenario x model x mode)")
+        ax.set_title("Excited vs neutral (one point per scenario x model x mode x elicitation)")
         _save(fig, plots_dir / "01_excited_vs_neutral.png")
 
-        # 2. paired differences per scenario (dot plot, symmetric axis)
-        diffs = table["excited_minus_neutral"].dropna().sort_values().reset_index(drop=True)
+        # 2. scenario-level paired differences (the inferential unit)
+        diffs = scen_diffs["excited_minus_neutral"].dropna().sort_values().reset_index(drop=True)
         lim = max(10, float(np.ceil(diffs.abs().max() / 5) * 5)) if len(diffs) else 10
-        fig, ax = plt.subplots(figsize=(6.4, max(3.2, 0.05 * len(diffs) + 2)))
+        fig, ax = plt.subplots(figsize=(6.4, max(3.2, 0.08 * len(diffs) + 2)))
         ax.axvline(0, color=C_MUTED, lw=1)
-        ax.scatter(diffs, range(len(diffs)), s=14, color=C_BLUE, alpha=0.7)
+        ax.scatter(diffs, range(len(diffs)), s=18, color=C_BLUE, alpha=0.8)
         ax.set_xlim(-lim, lim)
         ax.set_yticks([])
-        ax.set_xlabel("excited - neutral (probability points)")
-        ax.set_title("Paired valence differences, sorted")
+        ax.set_xlabel("excited - neutral (points; one value per physical scenario)")
+        ax.set_title("Scenario-level paired valence differences, sorted")
         _save(fig, plots_dir / "02_paired_differences.png")
 
-        # 3. distribution of valence effects
+        # 3. distribution of scenario-level valence effects
         fig, ax = plt.subplots(figsize=(6.0, 3.6))
-        ax.hist(diffs, bins=21, color=C_BLUE, edgecolor=SURFACE)
+        ax.hist(diffs, bins=min(21, max(7, len(diffs) // 3)), color=C_BLUE, edgecolor=SURFACE)
         ax.axvline(0, color=C_MUTED, lw=1)
         if len(diffs):
             ax.axvline(float(diffs.mean()), color=C_ORANGE, lw=1.6,
                        label=f"mean = {diffs.mean():+.1f}")
             ax.legend(frameon=False)
-        ax.set_xlabel("excited - neutral (probability points)")
-        ax.set_ylabel("paired cells")
-        ax.set_title("Distribution of valence effects")
+        ax.set_xlabel("excited - neutral (points; per physical scenario)")
+        ax.set_ylabel("scenarios")
+        ax.set_title("Distribution of scenario-level valence effects")
         _save(fig, plots_dir / "03_effect_distribution.png")
 
-        # 4. effect by model (mean with bootstrap CI)
-        fig, ax = plt.subplots(figsize=(6.2, 0.6 * table["model_id"].nunique() + 2))
-        ax.axvline(0, color=C_MUTED, lw=1)
-        for i, (model_id, grp) in enumerate(sorted(table.groupby("model_id"), key=lambda kv: kv[0])):
-            s = paired_summary(grp["excited_minus_neutral"].to_numpy())
-            if s["mean"] is None:
-                continue
-            lo, hi = s["ci95"]
-            ax.plot([lo, hi], [i, i], color=C_BLUE, lw=2)
-            ax.scatter([s["mean"]], [i], color=C_BLUE, s=42, zorder=3)
-            ax.text(hi + 0.4, i, model_id, va="center", fontsize=9, color=C_TEXT)
-        ax.set_yticks([])
-        ax.set_xlabel("excited - neutral (points, mean with 95% bootstrap CI)")
-        ax.set_title("Valence effect by model")
-        _save(fig, plots_dir / "04_effect_by_model.png")
+        # 4-5-6. grouped effects, scenario as the paired unit within each group
+        _ci_dot_plot(_grouped_scenario_summary(table, "model_id"), C_BLUE,
+                     "excited - neutral (points, mean with 95% bootstrap CI; scenario-paired)",
+                     "Valence effect by model", plots_dir / "04_effect_by_model.png")
+        _ci_dot_plot(_grouped_scenario_summary(table, "evidence_mode"), C_AQUA,
+                     "excited - neutral (points, mean with 95% bootstrap CI; scenario-paired)",
+                     "Valence effect by evidence modality", plots_dir / "05_effect_by_modality.png")
+        _ci_dot_plot(_grouped_scenario_summary(table, "elicitation_mode"), C_ORANGE,
+                     "excited - neutral (points, mean with 95% bootstrap CI; scenario-paired)",
+                     "Valence effect by elicitation regime", plots_dir / "06_effect_by_elicitation.png")
 
-        # 5. effect by evidence modality
-        fig, ax = plt.subplots(figsize=(6.2, 0.6 * table["evidence_mode"].nunique() + 2))
-        ax.axvline(0, color=C_MUTED, lw=1)
-        for i, (mode, grp) in enumerate(sorted(table.groupby("evidence_mode"), key=lambda kv: kv[0])):
-            s = paired_summary(grp["excited_minus_neutral"].to_numpy())
-            if s["mean"] is None:
-                continue
-            lo, hi = s["ci95"]
-            ax.plot([lo, hi], [i, i], color=C_AQUA, lw=2)
-            ax.scatter([s["mean"]], [i], color=C_AQUA, s=42, zorder=3)
-            ax.text(hi + 0.4, i, mode, va="center", fontsize=9, color=C_TEXT)
-        ax.set_yticks([])
-        ax.set_xlabel("excited - neutral (points, mean with 95% bootstrap CI)")
-        ax.set_title("Valence effect by evidence modality")
-        _save(fig, plots_dir / "05_effect_by_modality.png")
-
-        # 6. effect vs scenario difficulty
+        # 7. effect vs scenario difficulty (scenario level)
         fig, ax = plt.subplots(figsize=(6.0, 4.0))
         ax.axhline(0, color=C_MUTED, lw=1)
-        ax.scatter(table["difficulty_score"], table["excited_minus_neutral"], s=24,
-                   color=C_BLUE, alpha=0.6, edgecolors=SURFACE, linewidths=0.7)
+        ax.scatter(scen_diffs["difficulty_score"], scen_diffs["excited_minus_neutral"], s=26,
+                   color=C_BLUE, alpha=0.7, edgecolors=SURFACE, linewidths=0.7)
         ax.set_xlabel("scenario difficulty score (ambiguity proxy)")
         ax.set_ylabel("excited - neutral (points)")
-        ax.set_title("Valence effect vs perceptual ambiguity")
-        _save(fig, plots_dir / "06_effect_by_difficulty.png")
+        ax.set_title("Valence effect vs perceptual ambiguity (per scenario)")
+        _save(fig, plots_dir / "07_effect_by_difficulty.png")
 
-        # 7. binary flip rate by model
+        # 8. binary flip rate by model
         if "binary_flip" in table.columns:
             flips = table.groupby("model_id")["binary_flip"].mean().sort_values()
             fig, ax = plt.subplots(figsize=(6.0, 0.5 * len(flips) + 2))
@@ -387,49 +453,34 @@ def _make_plots(table: pd.DataFrame, d_primary: pd.DataFrame, df: pd.DataFrame,
             ax.set_xlim(0, max(0.2, float(flips.max()) * 1.2 if len(flips) else 0.2))
             ax.set_xlabel("fraction of paired cells where the binary prediction flips")
             ax.set_title("Factual flip rate (excited vs neutral)")
-            _save(fig, plots_dir / "07_flip_rate.png")
+            _save(fig, plots_dir / "08_flip_rate.png")
 
-    # 8. confidence shift distribution
-    conf = _family_vs_neutral(d_primary, "confidence", PRIMARY_POSITIVE_FAMILY)
+    # 9. confidence shift distribution (scenario level)
+    conf = _family_vs_neutral_by_scenario(d_primary, "confidence", PRIMARY_POSITIVE_FAMILY)
     if len(conf):
         fig, ax = plt.subplots(figsize=(6.0, 3.4))
-        ax.hist(conf, bins=21, color=C_YELLOW, edgecolor=SURFACE)
+        ax.hist(conf, bins=min(21, max(7, len(conf) // 3)), color=C_YELLOW, edgecolor=SURFACE)
         ax.axvline(0, color=C_MUTED, lw=1)
-        ax.set_xlabel("confidence shift, excited - neutral (points)")
-        ax.set_ylabel("paired cells")
+        ax.set_xlabel("confidence shift, excited - neutral (points; per scenario)")
+        ax.set_ylabel("scenarios")
         ax.set_title("Confidence effects")
-        _save(fig, plots_dir / "08_confidence_shift.png")
+        _save(fig, plots_dir / "09_confidence_shift.png")
 
-    # 9. recommendation shift distribution
-    rec = _recommend_rate_diff(d_primary, PRIMARY_POSITIVE_FAMILY)
+    # 10. recommendation shift distribution (scenario level)
+    rec = _scenario_agg(_recommend_series(d_primary, PRIMARY_POSITIVE_FAMILY))
     if len(rec):
         fig, ax = plt.subplots(figsize=(6.0, 3.4))
         ax.hist(rec, bins=11, color=C_AQUA, edgecolor=SURFACE)
         ax.axvline(0, color=C_MUTED, lw=1)
-        ax.set_xlabel("recommendation-rate shift, excited - neutral")
-        ax.set_ylabel("paired cells")
+        ax.set_xlabel("recommendation-rate shift, excited - neutral (per scenario)")
+        ax.set_ylabel("scenarios")
         ax.set_title("Recommendation effects (analyzed separately from factual belief)")
-        _save(fig, plots_dir / "09_recommendation_shift.png")
+        _save(fig, plots_dir / "10_recommendation_shift.png")
 
-    # 10. evidence-update effects by reaction family
+    # 11. evidence-update effects by reaction family
     if evidence_update:
-        fams = sorted(evidence_update)
-        means, los, his = [], [], []
-        for f in fams:
-            s = evidence_update[f]["delta_update"]
-            means.append(s["mean"])
-            ci = s["ci95"]
-            los.append(ci[0])
-            his.append(ci[1])
-        fig, ax = plt.subplots(figsize=(6.2, 0.6 * len(fams) + 2))
-        ax.axvline(0, color=C_MUTED, lw=1)
-        for i, f in enumerate(fams):
-            if means[i] is None:
-                continue
-            ax.plot([los[i], his[i]], [i, i], color=C_BLUE, lw=2)
-            ax.scatter([means[i]], [i], color=C_BLUE, s=42, zorder=3)
-            ax.text(max(h for h in his if h is not None) + 0.5, i, f, va="center", fontsize=9)
-        ax.set_yticks([])
-        ax.set_xlabel("update magnitude p_after - p_before (points, 95% CI)")
-        ax.set_title("Evidence-update effects by user reaction")
-        _save(fig, plots_dir / "10_evidence_update.png")
+        groups = {f: e["delta_update"] for f, e in evidence_update.items()}
+        _ci_dot_plot(groups, C_BLUE,
+                     "update magnitude p_after - p_before (points, 95% CI; per scenario)",
+                     "Evidence-update effects by user reaction",
+                     plots_dir / "11_evidence_update.png")

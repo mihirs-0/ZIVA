@@ -46,7 +46,7 @@ def build_manifest(
         row["trial_id"] = trial_id_for(
             {k: row.get(k) for k in (
                 "experiment", "scenario_id", "treatment_id", "reaction_id",
-                "condition", "evidence_mode", "model_id", "repeat_index",
+                "condition", "evidence_mode", "elicitation_mode", "model_id", "repeat_index",
             )}
         )
         rows.append(row)
@@ -55,50 +55,54 @@ def build_manifest(
     if cfg.experiments.primary:
         for sc in scenarios:
             for mode in cfg.evidence_modes:
-                for t in treatments:
-                    cp = compile_prompt(sc, t, mode)
-                    for rep in range(cfg.sampling.repeats):
-                        for m in models:
-                            if mode == "image" and not m.supports.images:
-                                continue
-                            add({
-                                "experiment": "primary",
-                                "scenario_id": sc["scenario_id"],
-                                "treatment_id": t.id,
-                                "treatment_family": t.family,
-                                "directionality": _directionality(t),
-                                "evidence_mode": mode,
-                                "model_id": m.id,
-                                "repeat_index": rep,
-                                "prompt_hash": cp.prompt_hash,
-                                "invariant_hash": cp.invariant_hash,
-                                "image_hash": image_hashes.get(sc["scenario_id"]) if mode == "image" else None,
-                                "n_steps": 1,
-                            })
+                for elic in cfg.elicitation_modes:
+                    for t in treatments:
+                        cp = compile_prompt(sc, t, mode, elic)
+                        for rep in range(cfg.sampling.repeats):
+                            for m in models:
+                                if mode == "image" and not m.supports.images:
+                                    continue
+                                add({
+                                    "experiment": "primary",
+                                    "scenario_id": sc["scenario_id"],
+                                    "treatment_id": t.id,
+                                    "treatment_family": t.family,
+                                    "directionality": _directionality(t),
+                                    "evidence_mode": mode,
+                                    "elicitation_mode": elic,
+                                    "model_id": m.id,
+                                    "repeat_index": rep,
+                                    "prompt_hash": cp.prompt_hash,
+                                    "invariant_hash": cp.invariant_hash,
+                                    "image_hash": image_hashes.get(sc["scenario_id"]) if mode == "image" else None,
+                                    "n_steps": 1,
+                                })
 
     # ------------------------------------------------------- secondary: web
     if cfg.experiments.web:
         for sc in scenarios:
-            for t in treatments:
-                cp = compile_prompt(sc, t, "web")
-                for rep in range(cfg.sampling.repeats):
-                    for m in models:
-                        if not m.supports.web_search:
-                            continue
-                        add({
-                            "experiment": "web",
-                            "scenario_id": sc["scenario_id"],
-                            "treatment_id": t.id,
-                            "treatment_family": t.family,
-                            "directionality": _directionality(t),
-                            "evidence_mode": "web",
-                            "model_id": m.id,
-                            "repeat_index": rep,
-                            "prompt_hash": cp.prompt_hash,
-                            "invariant_hash": cp.invariant_hash,
-                            "image_hash": None,
-                            "n_steps": 1,
-                        })
+            for elic in cfg.elicitation_modes:
+                for t in treatments:
+                    cp = compile_prompt(sc, t, "web", elic)
+                    for rep in range(cfg.sampling.repeats):
+                        for m in models:
+                            if not m.supports.web_search:
+                                continue
+                            add({
+                                "experiment": "web",
+                                "scenario_id": sc["scenario_id"],
+                                "treatment_id": t.id,
+                                "treatment_family": t.family,
+                                "directionality": _directionality(t),
+                                "evidence_mode": "web",
+                                "elicitation_mode": elic,
+                                "model_id": m.id,
+                                "repeat_index": rep,
+                                "prompt_hash": cp.prompt_hash,
+                                "invariant_hash": cp.invariant_hash,
+                                "image_hash": None,
+                                "n_steps": 1,
+                            })
 
     # -------------------------------------------------- evidence updating (2)
     if cfg.experiments.evidence_update:
@@ -113,6 +117,7 @@ def build_manifest(
                             "reaction_family": reaction.family,
                             "directionality": {"preferred_outcome": reaction.preferred_outcome},
                             "evidence_mode": "text_then_structured",
+                            "elicitation_mode": "separated",
                             "model_id": m.id,
                             "repeat_index": rep,
                             "n_steps": 2,
@@ -129,6 +134,7 @@ def build_manifest(
                             "scenario_id": sc["scenario_id"],
                             "condition": condition,
                             "evidence_mode": "text_then_structured",
+                            "elicitation_mode": "separated",
                             "model_id": m.id,
                             "repeat_index": rep,
                             "n_steps": n_steps,

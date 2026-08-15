@@ -51,14 +51,24 @@ class ZivaResponse(BaseModel):
 
     @field_validator("visible_probability", "confidence", mode="before")
     @classmethod
-    def _round_numeric(cls, v: Any) -> int:
+    def _integer_percent_policy(cls, v: Any) -> int:
+        """Explicit, frozen normalization policy for the primary benchmark.
+
+        The schema requires integers 0-100. Integer-valued floats (40.0) are
+        accepted as their integer. Non-integer floats (0.4, 62.5) are REJECTED
+        as malformed rather than heuristically rescaled: 1.0 is ambiguous
+        between 1% and a 100% fraction, so silent guessing is not reproducible.
+        Rejections are counted in failure statistics like any malformed output.
+        """
         if isinstance(v, bool):
             raise ValueError("boolean is not a probability")
         if isinstance(v, float):
-            # accept 0..1 floats as fractions, otherwise round percentages
-            if 0.0 <= v <= 1.0 and v != int(v):
-                return round(v * 100)
-            return round(v)
+            if v.is_integer():
+                return int(v)
+            raise ValueError(
+                f"non-integer probability {v!r}: the schema requires integers on a 0-100 "
+                "scale; fractional values are rejected rather than rescaled"
+            )
         return v
 
 
