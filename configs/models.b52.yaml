@@ -1,0 +1,11 @@
+# Second-model replica: gpt-5.2. Pricing is a conservative assumption for the
+# cost guard (over-estimating keeps the guard strict); verify against OpenAI's
+# price list if exact accounting matters.
+models:
+  - id: openai_gpt52
+    provider: openai
+    model: gpt-5.2
+    pricing: { input_per_mtok: 3.0, output_per_mtok: 15.0 }
+    supports: { json_mode: true, images: true, web_search: true, temperature: false }
+    max_concurrent: 8
+    min_interval_s: 0.0
