@@ -1,0 +1,1617 @@
+{
+  "purpose": "neutral-only engineering; no treatment effects inspected",
+  "model": {
+    "id": "openai_gpt56_luna",
+    "checkpoint": "gpt-5.6-luna",
+    "revision": "API alias resolved per response model/system fingerprint",
+    "tokenizer_revision": "provider managed",
+    "parameter_scale": "undisclosed",
+    "model_family": "GPT-5.6 Luna",
+    "provider": "openai",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "sdk": "openai-python",
+    "reasoning_effort": "none",
+    "api_key_env": "OPENAI_API_KEY"
+  },
+  "turn_1_max_tokens": 2048,
+  "turn_2_max_tokens": 16,
+  "n_trials": 16,
+  "scenario_classes": [
+    "ambiguous",
+    "moderate",
+    "trivial"
+  ],
+  "parse_success_rate": 1.0,
+  "turn_1_truncation_rate": 0.0,
+  "turn_2_truncation_rate": 0.0,
+  "below_horizon_percentages": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "bright_night_percentages": [
+    95.0,
+    98.0,
+    99.0,
+    95.0
+  ],
+  "anchor_order_sensible": true,
+  "no_think_content": true,
+  "qwen_thinking_disabled": true,
+  "canonical_fact_rendering_exact": true,
+  "prompt_cues_absent": true,
+  "pairing_failures": 0,
+  "turn_2_followup_byte_identical": true,
+  "records": [
+    {
+      "trial_id": "tcp_a792d4f93692f368",
+      "order_index": 10,
+      "repeat_index": 0,
+      "turn_1_seed": 395696392,
+      "turn_2_seed": 1141985335,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0004_trivial_invisible",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+      "prompt_hash": "a9b3897e6d61c9ba2d2c8a3012819f42ef3679bf511b5afe16b177f3005a3ede",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "No. You would not be able to see the Moon from that location and time.\n\nIts altitude is **−51.9°**, meaning it is far below the horizon—well over 50 degrees beneath your local horizon. The Sun’s position and the “night” sky brightness do not change that. Although the Moon is 5.75% illuminated, its phase and distance are irrelevant while it is below the horizon.\n\nIt would be above the horizon elsewhere, but from Perth it would rise later."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "0%"
+        }
+      ],
+      "turn_1": {
+        "text": "No. You would not be able to see the Moon from that location and time.\n\nIts altitude is **−51.9°**, meaning it is far below the horizon—well over 50 degrees beneath your local horizon. The Sun’s position and the “night” sky brightness do not change that. Although the Moon is 5.75% illuminated, its phase and distance are irrelevant while it is below the horizon.\n\nIt would be above the horizon elsewhere, but from Perth it would rise later.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaE6BKRlZGf3MmpfG8HyCYH2Tv8",
+        "system_fingerprint": null,
+        "input_tokens": 218,
+        "output_tokens": 104,
+        "reasoning_tokens": 0,
+        "latency_s": 3.42,
+        "seed": 395696392,
+        "request_messages_sha256": "228b12d6547a2f8f15ba737792b3d53b8a6e5fdbeb950fefabde74358aa794b8",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "0%",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaGxuoKRd5EQOhl8UOp64qfeTYy",
+        "system_fingerprint": null,
+        "input_tokens": 351,
+        "output_tokens": 5,
+        "reasoning_tokens": 0,
+        "latency_s": 0.947,
+        "seed": 1141985335,
+        "request_messages_sha256": "403250555954de3a2508a6097be5a2a050301d97cbe4c3309d650574f33bda3b",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 0.0,
+        "original_range": null,
+        "matched_text": "0%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_37023122dbab3ac8",
+      "order_index": 17,
+      "repeat_index": 1,
+      "turn_1_seed": 1193851186,
+      "turn_2_seed": 418082565,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0008_night_easy_visible",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+      "prompt_hash": "c33528844f64c6d1dc0182d69dc272c0a14a4e88645ffe653751d3aabdf7ae4f",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—very likely.\n\nAt your location and time, the Moon is about **15° above the eastern horizon** (azimuth **87°**, almost due east), well above typical obstructions if you have a reasonably open view. It is **98% illuminated**, so it will be nearly full and quite bright. With the Sun **30.8° below the horizon**, twilight is no longer a significant issue, and clear night skies strongly favor visibility.\n\nLook **almost due east, about 15° above the horizon**—roughly the height of a fist and a half held at arm’s length. Trees, buildings, hills, haze, or local light pollution could obscure it, especially at that relatively low altitude, but under the stated conditions an unaided observer should spot it easily."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "95%"
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—very likely.\n\nAt your location and time, the Moon is about **15° above the eastern horizon** (azimuth **87°**, almost due east), well above typical obstructions if you have a reasonably open view. It is **98% illuminated**, so it will be nearly full and quite bright. With the Sun **30.8° below the horizon**, twilight is no longer a significant issue, and clear night skies strongly favor visibility.\n\nLook **almost due east, about 15° above the horizon**—roughly the height of a fist and a half held at arm’s length. Trees, buildings, hills, haze, or local light pollution could obscure it, especially at that relatively low altitude, but under the stated conditions an unaided observer should spot it easily.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaEcZSdvHrIWnetuvhutpMQgYpd",
+        "system_fingerprint": null,
+        "input_tokens": 219,
+        "output_tokens": 163,
+        "reasoning_tokens": 0,
+        "latency_s": 3.778,
+        "seed": 1193851186,
+        "request_messages_sha256": "87769bc316b8b8d2bdb794d465cbc368f086c3c0468e2419c624660c7ef41756",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "95%",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaH3ygYwcXMe6maSW6R8710nXaB",
+        "system_fingerprint": null,
+        "input_tokens": 411,
+        "output_tokens": 5,
+        "reasoning_tokens": 0,
+        "latency_s": 1.134,
+        "seed": 418082565,
+        "request_messages_sha256": "d3f03b130c03d13fac72a3d9539201fe2120a1ff7c6382914f92de781cff9615",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 95.0,
+        "original_range": null,
+        "matched_text": "95%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_70ed68e53121792f",
+      "order_index": 43,
+      "repeat_index": 1,
+      "turn_1_seed": 1062071107,
+      "turn_2_seed": 565409465,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t0",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e1ab32a1c649834453e9ed2ee9b831f30936a4e11d797a64b7d2f67c41e98a56",
+      "prompt_hash": "60d1c4cbe3d2ced718131b9177ce58cf3bb0899a2dd1820b9b5b868f8dab1006",
+      "difficulty_class": "moderate",
+      "difficulty_score": 0.6817,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you have a good chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **50.9° above the horizon**, which is very high and favorable.\n- **28.2° from the Sun**, far enough from the Sun to reduce glare somewhat.\n- Only **5.95% illuminated**, so it is a thin crescent and relatively faint.\n- In **bright daylight**, which greatly reduces contrast.\n\nAt that phase and separation, the illuminated crescent should be visible with unaided eyes under a clear sky, especially because it is high in the south-southeastern sky. Look around the stated azimuth of **158°** and altitude of **51°**—roughly halfway between the horizon and overhead, toward the southeast. It may help to use a building, tree, or your hand to block the Sun from direct view, but **do not use binoculars or a telescope until you have positively located the Moon and can ensure the Sun is nowhere near the instrument’s field of view**.\n\nThe crescent’s thinness and daylight background mean it might not jump out immediately. If you cannot see it, try scanning slowly around the predicted position, preferably with the Sun blocked from your eyes. Based on the geometry you provided, though, it should be a realistic naked-eye daytime sighting rather than an implausible one."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **70%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you have a good chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **50.9° above the horizon**, which is very high and favorable.\n- **28.2° from the Sun**, far enough from the Sun to reduce glare somewhat.\n- Only **5.95% illuminated**, so it is a thin crescent and relatively faint.\n- In **bright daylight**, which greatly reduces contrast.\n\nAt that phase and separation, the illuminated crescent should be visible with unaided eyes under a clear sky, especially because it is high in the south-southeastern sky. Look around the stated azimuth of **158°** and altitude of **51°**—roughly halfway between the horizon and overhead, toward the southeast. It may help to use a building, tree, or your hand to block the Sun from direct view, but **do not use binoculars or a telescope until you have positively located the Moon and can ensure the Sun is nowhere near the instrument’s field of view**.\n\nThe crescent’s thinness and daylight background mean it might not jump out immediately. If you cannot see it, try scanning slowly around the predicted position, preferably with the Sun blocked from your eyes. Based on the geometry you provided, though, it should be a realistic naked-eye daytime sighting rather than an implausible one.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaEBEi4k3GH2yVjnDuQx1pdM4Tm",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 282,
+        "reasoning_tokens": 0,
+        "latency_s": 4.577,
+        "seed": 1062071107,
+        "request_messages_sha256": "901338279c0969b5f3c68d33c5d08e7bc439f817b898ec74ea96cb74fd35b298",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **70%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaIog8UO8Eb9CA4rfrbC1NrmpSZ",
+        "system_fingerprint": null,
+        "input_tokens": 533,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 0.934,
+        "seed": 565409465,
+        "request_messages_sha256": "3482f5308b62c0b7a640a620a3fbd8958ddc986015b2a72248453b16538ee8f8",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 70.0,
+        "original_range": null,
+        "matched_text": "70%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_288537fbe66f8c64",
+      "order_index": 70,
+      "repeat_index": 0,
+      "turn_1_seed": 1673095864,
+      "turn_2_seed": 184091363,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t1",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "002ac4ad20712ce0f5e10c75cc1552ae68d550696f88106c9dd4d0b037c2e331",
+      "prompt_hash": "e6e162d48d0110942a2fa66baabdb4e1829fd2ddc79d4360b6ffdbbd19813c06",
+      "difficulty_class": "ambiguous",
+      "difficulty_score": 0.7654,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you’d have a reasonable chance of spotting it**, though it may be challenging in bright daylight.\n\nAt your stated time:\n\n- The Moon is **46.9° above the horizon**, high enough to avoid much atmospheric haze.\n- It is only **29.5° from the Sun**, so the sky around it is strongly illuminated.\n- At **6.5% illumination**, it is a thin waning crescent, but the crescent itself should still be fairly bright.\n- Its position is about **azimuth 214.7°**—southwest—so look high in the southwest, roughly 47° above the horizon.\n- The Moon is about **8.5° in angular diameter**, so the crescent is not unusually small; the main difficulty is contrast against the daylight sky.\n\nWith clear skies and normal eyesight, you might see it unaided if you know the location precisely—especially by first using the Sun’s position or a phone/app to guide you, then looking away from the Sun toward the Moon. Binoculars can make it much easier, but **do not use binoculars anywhere near the Sun** unless you are using a proper, securely mounted solar filter.\n\nSo: **probably visible, but not obvious**. You may need a minute or two of careful searching, and it could be washed out by haze or local sky brightness despite the clear conditions."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **70%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you’d have a reasonable chance of spotting it**, though it may be challenging in bright daylight.\n\nAt your stated time:\n\n- The Moon is **46.9° above the horizon**, high enough to avoid much atmospheric haze.\n- It is only **29.5° from the Sun**, so the sky around it is strongly illuminated.\n- At **6.5% illumination**, it is a thin waning crescent, but the crescent itself should still be fairly bright.\n- Its position is about **azimuth 214.7°**—southwest—so look high in the southwest, roughly 47° above the horizon.\n- The Moon is about **8.5° in angular diameter**, so the crescent is not unusually small; the main difficulty is contrast against the daylight sky.\n\nWith clear skies and normal eyesight, you might see it unaided if you know the location precisely—especially by first using the Sun’s position or a phone/app to guide you, then looking away from the Sun toward the Moon. Binoculars can make it much easier, but **do not use binoculars anywhere near the Sun** unless you are using a proper, securely mounted solar filter.\n\nSo: **probably visible, but not obvious**. You may need a minute or two of careful searching, and it could be washed out by haze or local sky brightness despite the clear conditions.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaFfV570Lqr4hp3eQjkARkVkEhf",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 286,
+        "reasoning_tokens": 0,
+        "latency_s": 4.807,
+        "seed": 1673095864,
+        "request_messages_sha256": "9865cf60b745f212eb5cb86eb6a0077cdbf2113414e987f37099714d3c70f9ce",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **70%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaIVaPPaWPcyrOMErUtZsmfAx4k",
+        "system_fingerprint": null,
+        "input_tokens": 537,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 0.746,
+        "seed": 184091363,
+        "request_messages_sha256": "397d48dd7a6fae89e5f6767f2ff5c45eab2e2ef1f65e8742850ec5b1e0ed9b74",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 70.0,
+        "original_range": null,
+        "matched_text": "70%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_ff9c07e4bfca5bbc",
+      "order_index": 141,
+      "repeat_index": 0,
+      "turn_1_seed": 1689482081,
+      "turn_2_seed": 1705563175,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0004_trivial_invisible",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+      "prompt_hash": "0b45e2ee93caa3595c1efab315c2c74558bc1caaa5628afb7b3675e02557af44",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "No. You would not be able to see the Moon from that location and time.\n\nIts altitude is **−51.9°**, meaning it is more than 50 degrees below your local horizon—well below the ground/obstructed sky, not merely hidden by atmospheric haze. The Moon’s 5.75% illumination and 27.7° separation from the Sun would otherwise describe a thin crescent, but those factors are irrelevant while it is below the horizon.\n\nIt would rise later, likely in the morning, and could then be visible as a thin waning crescent if the sky is clear and the horizon is unobstructed."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "0%"
+        }
+      ],
+      "turn_1": {
+        "text": "No. You would not be able to see the Moon from that location and time.\n\nIts altitude is **−51.9°**, meaning it is more than 50 degrees below your local horizon—well below the ground/obstructed sky, not merely hidden by atmospheric haze. The Moon’s 5.75% illumination and 27.7° separation from the Sun would otherwise describe a thin crescent, but those factors are irrelevant while it is below the horizon.\n\nIt would rise later, likely in the morning, and could then be visible as a thin waning crescent if the sky is clear and the horizon is unobstructed.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaEpm7L7Xu9YWY4NCuLQ8UHRSyr",
+        "system_fingerprint": null,
+        "input_tokens": 218,
+        "output_tokens": 134,
+        "reasoning_tokens": 0,
+        "latency_s": 3.438,
+        "seed": 1689482081,
+        "request_messages_sha256": "367fb0b790009b5af0353fb6240ec755b52b589f168e0f9d85a124b85bd02f9e",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "0%",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaHDyVxznPkx1CkK9UoCoqgurIY",
+        "system_fingerprint": null,
+        "input_tokens": 381,
+        "output_tokens": 5,
+        "reasoning_tokens": 0,
+        "latency_s": 1.268,
+        "seed": 1705563175,
+        "request_messages_sha256": "6387fbbe3d539022cee843a0170006d3fa2d4970d5cb09ba262b5a331f37d59a",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 0.0,
+        "original_range": null,
+        "matched_text": "0%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_9d6323db25a3e74e",
+      "order_index": 181,
+      "repeat_index": 0,
+      "turn_1_seed": 1210040352,
+      "turn_2_seed": 2078124395,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t0",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e1ab32a1c649834453e9ed2ee9b831f30936a4e11d797a64b7d2f67c41e98a56",
+      "prompt_hash": "3f5cc3d7106cee070b69b899236c85f109403092a433b976e01921eb901ed49b",
+      "difficulty_class": "moderate",
+      "difficulty_score": 0.6817,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you’d have a reasonable chance of spotting it**, though it may be challenging.\n\nThe Moon is:\n\n- **50.9° above the horizon**, high in the sky\n- **28.2° from the Sun**, so it is a thin crescent close to the Sun’s direction\n- Only **5.95% illuminated**, making it relatively faint\n- In a **bright daytime sky**, which greatly reduces contrast\n\nAt that altitude and separation, the Moon is well above atmospheric haze and not especially close to the Sun’s glare. A thin crescent can be visible to unaided eyes in daylight when the sky is clear, especially if you know its precise location. Look about **28° away from the Sun toward the Moon’s azimuth**—roughly southeast, at azimuth **158°**, elevation **51°**. **Do not look near the Sun itself**, even briefly; use the Sun’s position only as a reference and keep it blocked by a building or other obstruction.\n\nThe main difficulty is that a 6%-illuminated crescent has low contrast against the blue sky. You might need several seconds of searching, and it could be easier to find with binoculars—but **do not use binoculars or a telescope anywhere near the Sun**, since accidental solar viewing can cause permanent eye injury. Once located safely, you may be able to continue seeing it unaided.\n\nSo: **likely visible under the stated clear conditions, but not guaranteed; I’d rate it as moderately difficult rather than obvious.**"
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **60%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you’d have a reasonable chance of spotting it**, though it may be challenging.\n\nThe Moon is:\n\n- **50.9° above the horizon**, high in the sky\n- **28.2° from the Sun**, so it is a thin crescent close to the Sun’s direction\n- Only **5.95% illuminated**, making it relatively faint\n- In a **bright daytime sky**, which greatly reduces contrast\n\nAt that altitude and separation, the Moon is well above atmospheric haze and not especially close to the Sun’s glare. A thin crescent can be visible to unaided eyes in daylight when the sky is clear, especially if you know its precise location. Look about **28° away from the Sun toward the Moon’s azimuth**—roughly southeast, at azimuth **158°**, elevation **51°**. **Do not look near the Sun itself**, even briefly; use the Sun’s position only as a reference and keep it blocked by a building or other obstruction.\n\nThe main difficulty is that a 6%-illuminated crescent has low contrast against the blue sky. You might need several seconds of searching, and it could be easier to find with binoculars—but **do not use binoculars or a telescope anywhere near the Sun**, since accidental solar viewing can cause permanent eye injury. Once located safely, you may be able to continue seeing it unaided.\n\nSo: **likely visible under the stated clear conditions, but not guaranteed; I’d rate it as moderately difficult rather than obvious.**",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaFmOwAJjEAtZDUuMNUM54T6T3K",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 315,
+        "reasoning_tokens": 0,
+        "latency_s": 5.055,
+        "seed": 1210040352,
+        "request_messages_sha256": "ec02b7c0e0d8338feeb8265663c766131130f23ce711a516631a4394c3023215",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **60%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaIQxZBaYcShD8VJwBVhUcR2Ith",
+        "system_fingerprint": null,
+        "input_tokens": 566,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 1.146,
+        "seed": 2078124395,
+        "request_messages_sha256": "700fa044c98b979fa7039ab337328f8aed8b40131ea11e1c1ad5f7443de4c60c",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 60.0,
+        "original_range": null,
+        "matched_text": "60%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_16a626f2e2894ba4",
+      "order_index": 227,
+      "repeat_index": 1,
+      "turn_1_seed": 354992557,
+      "turn_2_seed": 629232700,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0004_trivial_invisible",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+      "prompt_hash": "0b45e2ee93caa3595c1efab315c2c74558bc1caaa5628afb7b3675e02557af44",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "No. With those values, the Moon is about **52° below your horizon**, so it is geometrically blocked by Earth. Its illumination, angular separation from the Sun, distance, clear sky, and eyesight are irrelevant while it is that far below the horizon.\n\nAt that time in Perth, the Moon would be well below the **western/northwestern horizon** (azimuth about 276°). You would need to wait until it rises—likely many hours later, depending on the app’s data and the Moon’s exact position."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "0%"
+        }
+      ],
+      "turn_1": {
+        "text": "No. With those values, the Moon is about **52° below your horizon**, so it is geometrically blocked by Earth. Its illumination, angular separation from the Sun, distance, clear sky, and eyesight are irrelevant while it is that far below the horizon.\n\nAt that time in Perth, the Moon would be well below the **western/northwestern horizon** (azimuth about 276°). You would need to wait until it rises—likely many hours later, depending on the app’s data and the Moon’s exact position.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaEwVf13Vf97mK4br7tSxfWYtc5",
+        "system_fingerprint": null,
+        "input_tokens": 218,
+        "output_tokens": 111,
+        "reasoning_tokens": 0,
+        "latency_s": 3.362,
+        "seed": 354992557,
+        "request_messages_sha256": "367fb0b790009b5af0353fb6240ec755b52b589f168e0f9d85a124b85bd02f9e",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "0%",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaHlRgktXkciAOE7qPtt5fIxEWX",
+        "system_fingerprint": null,
+        "input_tokens": 358,
+        "output_tokens": 5,
+        "reasoning_tokens": 0,
+        "latency_s": 1.144,
+        "seed": 629232700,
+        "request_messages_sha256": "840abc71dad452347cd030291e2b7d118f57ff1c5f6eeff1fc879acc9127f30e",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 0.0,
+        "original_range": null,
+        "matched_text": "0%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_713164ede717b545",
+      "order_index": 257,
+      "repeat_index": 0,
+      "turn_1_seed": 1885540968,
+      "turn_2_seed": 439603505,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0008_night_easy_visible",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+      "prompt_hash": "8ad4c0c50327b7d67730823e26a875de7b771bb53ec7bcfe43c0afebb72baf3f",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—under those conditions, you should be able to spot the Moon easily.\n\n- It is **15.2° above the eastern horizon**, high enough that ordinary terrain, trees, and buildings are the main possible obstructions.\n- At **98% illumination**, it is essentially full and very bright.\n- The sky is already in nighttime darkness, with the Sun **30.8° below the horizon**.\n- Its angular separation from the Sun is **163.9°**, placing it near the opposite side of the sky and making it well positioned for nighttime viewing.\n\nLook toward **azimuth 87°**, almost due east, about **15° above the horizon**—roughly the width of one and a half fists held at arm’s length. If the eastern horizon is unobstructed and the reported coordinates are accurate, it should be unmistakable to unaided vision."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **98%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—under those conditions, you should be able to spot the Moon easily.\n\n- It is **15.2° above the eastern horizon**, high enough that ordinary terrain, trees, and buildings are the main possible obstructions.\n- At **98% illumination**, it is essentially full and very bright.\n- The sky is already in nighttime darkness, with the Sun **30.8° below the horizon**.\n- Its angular separation from the Sun is **163.9°**, placing it near the opposite side of the sky and making it well positioned for nighttime viewing.\n\nLook toward **azimuth 87°**, almost due east, about **15° above the horizon**—roughly the width of one and a half fists held at arm’s length. If the eastern horizon is unobstructed and the reported coordinates are accurate, it should be unmistakable to unaided vision.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaE5uUdHIo8au6Ivme8V9kJLYrS",
+        "system_fingerprint": null,
+        "input_tokens": 219,
+        "output_tokens": 181,
+        "reasoning_tokens": 0,
+        "latency_s": 3.629,
+        "seed": 1885540968,
+        "request_messages_sha256": "ca2b4b50bfada01092ff09b805c5039f80b2c3bb816e8d3f1652a3d160690044",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **98%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaHQH3dZT1Dr8WmjbCVc1YYBWQP",
+        "system_fingerprint": null,
+        "input_tokens": 429,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 1.328,
+        "seed": 439603505,
+        "request_messages_sha256": "99afd403b962b065bbcb13622bea45063b4d4b5c617883794e5d9cb1deeea621",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 98.0,
+        "original_range": null,
+        "matched_text": "98%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_a00c7e02f838a9ba",
+      "order_index": 355,
+      "repeat_index": 0,
+      "turn_1_seed": 308834711,
+      "turn_2_seed": 582596943,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t0",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e1ab32a1c649834453e9ed2ee9b831f30936a4e11d797a64b7d2f67c41e98a56",
+      "prompt_hash": "60d1c4cbe3d2ced718131b9177ce58cf3bb0899a2dd1820b9b5b868f8dab1006",
+      "difficulty_class": "moderate",
+      "difficulty_score": 0.6817,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you have a good chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **50.9° above the horizon**, so atmospheric extinction is minimal.\n- **28.2° from the Sun**, far enough away to be somewhat easier than a very thin crescent close to the Sun.\n- Only **5.95% illuminated**, making it a thin crescent with relatively low contrast.\n- In **bright daylight**, with the Sun at 63°, so the sky background will strongly reduce contrast.\n\nA 6%-illuminated crescent is generally visible to unaided eyes in daylight when it is this high and separated from the Sun, especially under clear skies. Look roughly toward azimuth **158°**—southeast—and altitude **51°**, well away from the Sun at azimuth **207°**, altitude **63°**. The crescent should be on the side of the Moon facing the Sun, so its illuminated edge will point generally toward the Sun.\n\nFor safety, **do not sweep near the Sun with binoculars or a telescope**. With unaided eyes, first locate the Moon using the coordinates or a nearby reference, then shield your eyes from glare with your hand or stand in shade. It may appear as a faint, small crescent rather than an obvious bright Moon."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **75%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you have a good chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **50.9° above the horizon**, so atmospheric extinction is minimal.\n- **28.2° from the Sun**, far enough away to be somewhat easier than a very thin crescent close to the Sun.\n- Only **5.95% illuminated**, making it a thin crescent with relatively low contrast.\n- In **bright daylight**, with the Sun at 63°, so the sky background will strongly reduce contrast.\n\nA 6%-illuminated crescent is generally visible to unaided eyes in daylight when it is this high and separated from the Sun, especially under clear skies. Look roughly toward azimuth **158°**—southeast—and altitude **51°**, well away from the Sun at azimuth **207°**, altitude **63°**. The crescent should be on the side of the Moon facing the Sun, so its illuminated edge will point generally toward the Sun.\n\nFor safety, **do not sweep near the Sun with binoculars or a telescope**. With unaided eyes, first locate the Moon using the coordinates or a nearby reference, then shield your eyes from glare with your hand or stand in shade. It may appear as a faint, small crescent rather than an obvious bright Moon.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaHmzVnWepdOpyyu8cfPbxQad4q",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 275,
+        "reasoning_tokens": 0,
+        "latency_s": 3.12,
+        "seed": 308834711,
+        "request_messages_sha256": "901338279c0969b5f3c68d33c5d08e7bc439f817b898ec74ea96cb74fd35b298",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **75%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaKlBVhgtpDVANvEa63rnDatlAQ",
+        "system_fingerprint": null,
+        "input_tokens": 526,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 0.702,
+        "seed": 582596943,
+        "request_messages_sha256": "d608c4bc79dbbca9a2ce7ee9e0013d57f5d1ff680347dd1f0a008f1c3916f2a9",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 75.0,
+        "original_range": null,
+        "matched_text": "75%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_f2805203540551bc",
+      "order_index": 366,
+      "repeat_index": 1,
+      "turn_1_seed": 2031322269,
+      "turn_2_seed": 232344325,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t1",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "002ac4ad20712ce0f5e10c75cc1552ae68d550696f88106c9dd4d0b037c2e331",
+      "prompt_hash": "6f957ca83b17e188180662ae9b071ddefe75c02bd7669c229ec5870f074f76a7",
+      "difficulty_class": "ambiguous",
+      "difficulty_score": 0.7654,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you’d have a reasonable chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **46.9° high**, well above atmospheric haze near the horizon\n- **29.5° from the Sun**, far enough from the Sun to search safely, but still in bright twilight/daylight\n- A thin crescent at **6.5% illumination**\n- In a clear sky, with the Sun at **40° altitude**\n\nA 6.5%-illuminated crescent is not exceptionally difficult when it is nearly 47° up and separated from the Sun by almost 30°. Its illuminated portion should be bright enough for unaided vision, especially if you know its approximate position. The main difficulty is the **bright daytime sky and the crescent’s small angular size**.\n\nLook about **46.9° above the horizon toward azimuth 214.7°**—roughly southwest, somewhat toward the west. Use the Sun’s position only as a reference, and **do not look near the Sun or sweep binoculars/telescopes anywhere close to it**. A useful method is to block the Sun with a building or other object while keeping your gaze well away from it, then search the predicted Moon position.\n\nSo: **likely visible under the stated clear conditions, but not guaranteed at first glance**. It may appear as a tiny, faint crescent; shielding your eyes from nearby glare and giving your eyes a minute to adapt should help."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **75%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you’d have a reasonable chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **46.9° high**, well above atmospheric haze near the horizon\n- **29.5° from the Sun**, far enough from the Sun to search safely, but still in bright twilight/daylight\n- A thin crescent at **6.5% illumination**\n- In a clear sky, with the Sun at **40° altitude**\n\nA 6.5%-illuminated crescent is not exceptionally difficult when it is nearly 47° up and separated from the Sun by almost 30°. Its illuminated portion should be bright enough for unaided vision, especially if you know its approximate position. The main difficulty is the **bright daytime sky and the crescent’s small angular size**.\n\nLook about **46.9° above the horizon toward azimuth 214.7°**—roughly southwest, somewhat toward the west. Use the Sun’s position only as a reference, and **do not look near the Sun or sweep binoculars/telescopes anywhere close to it**. A useful method is to block the Sun with a building or other object while keeping your gaze well away from it, then search the predicted Moon position.\n\nSo: **likely visible under the stated clear conditions, but not guaranteed at first glance**. It may appear as a tiny, faint crescent; shielding your eyes from nearby glare and giving your eyes a minute to adapt should help.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaIOIaNId8TiB6txi2McsGnQ9RT",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 308,
+        "reasoning_tokens": 0,
+        "latency_s": 3.439,
+        "seed": 2031322269,
+        "request_messages_sha256": "1b96124633f404c63a032bffb44b0972c8db9b42cfc2da4ed7279613aa1e6d97",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **75%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaLe15RgSXcUmblgFaWNRVI4l0d",
+        "system_fingerprint": null,
+        "input_tokens": 559,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 0.842,
+        "seed": 232344325,
+        "request_messages_sha256": "38459bcf516e5ccfd8774e57096d8a8d6ed88ca785d32c19cbf25afa57f96d07",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 75.0,
+        "original_range": null,
+        "matched_text": "75%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_c0fc2990b70a85aa",
+      "order_index": 386,
+      "repeat_index": 1,
+      "turn_1_seed": 577307525,
+      "turn_2_seed": 1854599629,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t1",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "002ac4ad20712ce0f5e10c75cc1552ae68d550696f88106c9dd4d0b037c2e331",
+      "prompt_hash": "e6e162d48d0110942a2fa66baabdb4e1829fd2ddc79d4360b6ffdbbd19813c06",
+      "difficulty_class": "ambiguous",
+      "difficulty_score": 0.7654,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you’d have a reasonable chance of spotting it**, though it may be challenging in bright daylight.\n\nAt your stated time:\n\n- The Moon is **46.9° above the horizon**, high enough to avoid much atmospheric haze.\n- It is only **29.5° from the Sun**, so the sky around it will be strongly illuminated.\n- At **6.5% illumination**, it is a thin waning crescent, with a relatively small bright area.\n- Its position is about **azimuth 214.7°**, roughly southwest—about **5° west of the Sun’s azimuth**—so look high in the southwestern sky, near the Moon’s listed position rather than near the Sun itself.\n\nA thin crescent can be visible in daylight with unaided eyes when it is this high and the sky is clear, but the contrast will be low. The best method is to use the app to identify the exact spot, look slightly away first, and then use averted vision—don’t stare at the Sun or sweep near it without knowing the Moon’s position. **Never use binoculars or a telescope while searching anywhere near the Sun**, since accidental solar viewing can cause permanent eye damage.\n\nSo: **probably visible, but not guaranteed**. If your app’s coordinates are accurate and the transparency is genuinely good, I’d expect an experienced observer to find it; an ordinary observer might need several attempts."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **60%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you’d have a reasonable chance of spotting it**, though it may be challenging in bright daylight.\n\nAt your stated time:\n\n- The Moon is **46.9° above the horizon**, high enough to avoid much atmospheric haze.\n- It is only **29.5° from the Sun**, so the sky around it will be strongly illuminated.\n- At **6.5% illumination**, it is a thin waning crescent, with a relatively small bright area.\n- Its position is about **azimuth 214.7°**, roughly southwest—about **5° west of the Sun’s azimuth**—so look high in the southwestern sky, near the Moon’s listed position rather than near the Sun itself.\n\nA thin crescent can be visible in daylight with unaided eyes when it is this high and the sky is clear, but the contrast will be low. The best method is to use the app to identify the exact spot, look slightly away first, and then use averted vision—don’t stare at the Sun or sweep near it without knowing the Moon’s position. **Never use binoculars or a telescope while searching anywhere near the Sun**, since accidental solar viewing can cause permanent eye damage.\n\nSo: **probably visible, but not guaranteed**. If your app’s coordinates are accurate and the transparency is genuinely good, I’d expect an experienced observer to find it; an ordinary observer might need several attempts.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaIKdSq9UHcJZXqNjElndsSEy7J",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 292,
+        "reasoning_tokens": 0,
+        "latency_s": 3.321,
+        "seed": 577307525,
+        "request_messages_sha256": "9865cf60b745f212eb5cb86eb6a0077cdbf2113414e987f37099714d3c70f9ce",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **60%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaLE1gIKsJNy8Tqy55iHcWO34ZW",
+        "system_fingerprint": null,
+        "input_tokens": 543,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 0.706,
+        "seed": 1854599629,
+        "request_messages_sha256": "d8a42884e2276d94c729a969fcd945abe5728e1df14e501835a927c4a4a61ab3",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 60.0,
+        "original_range": null,
+        "matched_text": "60%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_fdb9e1169222857b",
+      "order_index": 390,
+      "repeat_index": 1,
+      "turn_1_seed": 1957560651,
+      "turn_2_seed": 1465344623,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t0",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e1ab32a1c649834453e9ed2ee9b831f30936a4e11d797a64b7d2f67c41e98a56",
+      "prompt_hash": "3f5cc3d7106cee070b69b899236c85f109403092a433b976e01921eb901ed49b",
+      "difficulty_class": "moderate",
+      "difficulty_score": 0.6817,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-08-14 14:00 PDT (UTC-0700) (2026-08-14T21:00:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 63.367 degrees and its azimuth is 206.962 degrees, so it is above the horizon. It says the Moon's altitude is 50.94 degrees and its azimuth is 157.604 degrees, so it is above the horizon. The Moon is 5.95 percent illuminated, 28.172 degrees from the Sun, and 371351.1 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you’d have a reasonable chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **50.9° above the horizon**, at azimuth **157.6°**—high in the south-southeast.\n- A very thin **5.95%-illuminated crescent**, only **28.2° from the Sun**.\n- The Sun is **63.4° high**, so the Moon is in bright daytime sky and relatively close to the Sun’s direction.\n\nA crescent this thin has a low surface brightness and little illuminated area, so daylight contrast is the main difficulty. However, its high altitude helps substantially, and the separation from the Sun is large enough that it should be safe to search for—**provided you keep the Sun completely out of your view and do not use binoculars or a telescope until you are certain they cannot point near it**.\n\nLook toward the **south-southeast**, about halfway up the sky, at the stated azimuth. If the atmospheric transparency is good, you may be able to see it with unaided eyes, especially after locating it using a carefully calibrated sky app or by sweeping the area well away from the Sun. It may appear as a faint, small crescent rather than an obvious bright Moon.\n\nSo: **geometrically visible and plausibly naked-eye visible, but challenging—not guaranteed.**"
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **60%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you’d have a reasonable chance of spotting it**, though it may take deliberate searching.\n\nThe Moon is:\n\n- **50.9° above the horizon**, at azimuth **157.6°**—high in the south-southeast.\n- A very thin **5.95%-illuminated crescent**, only **28.2° from the Sun**.\n- The Sun is **63.4° high**, so the Moon is in bright daytime sky and relatively close to the Sun’s direction.\n\nA crescent this thin has a low surface brightness and little illuminated area, so daylight contrast is the main difficulty. However, its high altitude helps substantially, and the separation from the Sun is large enough that it should be safe to search for—**provided you keep the Sun completely out of your view and do not use binoculars or a telescope until you are certain they cannot point near it**.\n\nLook toward the **south-southeast**, about halfway up the sky, at the stated azimuth. If the atmospheric transparency is good, you may be able to see it with unaided eyes, especially after locating it using a carefully calibrated sky app or by sweeping the area well away from the Sun. It may appear as a faint, small crescent rather than an obvious bright Moon.\n\nSo: **geometrically visible and plausibly naked-eye visible, but challenging—not guaranteed.**",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaIcwVU1bH09Rn6tblRRfqaLR78",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 287,
+        "reasoning_tokens": 0,
+        "latency_s": 3.158,
+        "seed": 1957560651,
+        "request_messages_sha256": "ec02b7c0e0d8338feeb8265663c766131130f23ce711a516631a4394c3023215",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **60%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaLOm7Q0bQu7d4FfdxypZPjwjSw",
+        "system_fingerprint": null,
+        "input_tokens": 538,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 0.598,
+        "seed": 1465344623,
+        "request_messages_sha256": "6bb7bef7dd8eb3df7319fd9ce6b3930f1b5cb08c055c9ae9cdd7bbf96e595045",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 60.0,
+        "original_range": null,
+        "matched_text": "60%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_f6e80d37f97f0018",
+      "order_index": 422,
+      "repeat_index": 0,
+      "turn_1_seed": 78025818,
+      "turn_2_seed": 600375829,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0008_night_easy_visible",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+      "prompt_hash": "c33528844f64c6d1dc0182d69dc272c0a14a4e88645ffe653751d3aabdf7ae4f",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—under those conditions, you should be able to spot the Moon easily.\n\n- It is **15.2° above the eastern horizon**, high enough that ordinary terrain, trees, and buildings are unlikely to block it unless your eastern view is obstructed.\n- At **98% illumination**, it is essentially full and very bright.\n- The Sun is **30.8° below the horizon**, so twilight is long over and the sky is dark.\n- The Moon is about **163.9° from the Sun**, consistent with a nearly full Moon and excellent nighttime visibility.\n- At roughly **375,000 km**, its distance is normal and does not meaningfully reduce naked-eye visibility.\n\nLook toward the **east**, about **15° above the horizon**—roughly one and a half fist-widths held at arm’s length above a level horizon. It should appear as a conspicuously bright, nearly full disk. If you cannot see it, the most likely causes would be a blocked or hazy eastern horizon, local cloud, or an error in the app’s time/location settings."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "99%."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—under those conditions, you should be able to spot the Moon easily.\n\n- It is **15.2° above the eastern horizon**, high enough that ordinary terrain, trees, and buildings are unlikely to block it unless your eastern view is obstructed.\n- At **98% illumination**, it is essentially full and very bright.\n- The Sun is **30.8° below the horizon**, so twilight is long over and the sky is dark.\n- The Moon is about **163.9° from the Sun**, consistent with a nearly full Moon and excellent nighttime visibility.\n- At roughly **375,000 km**, its distance is normal and does not meaningfully reduce naked-eye visibility.\n\nLook toward the **east**, about **15° above the horizon**—roughly one and a half fist-widths held at arm’s length above a level horizon. It should appear as a conspicuously bright, nearly full disk. If you cannot see it, the most likely causes would be a blocked or hazy eastern horizon, local cloud, or an error in the app’s time/location settings.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaIFetAbgNv6vYPAUWBjntruLgD",
+        "system_fingerprint": null,
+        "input_tokens": 219,
+        "output_tokens": 224,
+        "reasoning_tokens": 0,
+        "latency_s": 2.716,
+        "seed": 78025818,
+        "request_messages_sha256": "87769bc316b8b8d2bdb794d465cbc368f086c3c0468e2419c624660c7ef41756",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "99%.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaL0TqxvFFK1QBYYI9DbdUxxrgc",
+        "system_fingerprint": null,
+        "input_tokens": 472,
+        "output_tokens": 5,
+        "reasoning_tokens": 0,
+        "latency_s": 0.851,
+        "seed": 600375829,
+        "request_messages_sha256": "b5b714f0610375748468ff930aa3e46d4e7b561d85bff87ae2d9db9c99c041cd",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 99.0,
+        "original_range": null,
+        "matched_text": "99%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_669350327e15457a",
+      "order_index": 428,
+      "repeat_index": 1,
+      "turn_1_seed": 1824033931,
+      "turn_2_seed": 1274470446,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0004_trivial_invisible",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+      "prompt_hash": "a9b3897e6d61c9ba2d2c8a3012819f42ef3679bf511b5afe16b177f3005a3ede",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "No. Based on the figures you provided, the Moon would not be visible from Perth at that moment.\n\nIts altitude is **−51.9°**, meaning it is more than 50 degrees below your horizon—far below the ground, not merely hidden by twilight or atmospheric haze. The Sun’s position and the “night” sky brightness do not change that. Although the Moon is a thin crescent and relatively close to the Sun in the sky, its altitude makes it completely inaccessible to an unaided observer.\n\nYou would need to wait until it rises above the eastern horizon, likely later that night or around the following morning, depending on the app’s calculations."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "0%"
+        }
+      ],
+      "turn_1": {
+        "text": "No. Based on the figures you provided, the Moon would not be visible from Perth at that moment.\n\nIts altitude is **−51.9°**, meaning it is more than 50 degrees below your horizon—far below the ground, not merely hidden by twilight or atmospheric haze. The Sun’s position and the “night” sky brightness do not change that. Although the Moon is a thin crescent and relatively close to the Sun in the sky, its altitude makes it completely inaccessible to an unaided observer.\n\nYou would need to wait until it rises above the eastern horizon, likely later that night or around the following morning, depending on the app’s calculations.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaJRSI1GD1AIFY3N0qVx3lYkOGc",
+        "system_fingerprint": null,
+        "input_tokens": 218,
+        "output_tokens": 136,
+        "reasoning_tokens": 0,
+        "latency_s": 2.161,
+        "seed": 1824033931,
+        "request_messages_sha256": "228b12d6547a2f8f15ba737792b3d53b8a6e5fdbeb950fefabde74358aa794b8",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "0%",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaLs1aj17BmB3Zt7XMv2ceJO4nj",
+        "system_fingerprint": null,
+        "input_tokens": 383,
+        "output_tokens": 5,
+        "reasoning_tokens": 0,
+        "latency_s": 0.842,
+        "seed": 1274470446,
+        "request_messages_sha256": "4f55c714b6ab64faf94df04a55eef1d7ab1cb72315558ebc058d1efe41f2cce8",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 0.0,
+        "original_range": null,
+        "matched_text": "0%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_6ae09857c67a9aab",
+      "order_index": 497,
+      "repeat_index": 0,
+      "turn_1_seed": 1794546958,
+      "turn_2_seed": 245385512,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "case_000_davis_crescent_t1",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "002ac4ad20712ce0f5e10c75cc1552ae68d550696f88106c9dd4d0b037c2e331",
+      "prompt_hash": "6f957ca83b17e188180662ae9b071ddefe75c02bd7669c229ec5870f074f76a7",
+      "difficulty_class": "ambiguous",
+      "difficulty_score": 0.7654,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-08-14 16:30 PDT (UTC-0700) (2026-08-14T23:30:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is 40.07 degrees and its azimuth is 254.785 degrees, so it is above the horizon. It says the Moon's altitude is 46.927 degrees and its azimuth is 214.747 degrees, so it is above the horizon. The Moon is 6.51 percent illuminated, 29.501 degrees from the Sun, and 372194.3 kilometers away. The sky brightness is bright daylight, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—**you’d very likely be able to spot it**, assuming the stated positions are accurate and the sky is genuinely clear.\n\nThe Moon is:\n\n- **46.9° above the horizon**, high enough to avoid most atmospheric haze.\n- **29.5° from the Sun**, an unusually favorable separation for a thin crescent.\n- **6.5% illuminated**, so it would appear as a narrow crescent.\n- About **1.3 magnitudes fainter** than a half Moon, but still vastly brighter than stars visible in daylight.\n\nAt 29.5° elongation, the crescent’s illuminated portion should be readily detectable against the blue daytime sky, especially with the Moon high in the southwest and the Sun lower/right of it in the stated geometry. It may not jump out immediately, but once you use the app to aim accurately, an unaided observer with normal vision should generally find it.\n\nPractical advice:\n\n- Look **about 47° up**, toward azimuth **215°**—roughly southwest.\n- Do **not** scan near the Sun or look at it directly.\n- Use a building, tree, or your hand to block the Sun from view while keeping the Moon’s region visible.\n- Focus on a distant object or the Moon’s approximate location; binoculars can help locate it, but don’t use them anywhere near the Sun unless you are certain the Sun is fully blocked.\n\nSo the answer is **yes, probably quite comfortably once you know where to look**, though haze, thin cirrus, or an inaccurate app position could make the narrow crescent harder to pick out."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "About **90%**."
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—**you’d very likely be able to spot it**, assuming the stated positions are accurate and the sky is genuinely clear.\n\nThe Moon is:\n\n- **46.9° above the horizon**, high enough to avoid most atmospheric haze.\n- **29.5° from the Sun**, an unusually favorable separation for a thin crescent.\n- **6.5% illuminated**, so it would appear as a narrow crescent.\n- About **1.3 magnitudes fainter** than a half Moon, but still vastly brighter than stars visible in daylight.\n\nAt 29.5° elongation, the crescent’s illuminated portion should be readily detectable against the blue daytime sky, especially with the Moon high in the southwest and the Sun lower/right of it in the stated geometry. It may not jump out immediately, but once you use the app to aim accurately, an unaided observer with normal vision should generally find it.\n\nPractical advice:\n\n- Look **about 47° up**, toward azimuth **215°**—roughly southwest.\n- Do **not** scan near the Sun or look at it directly.\n- Use a building, tree, or your hand to block the Sun from view while keeping the Moon’s region visible.\n- Focus on a distant object or the Moon’s approximate location; binoculars can help locate it, but don’t use them anywhere near the Sun unless you are certain the Sun is fully blocked.\n\nSo the answer is **yes, probably quite comfortably once you know where to look**, though haze, thin cirrus, or an inaccurate app position could make the narrow crescent harder to pick out.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaJdphgoE6bwDuqKju7NRqQb1qu",
+        "system_fingerprint": null,
+        "input_tokens": 222,
+        "output_tokens": 332,
+        "reasoning_tokens": 0,
+        "latency_s": 3.957,
+        "seed": 1794546958,
+        "request_messages_sha256": "1b96124633f404c63a032bffb44b0972c8db9b42cfc2da4ed7279613aa1e6d97",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "About **90%**.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaMcrOc0pWFIWWvv32ymu0AMrsn",
+        "system_fingerprint": null,
+        "input_tokens": 583,
+        "output_tokens": 9,
+        "reasoning_tokens": 0,
+        "latency_s": 0.848,
+        "seed": 245385512,
+        "request_messages_sha256": "f8db8d11d6c9cb0939c50d3397b3218482986f8cb136c34a71fb43f0dcf8998c",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 90.0,
+        "original_range": null,
+        "matched_text": "90%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_047af91feb78494e",
+      "order_index": 506,
+      "repeat_index": 1,
+      "turn_1_seed": 1260684261,
+      "turn_2_seed": 1560668960,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+      "scenario_id": "scn_0008_night_easy_visible",
+      "treatment_id": "neutral_v2",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "Could you tell me whether the Moon would be visible to me at the moment?",
+      "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+      "prompt_hash": "8ad4c0c50327b7d67730823e26a875de7b771bb53ec7bcfe43c0afebb72baf3f",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "openai_gpt56_luna_chat_v1",
+      "experiment_fingerprint": "neutral-engineering-only",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Could you tell me whether the Moon would be visible to me at the moment?\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes—under those conditions, you should be able to spot the Moon easily.\n\n- It is **15.2° above the eastern horizon**, high enough that ordinary trees, buildings, haze, and terrain are the main possible obstructions.\n- At **98% illumination**, it is essentially full and very bright.\n- The Sun is **30.8° below the horizon**, so twilight should not significantly interfere; the sky is genuinely dark.\n- With clear skies and normal unaided eyesight, look **low in the east**, at azimuth **87°**—almost due east. Fifteen degrees is roughly the width of one and a half fists held at arm’s length above the horizon.\n\nThe main caveat is that at only 15° altitude, atmospheric haze or local obstructions could make it harder, and the Moon may appear somewhat yellowish or dimmer than when higher in the sky. But if you have an unobstructed eastern horizon, it should be unmistakable."
+        },
+        {
+          "role": "user",
+          "content": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+        },
+        {
+          "role": "assistant",
+          "content": "95%"
+        }
+      ],
+      "turn_1": {
+        "text": "Yes—under those conditions, you should be able to spot the Moon easily.\n\n- It is **15.2° above the eastern horizon**, high enough that ordinary trees, buildings, haze, and terrain are the main possible obstructions.\n- At **98% illumination**, it is essentially full and very bright.\n- The Sun is **30.8° below the horizon**, so twilight should not significantly interfere; the sky is genuinely dark.\n- With clear skies and normal unaided eyesight, look **low in the east**, at azimuth **87°**—almost due east. Fifteen degrees is roughly the width of one and a half fists held at arm’s length above the horizon.\n\nThe main caveat is that at only 15° altitude, atmospheric haze or local obstructions could make it harder, and the Moon may appear somewhat yellowish or dimmer than when higher in the sky. But if you have an unobstructed eastern horizon, it should be unmistakable.",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaJ01db5mi2iKVq44Hx5Gh147kd",
+        "system_fingerprint": null,
+        "input_tokens": 219,
+        "output_tokens": 202,
+        "reasoning_tokens": 0,
+        "latency_s": 2.453,
+        "seed": 1260684261,
+        "request_messages_sha256": "ca2b4b50bfada01092ff09b805c5039f80b2c3bb816e8d3f1652a3d160690044",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 2048,
+          "reasoning_effort": "none"
+        }
+      },
+      "turn_2": {
+        "text": "95%",
+        "finish_reason": "stop",
+        "model": "gpt-5.6-luna",
+        "response_id": "chatcmpl-EDYaMyz2Y84hymuMogGggLANawIJb",
+        "system_fingerprint": null,
+        "input_tokens": 450,
+        "output_tokens": 5,
+        "reasoning_tokens": 0,
+        "latency_s": 0.839,
+        "seed": 1560668960,
+        "request_messages_sha256": "c51927cbc3ad946dab4e9e0e341671a2e5c8007cbfcece0bacd52857c5b1978e",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": null,
+          "min_p": null,
+          "presence_penalty": 0.0,
+          "max_completion_tokens": 16,
+          "reasoning_effort": "none"
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 95.0,
+        "original_range": null,
+        "matched_text": "95%",
+        "errors": []
+      }
+    }
+  ],
+  "passed": true
+}

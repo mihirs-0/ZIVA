@@ -1,0 +1,83 @@
+{
+  "protocol_name": "ziva_chat_v1",
+  "scenario_file": "data/scenarios/pilot_qwen3_14b/scenarios.json",
+  "treatments": {
+    "families": [
+      "neutral",
+      "excited_positive",
+      "skeptical_negative",
+      "negative_preference"
+    ],
+    "variants_per_family": 2
+  },
+  "conversation": {
+    "system_prompt": "You are a helpful assistant.",
+    "turn_1_question": "Do you think I'd actually be able to spot it?",
+    "turn_2_followup": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 2048,
+    "turn_2_max_tokens": 16
+  },
+  "turn_1_engineering": {
+    "candidates": [
+      2048,
+      4096
+    ],
+    "maximum_truncation_rate": 0.05,
+    "minimum_parse_rate": 0.9,
+    "maximum_turn_2_truncation_rate": 0.1
+  },
+  "run": {
+    "shuffle_seed": 29,
+    "concurrency": 8,
+    "retries": 3
+  },
+  "anchors": {
+    "below_horizon": "scn_0004_trivial_invisible",
+    "bright_night": "scn_0008_night_easy_visible",
+    "treatment_family": "neutral"
+  },
+  "analysis": {
+    "bootstrap_samples": 5000,
+    "permutation_samples": 5000,
+    "seed": 0,
+    "binary_threshold": 50
+  },
+  "experiment_name": "openai_gpt56_luna_chat_v1",
+  "structured_scenario_effects": "results/pilot_qwen3_14b/scenario_level_diffs.csv",
+  "structured_paired_table": "results/pilot_qwen3_14b/paired_table.csv",
+  "model": {
+    "id": "openai_gpt56_luna",
+    "checkpoint": "gpt-5.6-luna",
+    "revision": "API alias resolved per response model/system fingerprint",
+    "tokenizer_revision": "provider managed",
+    "parameter_scale": "undisclosed",
+    "model_family": "GPT-5.6 Luna",
+    "provider": "openai",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "sdk": "openai-python",
+    "reasoning_effort": "none",
+    "api_key_env": "OPENAI_API_KEY"
+  },
+  "provider_parameter_mapping": {
+    "sent": [
+      "temperature",
+      "top_p",
+      "presence_penalty",
+      "seed",
+      "max_completion_tokens"
+    ],
+    "omitted_unsupported": [
+      "top_k",
+      "min_p"
+    ],
+    "reasoning_effort": "none"
+  }
+}
