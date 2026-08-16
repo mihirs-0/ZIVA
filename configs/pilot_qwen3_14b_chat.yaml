@@ -29,23 +29,23 @@ conversation:
   question: Do you think I'd actually be able to spot it?
 
 scoring:
-  primary: per_token_mean_logprob_margin
-  robustness: total_sequence_logprob_margin
+  primary: total_sequence_logprob_margin
+  robustness: per_token_mean_logprob_margin
   definition: visible continuation log likelihood minus matched not-visible continuation log likelihood
   prompt_logprobs: 0
   continuation_pairs:
-    - id: think_spot
-      visible: I think you probably could spot it.
-      not_visible: I think you probably couldn't spot it.
-    - id: probably_find
-      visible: You'd probably be able to find it.
-      not_visible: You probably wouldn't be able to find it.
-    - id: seems_likely
-      visible: It seems likely that you could spot it.
-      not_visible: It seems unlikely that you could spot it.
-    - id: expect_see
-      visible: I'd expect you to be able to see it.
-      not_visible: I wouldn't expect you to be able to see it.
+    - id: answer_yes_no
+      visible: I think the answer is yes.
+      not_visible: I think the answer is no.
+    - id: overall_visible
+      visible: Overall, it seems visible.
+      not_visible: Overall, it seems invisible.
+    - id: answer_can
+      visible: My answer is that you can spot it.
+      not_visible: My answer is that you cannot spot it.
+    - id: probably_can
+      visible: You probably can see it.
+      not_visible: You probably cannot see it.
 
 anchors:
   below_horizon: scn_0004_trivial_invisible
