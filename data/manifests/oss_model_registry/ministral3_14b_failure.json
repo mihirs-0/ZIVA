@@ -1,0 +1,8 @@
+{
+  "status": "SKIPPED_ENGINEERING",
+  "key": "ministral3_14b",
+  "checkpoint": "mistralai/Ministral-3-14B-Instruct-2512-BF16",
+  "stage": "vllm_multimodal_tokenizer_compatibility",
+  "message": "Exact BF16 TP2 startup with the official checkpoint chat_template.jinja and --tokenizer-mode hf failed in vLLM 0.26.0 before serving: ValueError: Failed to apply PixtralProcessor on the dummy image input. The same-family native Mistral tokenizer path previously rejected custom chat templates for Ministral-3-8B. No prompt, parser, or protocol changes and no treatment trials were attempted.",
+  "recorded_at_utc": "2026-08-16T08:05:16.664961+00:00"
+}
