@@ -1,0 +1,66 @@
+{
+  "status": "FAILED_ENGINEERING_GATE",
+  "passed": false,
+  "experiment_name": "oss_gpt_oss_20b_chat_v1",
+  "recorded_at_utc": "2026-08-16T20:35:01Z",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "experiment_fingerprint": "718f78d3563f0c98d3b61aef3091020a47edfbf6a784e2678d8e0f778cbc7dee",
+  "checkpoint": "openai/gpt-oss-20b",
+  "revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+  "gate": {
+    "implementation": "scripts/run_oss_chat_v1.py::_run_neutral_smoke",
+    "neutral_trials_selected": 16,
+    "configured_retries_per_trial": 3,
+    "turn_1_max_tokens": 2048,
+    "turn_2_max_tokens": 16,
+    "client_timeout_seconds": 300,
+    "concurrency": 8
+  },
+  "verified_before_gate": {
+    "successful_model_loading": true,
+    "both_rtx_3090_gpus_used": true,
+    "dtype": "bfloat16",
+    "quantization": "checkpoint-native MXFP4 MoE weights",
+    "tensor_parallel_size": 2,
+    "vllm_version": "0.26.0",
+    "reasoning_parser": "openai_gptoss",
+    "official_harmony_template": true,
+    "prompt_manifest_byte_identical_to_qwen3_14b_chat_v1": true,
+    "manifest_sha256": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "pairing_failures": 0,
+    "canonical_fact_rendering_exact": true,
+    "prompt_cues_absent": true,
+    "turn_2_followup_byte_identical": true
+  },
+  "observed_failure": {
+    "successful_http_trial_records": 16,
+    "turn_1_length_records": 5,
+    "turn_1_truncation_rate": 0.3125,
+    "turn_1_empty_final_content_records": 3,
+    "turn_2_length_records": 16,
+    "turn_2_truncation_rate": 1.0,
+    "turn_2_empty_final_content_records": 16,
+    "valid_percentage_records": 0,
+    "parse_success_rate": 0.0,
+    "below_horizon_percentages": [],
+    "bright_night_percentages": [],
+    "anchor_order_sensible": false,
+    "primary_gate_failure": "Every Turn-2 response consumed the frozen 16-token completion budget, finished for length, and returned empty final-answer content, so no percentage could be parsed. Turn-1 truncation also exceeded the frozen maximum."
+  },
+  "collection_decision": {
+    "treatment_collection_started": false,
+    "raw_treatment_records": 0,
+    "full_512_trial_run": "BLOCKED",
+    "analysis": "NOT_RUN",
+    "cross_model_comparisons": "NOT_RUN",
+    "reason": "The user-required frozen neutral engineering gate did not pass."
+  },
+  "artifacts": {
+    "neutral_gate_records": "data/manifests/oss_gpt_oss_20b_chat_v1/neutral_smoke.json",
+    "service_audit": "data/manifests/oss_model_registry/gpt_oss_20b_service.json",
+    "complete_vllm_log": "data/manifests/oss_model_registry/gpt_oss_20b_vllm.log",
+    "freeze": "data/manifests/oss_gpt_oss_20b_chat_v1/freeze.json",
+    "resolved_config": "data/manifests/oss_gpt_oss_20b_chat_v1/resolved_config.json",
+    "manifest": "data/manifests/oss_gpt_oss_20b_chat_v1/trials.jsonl"
+  }
+}
