@@ -7,8 +7,10 @@ import argparse
 import importlib.metadata
 import json
 import os
+import shutil
 import signal
 import subprocess
+import sys
 import time
 import urllib.error
 import urllib.request
@@ -98,7 +100,40 @@ def _owned_vllm_pids() -> list[int]:
     return pids
 
 
-def _versions() -> dict[str, str]:
+def _vllm_executable() -> Path:
+    configured = os.environ.get("ZIVA_VLLM_EXECUTABLE")
+    candidates = [
+        Path(configured) if configured else None,
+        Path("/home/mihir/tg/vllmenv/bin/vllm"),
+        Path("/usr/local/bin/vllm"),
+        Path(shutil.which("vllm")) if shutil.which("vllm") else None,
+    ]
+    for candidate in candidates:
+        if candidate is not None and candidate.is_file() and os.access(candidate, os.X_OK):
+            return candidate.resolve()
+    raise RuntimeError(
+        "no executable vLLM launcher found; set ZIVA_VLLM_EXECUTABLE explicitly"
+    )
+
+
+def _versions(vllm_executable: Path) -> dict[str, str]:
+    launcher_python = vllm_executable.parent / "python"
+    if launcher_python.is_file() and os.access(launcher_python, os.X_OK):
+        code = (
+            "import importlib.metadata as m,json,platform; "
+            "packages=['vllm','torch','transformers','tokenizers']; "
+            "print(json.dumps({**{p:m.version(p) for p in packages},"
+            "'python':platform.python_version()}))"
+        )
+        result = subprocess.run(
+            [str(launcher_python), "-c", code],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode == 0:
+            return json.loads(result.stdout)
+
     def version(package: str) -> str:
         try:
             return importlib.metadata.version(package)
@@ -110,6 +145,7 @@ def _versions() -> dict[str, str]:
         "torch": version("torch"),
         "transformers": version("transformers"),
         "tokenizers": version("tokenizers"),
+        "python": sys.version.split()[0],
     }
 
 
@@ -195,8 +231,9 @@ def serve(key: str, max_model_len: int | None, gpu_memory_utilization: float | N
     context = max_model_len or runtime["max_model_len"]
     memory = gpu_memory_utilization or runtime["gpu_memory_utilization"]
     log_path = REGISTRY_DIR / f"{key}_vllm.log"
+    vllm_executable = _vllm_executable()
     command = [
-        "/usr/local/bin/vllm",
+        str(vllm_executable),
         "serve",
         spec["checkpoint"],
         "--revision",
@@ -238,7 +275,7 @@ def serve(key: str, max_model_len: int | None, gpu_memory_utilization: float | N
         "started_at_utc": datetime.now(UTC).isoformat(),
         "max_model_len": context,
         "gpu_memory_utilization": memory,
-        "versions": _versions(),
+        "versions": _versions(vllm_executable),
         "log_path": str(log_path.relative_to(ROOT)),
     }
     service_path = REGISTRY_DIR / f"{key}_service.json"
