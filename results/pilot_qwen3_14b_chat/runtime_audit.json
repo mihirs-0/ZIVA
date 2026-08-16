@@ -1,0 +1,102 @@
+{
+  "experiment_name": "pilot_qwen3_14b_chat",
+  "experiment_fingerprint": "9854681504ed93174d9ab329e693cce7fdffdc47dd0bc21bdc523f0c8b1ab584",
+  "frozen_git_commit": "0fbe3bbeb28d6fc4a16866602ed9f5b14d78fafb",
+  "model": {
+    "checkpoint": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "enable_thinking": false,
+    "network_scope": "localhost vLLM only; no external model API"
+  },
+  "design": {
+    "physical_scenarios": 32,
+    "model_facing_prompts": 256,
+    "treatment_families": [
+      "neutral",
+      "excited_positive",
+      "skeptical_negative",
+      "negative_preference"
+    ],
+    "paraphrase_variants_per_family": 2,
+    "repeats": 1,
+    "continuation_pairs": 4,
+    "teacher_forced_contrasts": 1024,
+    "teacher_forced_sequences": 2048,
+    "generated_responses_used_for_primary_endpoint": 0,
+    "primary_endpoint": "total_sequence_logprob_margin",
+    "robustness_endpoint": "per_token_mean_logprob_margin"
+  },
+  "integrity": {
+    "pairing_failures": 0,
+    "manifest_prompt_hashes": 256,
+    "scored_prompt_hashes": 256,
+    "exact_prompt_hash_set_match": true,
+    "score_rows": 1024,
+    "score_rows_enable_thinking_false": 1024,
+    "score_fingerprints_unique": [
+      "9854681504ed93174d9ab329e693cce7fdffdc47dd0bc21bdc523f0c8b1ab584"
+    ],
+    "old_structured_benchmark_modified": false,
+    "full_test_suite": "74 passed",
+    "targeted_ruff": "passed"
+  },
+  "anchor_sanity": {
+    "passed": true,
+    "below_horizon_scenario": "scn_0004_trivial_invisible",
+    "below_horizon_margin": -3.449395663337782,
+    "bright_night_scenario": "scn_0008_night_easy_visible",
+    "bright_night_margin": 3.958008068264462
+  },
+  "gpu_telemetry": {
+    "started_utc": "2026-08-16T02:37:42Z",
+    "finished_utc": "2026-08-16T02:41:22Z",
+    "gpu_0_max_compute_utilization_percent": 100,
+    "gpu_1_max_compute_utilization_percent": 100,
+    "peak_observed_framebuffer_mib_per_gpu": 23289
+  },
+  "pre_treatment_development": {
+    "initial_continuation_bank_anchor_passed": false,
+    "treatment_effects_inspected_before_revision": false,
+    "resolution": "Replaced unequal-token supplied candidates with four equal-token minimal pairs selected using neutral anchors only, committed, retested, and refrozen before treatment scoring.",
+    "audit_file": "data/manifests/pilot_qwen3_14b_chat/continuation_bank_development_audit.json"
+  },
+  "analysis_execution_note": {
+    "statistics_and_artifacts_written": true,
+    "console_exit_status": 1,
+    "reason": "The final json.dumps console print rejected one NumPy boolean after summary.json, scenario_level_effects.csv, and the report had already been written. Numerical results were unaffected and frozen analysis code was not modified post-result.",
+    "report_heading_correction": "The frozen report section headed 'Total-logprob robustness' contains the per-token robustness results; the primary results above it are total-logprob results. This runtime audit and run record use the correct labels."
+  },
+  "primary_results": {
+    "excited_positive_minus_neutral": {
+      "mean": -1.2819,
+      "ci95": [-1.6215, -0.9354],
+      "p_perm": 0.0002,
+      "cohens_dz": -1.2572
+    },
+    "skeptical_negative_minus_neutral": {
+      "mean": 0.031,
+      "ci95": [-0.0605, 0.1141],
+      "p_perm": 0.4873,
+      "cohens_dz": 0.1244
+    },
+    "negative_preference_minus_neutral": {
+      "mean": -0.4453,
+      "ci95": [-0.9672, 0.0497],
+      "p_perm": 0.10298,
+      "cohens_dz": -0.295
+    },
+    "negative_preference_direction_normalized": {
+      "mean": 0.4453,
+      "ci95": [-0.0608, 0.9826],
+      "p_perm": 0.11498,
+      "cohens_dz": 0.295
+    }
+  }
+}

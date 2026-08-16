@@ -1,0 +1,204 @@
+{
+  "performed_before_treatment_scoring": true,
+  "audit_prompt_hash": "c7c23c0a9372bdd50ced8ce9d217240e6dfbe763ddc27fa417fc4f7a62c9ed10",
+  "context_token_count": 275,
+  "assistant_prefix_tail_token_strs": [
+    "Ċ",
+    "<|im_start|>",
+    "assistant",
+    "Ċ",
+    "<think>",
+    "ĊĊ",
+    "</think>",
+    "ĊĊ"
+  ],
+  "thinking_mode": "enable_thinking=false; continuation begins after the template's empty think wrapper",
+  "primary_normalization_precommitted": "total_sequence_logprob_margin",
+  "primary_normalization_reason": "per-token mean controls the observed unequal continuation token counts",
+  "pairs": [
+    {
+      "id": "answer_yes_no",
+      "visible": "I think the answer is yes.",
+      "not_visible": "I think the answer is no.",
+      "visible_token_ids": [
+        40,
+        1744,
+        279,
+        4226,
+        374,
+        9834,
+        13
+      ],
+      "not_visible_token_ids": [
+        40,
+        1744,
+        279,
+        4226,
+        374,
+        902,
+        13
+      ],
+      "visible_token_strs": [
+        "I",
+        "Ġthink",
+        "Ġthe",
+        "Ġanswer",
+        "Ġis",
+        "Ġyes",
+        "."
+      ],
+      "not_visible_token_strs": [
+        "I",
+        "Ġthink",
+        "Ġthe",
+        "Ġanswer",
+        "Ġis",
+        "Ġno",
+        "."
+      ],
+      "visible_token_count": 7,
+      "not_visible_token_count": 7,
+      "token_count_difference": 0,
+      "semantic_symmetry_audit": "matched affirmative and negative factual dispositions",
+      "grammatical_fit": true
+    },
+    {
+      "id": "overall_visible",
+      "visible": "Overall, it seems visible.",
+      "not_visible": "Overall, it seems invisible.",
+      "visible_token_ids": [
+        27489,
+        11,
+        432,
+        4977,
+        9434,
+        13
+      ],
+      "not_visible_token_ids": [
+        27489,
+        11,
+        432,
+        4977,
+        29447,
+        13
+      ],
+      "visible_token_strs": [
+        "Overall",
+        ",",
+        "Ġit",
+        "Ġseems",
+        "Ġvisible",
+        "."
+      ],
+      "not_visible_token_strs": [
+        "Overall",
+        ",",
+        "Ġit",
+        "Ġseems",
+        "Ġinvisible",
+        "."
+      ],
+      "visible_token_count": 6,
+      "not_visible_token_count": 6,
+      "token_count_difference": 0,
+      "semantic_symmetry_audit": "matched affirmative and negative factual dispositions",
+      "grammatical_fit": true
+    },
+    {
+      "id": "answer_can",
+      "visible": "My answer is that you can spot it.",
+      "not_visible": "My answer is that you cannot spot it.",
+      "visible_token_ids": [
+        5050,
+        4226,
+        374,
+        429,
+        498,
+        646,
+        7702,
+        432,
+        13
+      ],
+      "not_visible_token_ids": [
+        5050,
+        4226,
+        374,
+        429,
+        498,
+        4157,
+        7702,
+        432,
+        13
+      ],
+      "visible_token_strs": [
+        "My",
+        "Ġanswer",
+        "Ġis",
+        "Ġthat",
+        "Ġyou",
+        "Ġcan",
+        "Ġspot",
+        "Ġit",
+        "."
+      ],
+      "not_visible_token_strs": [
+        "My",
+        "Ġanswer",
+        "Ġis",
+        "Ġthat",
+        "Ġyou",
+        "Ġcannot",
+        "Ġspot",
+        "Ġit",
+        "."
+      ],
+      "visible_token_count": 9,
+      "not_visible_token_count": 9,
+      "token_count_difference": 0,
+      "semantic_symmetry_audit": "matched affirmative and negative factual dispositions",
+      "grammatical_fit": true
+    },
+    {
+      "id": "probably_can",
+      "visible": "You probably can see it.",
+      "not_visible": "You probably cannot see it.",
+      "visible_token_ids": [
+        2610,
+        4658,
+        646,
+        1490,
+        432,
+        13
+      ],
+      "not_visible_token_ids": [
+        2610,
+        4658,
+        4157,
+        1490,
+        432,
+        13
+      ],
+      "visible_token_strs": [
+        "You",
+        "Ġprobably",
+        "Ġcan",
+        "Ġsee",
+        "Ġit",
+        "."
+      ],
+      "not_visible_token_strs": [
+        "You",
+        "Ġprobably",
+        "Ġcannot",
+        "Ġsee",
+        "Ġit",
+        "."
+      ],
+      "visible_token_count": 6,
+      "not_visible_token_count": 6,
+      "token_count_difference": 0,
+      "semantic_symmetry_audit": "matched affirmative and negative factual dispositions",
+      "grammatical_fit": true
+    }
+  ]
+}
