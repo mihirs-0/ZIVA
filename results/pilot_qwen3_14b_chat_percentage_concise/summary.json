@@ -1,0 +1,326 @@
+{
+  "experiment_name": "pilot_qwen3_14b_chat_percentage_concise",
+  "n_trials": 512,
+  "n_scenarios": 32,
+  "valid_percentages": 512,
+  "malformed_percentages": 0,
+  "malformed_rate": 0.0,
+  "parse_status_counts": {
+    "ok_single": 504,
+    "ok_range": 8
+  },
+  "contrasts": {
+    "excited_positive_minus_neutral": {
+      "n_pairs": 32,
+      "mean": 3.957,
+      "ci95": [
+        -0.426,
+        8.6212
+      ],
+      "p_perm": 0.09858,
+      "cohens_dz": 0.2997,
+      "sd": 13.2044,
+      "excluding_case_000": {
+        "n_pairs": 30,
+        "mean": 3.8375,
+        "ci95": [
+          -0.8501,
+          8.7084
+        ],
+        "p_perm": 0.13457,
+        "cohens_dz": 0.2823,
+        "sd": 13.5922
+      }
+    },
+    "skeptical_negative_minus_neutral": {
+      "n_pairs": 32,
+      "mean": -11.7539,
+      "ci95": [
+        -18.0472,
+        -6.4453
+      ],
+      "p_perm": 0.0004,
+      "cohens_dz": -0.6868,
+      "sd": 17.1131,
+      "excluding_case_000": {
+        "n_pairs": 30,
+        "mean": -10.7125,
+        "ci95": [
+          -17.5792,
+          -5.2666
+        ],
+        "p_perm": 0.0004,
+        "cohens_dz": -0.6276,
+        "sd": 17.0691
+      }
+    },
+    "negative_preference_minus_neutral": {
+      "n_pairs": 32,
+      "mean": -12.1445,
+      "ci95": [
+        -18.1377,
+        -6.6281
+      ],
+      "p_perm": 0.0004,
+      "cohens_dz": -0.7164,
+      "sd": 16.9515,
+      "excluding_case_000": {
+        "n_pairs": 30,
+        "mean": -11.5792,
+        "ci95": [
+          -17.5627,
+          -5.8207
+        ],
+        "p_perm": 0.0006,
+        "cohens_dz": -0.6907,
+        "sd": 16.7649
+      }
+    },
+    "negative_preference_direction_normalized": {
+      "n_pairs": 32,
+      "mean": 12.1445,
+      "ci95": [
+        6.6991,
+        18.0041
+      ],
+      "p_perm": 0.0004,
+      "cohens_dz": 0.7164,
+      "sd": 16.9515
+    }
+  },
+  "difficulty": {
+    "ambiguous": {
+      "n_pairs": 4,
+      "mean": 8.75,
+      "ci95": [
+        1.5625,
+        22.1875
+      ],
+      "p_perm": 0.12757,
+      "cohens_dz": 0.6556,
+      "sd": 13.3463
+    },
+    "easy": {
+      "n_pairs": 2,
+      "mean": 4.375,
+      "ci95": [
+        1.0,
+        7.75
+      ],
+      "p_perm": 0.4943,
+      "cohens_dz": 0.9166,
+      "sd": 4.773
+    },
+    "moderate": {
+      "n_pairs": 10,
+      "mean": 2.6375,
+      "ci95": [
+        -6.7256,
+        10.5628
+      ],
+      "p_perm": 0.60988,
+      "cohens_dz": 0.1769,
+      "sd": 14.9069
+    },
+    "trivial": {
+      "n_pairs": 16,
+      "mean": 3.5312,
+      "ci95": [
+        -1.9219,
+        10.891
+      ],
+      "p_perm": 0.37752,
+      "cohens_dz": 0.2615,
+      "sd": 13.504
+    },
+    "pearson_r_with_difficulty_score": 0.1111
+  },
+  "template_effects": {
+    "excited_positive_v1": {
+      "n_pairs": 32,
+      "mean": 7.1602,
+      "ci95": [
+        2.5938,
+        12.1293
+      ],
+      "p_perm": 0.0044,
+      "cohens_dz": 0.5122,
+      "sd": 13.9798
+    },
+    "excited_positive_v2": {
+      "n_pairs": 32,
+      "mean": 0.7539,
+      "ci95": [
+        -6.0859,
+        7.3047
+      ],
+      "p_perm": 0.82823,
+      "cohens_dz": 0.0392,
+      "sd": 19.2093
+    },
+    "negative_preference_v1": {
+      "n_pairs": 32,
+      "mean": -3.9961,
+      "ci95": [
+        -9.6061,
+        1.641
+      ],
+      "p_perm": 0.19436,
+      "cohens_dz": -0.2327,
+      "sd": 17.1743
+    },
+    "negative_preference_v2": {
+      "n_pairs": 32,
+      "mean": -20.293,
+      "ci95": [
+        -29.3013,
+        -12.125
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.8125,
+      "sd": 24.975
+    },
+    "skeptical_negative_v1": {
+      "n_pairs": 32,
+      "mean": -12.7773,
+      "ci95": [
+        -20.1567,
+        -6.3046
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.6222,
+      "sd": 20.5371
+    },
+    "skeptical_negative_v2": {
+      "n_pairs": 32,
+      "mean": -10.7305,
+      "ci95": [
+        -17.0863,
+        -5.5819
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.633,
+      "sd": 16.9525
+    }
+  },
+  "binary_threshold_crossings": {
+    "excited_positive_vs_neutral": {
+      "n_pairs": 128,
+      "crossing_rate": 0.1875
+    },
+    "skeptical_negative_vs_neutral": {
+      "n_pairs": 128,
+      "crossing_rate": 0.1562
+    },
+    "negative_preference_vs_neutral": {
+      "n_pairs": 128,
+      "crossing_rate": 0.2031
+    }
+  },
+  "variance": {
+    "repeat_sampling_sd_mean_points": 9.0115,
+    "repeat_sampling_sd_n_cells": 256,
+    "template_sd_mean_points": 9.3043,
+    "template_sd_n_cells": 128
+  },
+  "direct_chat_minus_structured": {
+    "n_pairs": 32,
+    "mean": -4.6562,
+    "ci95": [
+      -9.2267,
+      -0.1794
+    ],
+    "p_perm": 0.06899,
+    "cohens_dz": -0.3482,
+    "sd": 13.373,
+    "chat_mean_effect": 3.957,
+    "structured_mean_effect": 8.6133
+  },
+  "endpoint": "Turn-2 explicitly stated rough percentage; range midpoint when one clear range is given.",
+  "reliability": {
+    "turn_1_truncations": 498,
+    "turn_1_truncation_rate": 0.972656,
+    "turn_2_truncations": 0,
+    "turn_2_truncation_rate": 0.0,
+    "malformed_by_family": {
+      "excited_positive": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "malformed_by_template": {
+      "excited_positive_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "excited_positive_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "previous_chat_malformed_rate": 0.246094,
+    "malformed_rate_change_points": -24.6094,
+    "relative_malformed_reduction": 1.0
+  },
+  "direct_concise_minus_previous_chat": {
+    "n_pairs": 32,
+    "mean": -1.0339,
+    "ci95": [
+      -6.4975,
+      4.7931
+    ],
+    "p_perm": 0.73065,
+    "cohens_dz": -0.0618,
+    "sd": 16.7319,
+    "concise_mean_effect": 3.957,
+    "previous_chat_mean_effect": 4.9909
+  }
+}

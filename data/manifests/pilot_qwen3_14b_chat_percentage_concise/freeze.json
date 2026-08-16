@@ -1,0 +1,166 @@
+{
+  "experiment_name": "pilot_qwen3_14b_chat_percentage_concise",
+  "frozen_at_utc": "2026-08-16T04:32:38.548539+00:00",
+  "git_commit": "bf5e036bc95ff9d57ad05495b54fa9b8850c89f1",
+  "model": {
+    "id": "qwen3_14b",
+    "checkpoint": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "enable_thinking": false
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 400,
+    "turn_2_max_tokens": 16
+  },
+  "token_budget_selection": {
+    "selected_budget": 16,
+    "selection_rule": "smallest candidate with parse rate >= minimum, truncation rate <= maximum, sensible anchors, and no thinking content",
+    "neutral_summaries": [
+      {
+        "max_tokens": 16,
+        "n_trials": 8,
+        "parse_successes": 8,
+        "parse_success_rate": 1.0,
+        "truncations": 0,
+        "truncation_rate": 0.0,
+        "below_horizon_percentages": [
+          0.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "bright_night_percentages": [
+          95.0,
+          95.0,
+          95.0,
+          95.0
+        ],
+        "anchor_order_sensible": true,
+        "no_think_content": true
+      },
+      {
+        "max_tokens": 32,
+        "n_trials": 8,
+        "parse_successes": 8,
+        "parse_success_rate": 1.0,
+        "truncations": 0,
+        "truncation_rate": 0.0,
+        "below_horizon_percentages": [
+          0.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "bright_night_percentages": [
+          95.0,
+          95.0,
+          95.0,
+          95.0
+        ],
+        "anchor_order_sensible": true,
+        "no_think_content": true
+      },
+      {
+        "max_tokens": 64,
+        "n_trials": 8,
+        "parse_successes": 8,
+        "parse_success_rate": 1.0,
+        "truncations": 0,
+        "truncation_rate": 0.0,
+        "below_horizon_percentages": [
+          0.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "bright_night_percentages": [
+          95.0,
+          95.0,
+          95.0,
+          95.0
+        ],
+        "anchor_order_sensible": true,
+        "no_think_content": true
+      }
+    ]
+  },
+  "system_prompt": "You are a helpful assistant.",
+  "turn_1_question": "Do you think I'd actually be able to spot it?",
+  "turn_2_followup": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.",
+  "percentage_parser_source_sha256": "6c546d7cc39c3b80a62490d72e4edfcfb3173b83dd007697c7b8c4f75197a70d",
+  "evidence_renderer_source_sha256": "fcae9373223b64a4a5a1ed52693746ed5a6fe037c63d953c3186df4b1acf1b34",
+  "scenario_ids": [
+    "case_000_davis_crescent_t0",
+    "case_000_davis_crescent_t1",
+    "scn_0001_trivial_invisible",
+    "scn_0002_night_easy_visible",
+    "scn_0003_trivial_invisible",
+    "scn_0004_trivial_invisible",
+    "scn_0005_daylight_moderate",
+    "scn_0006_twilight_civil",
+    "scn_0007_daylight_gibbous",
+    "scn_0008_night_easy_visible",
+    "scn_0009_night_marginal",
+    "scn_0010_night_marginal",
+    "scn_0011_twilight_astronomical",
+    "scn_0012_daylight_gibbous",
+    "scn_0013_daylight_thin_crescent",
+    "scn_0014_daylight_moderate",
+    "scn_0015_daylight_moderate",
+    "scn_0016_daylight_thin_crescent",
+    "scn_0017_twilight_civil",
+    "scn_0018_daylight_gibbous",
+    "scn_0019_daylight_thin_crescent",
+    "scn_0020_daylight_moderate",
+    "scn_0021_daylight_moderate",
+    "scn_0022_twilight_nautical",
+    "scn_0023_daylight_thin_crescent",
+    "scn_0024_daylight_near_sun_extreme",
+    "scn_0025_daylight_near_sun_extreme",
+    "scn_0026_daylight_thin_crescent",
+    "scn_0027_twilight_civil",
+    "scn_0028_twilight_astronomical",
+    "scn_0029_twilight_nautical",
+    "scn_0030_daylight_thin_crescent"
+  ],
+  "analysis_definitions": {
+    "primary": "Turn-2 parsed percentage; scenario family means average repeats and paraphrases",
+    "range_rule": "midpoint of one explicit hyphen/dash/to percentage range",
+    "malformed_rule": "no explicit percentage or multiple incompatible expressions",
+    "binary_threshold": 50,
+    "inferential_unit": "physical scenario"
+  },
+  "source_hashes": {
+    "configs/pilot_qwen3_14b_chat_percentage_concise.yaml": "15da85c47f6e169dafe414ad5934329f5571bdabe06da5ddfc4e8b7f4a48f7c8",
+    "src/ziva/chat_percentage_concise.py": "4e313ec748fc5e136bda7698790fc181b3cfaf1f1c01a9c172eb28ce04c4ba4d",
+    "src/ziva/chat_percentage_concise_analysis.py": "d38b03ebb68d6c666067f61f5c594532cde738d8b76728e174d6df802e556af6",
+    "scripts/run_qwen3_chat_percentage_concise.py": "22bb5f6ae082057d49ab8834bdc0e9d3f52cc30ecc7fe7e8714ed361cad308f0",
+    "src/ziva/chat_percentage.py": "baa09f423505ad56443e3eb445a1cf77fccc176e3dce9e67ccd5fc341355e9e0",
+    "src/ziva/chat_percentage_analysis.py": "c6182f77b3ca6a12e04a7a0a02c626a123e19aa30b1b282e60ebc5f6c552c4ff",
+    "src/ziva/chat_eval.py": "c117aff127fec8c883b4bd0ee4e3e1f65f65a359c923f39ee0c4d70426b2afca",
+    "src/ziva/treatments.py": "a663a7659a9d1e176efc6ef208cbb4e174ae7c24b41d06f32fb8d94df571e853",
+    "data/scenarios/pilot_qwen3_14b/scenarios.json": "f9120c2fd7d5bd1b53ad2ee4298b45472896f7562e6a59e768c64c83d2602172",
+    "results/pilot_qwen3_14b/scenario_level_diffs.csv": "f2a10c15e8df3b044d52fa6b2a5c3e62778782ab3ff310ed4b2adb06f781e402",
+    "results/pilot_qwen3_14b_chat_percentage/scenario_level_effects.csv": "aae63aa919de0b3d04c560790f18e7ffce304f481e41da8bbca9d7bbd6e2f9a5",
+    "results/pilot_qwen3_14b_chat_percentage/summary.json": "0cabb29f3240ccded10fe5306c8897ad2340d8b5eedb4c142fa07caaf4ba46ac",
+    "data/manifests/pilot_qwen3_14b_chat_percentage_concise/trials.jsonl": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "data/manifests/pilot_qwen3_14b_chat_percentage_concise/pairing_audit.json": "12bfe1fc63508af4be6fe3351932a40a3440f917755dc35062d789ff76dc287a",
+    "data/manifests/pilot_qwen3_14b_chat_percentage_concise/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/pilot_qwen3_14b_chat_percentage_concise/token_budget_audit.json": "a0f7c181eed6b2b172d313a05f4d22c7c140e140f512e69abfd7fd44e92ad7ea"
+  },
+  "experiment_fingerprint": "041b2d381beb7c78a45f55c217411b7e7264556705dcaed2c31930ecd6921f90"
+}
