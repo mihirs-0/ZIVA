@@ -1,0 +1,73 @@
+{
+  "status": "READY",
+  "key": "deepseek_r1_distill_qwen_32b",
+  "checkpoint": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+  "revision": "711ad2ea6aa40cfca18895e8aca02ab92df1a746",
+  "pid": 97567,
+  "command": [
+    "/home/mihir/tg/vllmenv/bin/vllm",
+    "serve",
+    "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "--revision",
+    "711ad2ea6aa40cfca18895e8aca02ab92df1a746",
+    "--served-model-name",
+    "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "--dtype",
+    "bfloat16",
+    "--tensor-parallel-size",
+    "2",
+    "--max-model-len",
+    "4096",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--cpu-offload-gb",
+    "16",
+    "--generation-config",
+    "vllm",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000"
+  ],
+  "started_at_utc": "2026-08-16T18:43:07.951572+00:00",
+  "dtype": "bfloat16",
+  "quantization": "none",
+  "tensor_parallel_size": 2,
+  "cpu_offload_gb_per_gpu": 16,
+  "max_model_len": 4096,
+  "gpu_memory_utilization": 0.9,
+  "versions": {
+    "vllm": "0.26.0",
+    "torch": "2.11.0",
+    "transformers": "5.14.1",
+    "tokenizers": "0.22.2",
+    "python": "3.12.13"
+  },
+  "environment_overrides": {
+    "HF_HUB_DISABLE_XET": "1",
+    "HF_HUB_OFFLINE": "1",
+    "VLLM_USE_FLASHINFER_SAMPLER": "0",
+    "VLLM_USE_V2_MODEL_RUNNER": "0"
+  },
+  "chat_template": "official checkpoint tokenizer chat template",
+  "log_path": "data/manifests/oss_model_registry/deepseek_r1_distill_qwen_32b_vllm.log",
+  "ready_at_utc": "2026-08-16T18:54:58.048472+00:00",
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3090",
+      "uuid": "GPU-7d007960-54ef-9085-52e1-20babf88702b",
+      "driver_version": "580.173.02",
+      "memory_total_mib": 24576,
+      "memory_used_mib": 22243
+    },
+    {
+      "index": 1,
+      "name": "NVIDIA GeForce RTX 3090",
+      "uuid": "GPU-33cff1f4-659c-cb6e-a994-bef773e154ca",
+      "driver_version": "580.173.02",
+      "memory_total_mib": 24576,
+      "memory_used_mib": 22243
+    }
+  ]
+}
