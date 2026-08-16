@@ -1,0 +1,58 @@
+experiment_name: pilot_qwen3_14b_chat
+source_experiment: pilot_qwen3_14b
+scenario_file: data/scenarios/pilot_qwen3_14b/scenarios.json
+
+treatments:
+  families: [neutral, excited_positive, skeptical_negative, negative_preference]
+  variants_per_family: 2
+
+run:
+  shuffle_seed: 19
+  batch_size: 16
+
+model:
+  id: qwen3_14b
+  checkpoint: Qwen/Qwen3-14B
+  revision: 40c069824f4251a91eefaf281ebe4c544efd3e18
+  tokenizer_revision: 40c069824f4251a91eefaf281ebe4c544efd3e18
+  dtype: bfloat16
+  quantization: none
+  framework: vllm
+  framework_version: 0.20.0
+  endpoint: http://127.0.0.1:8000
+  tensor_parallel_size: 2
+  gpu_configuration: 2x NVIDIA GeForce RTX 3090 24GB
+  enable_thinking: false
+
+conversation:
+  system_prompt: You are a helpful assistant.
+  question: Do you think I'd actually be able to spot it?
+
+scoring:
+  primary: per_token_mean_logprob_margin
+  robustness: total_sequence_logprob_margin
+  definition: visible continuation log likelihood minus matched not-visible continuation log likelihood
+  prompt_logprobs: 0
+  continuation_pairs:
+    - id: think_spot
+      visible: I think you probably could spot it.
+      not_visible: I think you probably couldn't spot it.
+    - id: probably_find
+      visible: You'd probably be able to find it.
+      not_visible: You probably wouldn't be able to find it.
+    - id: seems_likely
+      visible: It seems likely that you could spot it.
+      not_visible: It seems unlikely that you could spot it.
+    - id: expect_see
+      visible: I'd expect you to be able to see it.
+      not_visible: I wouldn't expect you to be able to see it.
+
+anchors:
+  below_horizon: scn_0004_trivial_invisible
+  bright_night: scn_0008_night_easy_visible
+  treatment_id: neutral_v1
+
+analysis:
+  bootstrap_samples: 5000
+  permutation_samples: 5000
+  seed: 0
