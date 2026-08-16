@@ -1,0 +1,127 @@
+{
+  "experiment_name": "oss_qwen3_8b_chat_v1",
+  "experiment_fingerprint": "a7cd89b31c03c8af06e444d698b0ca7eb73e986e9814a9695026b38c6abb16a2",
+  "frozen_git_commit": "46911174746aa8aee124d90197b2627faa87476d",
+  "run_started_at_utc": "2026-08-16T06:26:44.618998+00:00",
+  "run_finished_at_utc": "2026-08-16T06:40:03.587142+00:00",
+  "integrity": {
+    "manifest_trials": 512,
+    "raw_records": 512,
+    "unique_trial_ids": 512,
+    "execution_errors": 0,
+    "records_matching_fingerprint": 512,
+    "complete_five_message_transcripts": 512,
+    "turn_2_followup_mismatches": 0,
+    "think_marker_records": 0,
+    "parser_recomputation_mismatches": 0
+  },
+  "model": {
+    "id": "qwen3_8b",
+    "checkpoint": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "parameter_scale": "8B",
+    "model_family": "Qwen3",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "enable_thinking": false
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 2048,
+    "turn_2_max_tokens": 16
+  },
+  "generation": {
+    "turn_1_finish_reasons": {
+      "stop": 512
+    },
+    "turn_2_finish_reasons": {
+      "stop": 512
+    }
+  },
+  "parsing": {
+    "valid": 512,
+    "malformed": 0,
+    "malformed_rate": 0.0,
+    "status_counts": {
+      "ok_single": 512
+    },
+    "malformed_by_family": {
+      "excited_positive": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "malformed_by_template": {
+      "excited_positive_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "excited_positive_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    }
+  }
+}
