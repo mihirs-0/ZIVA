@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.metadata
 import json
 import os
@@ -154,6 +155,32 @@ def _versions(vllm_executable: Path) -> dict[str, str]:
     }
 
 
+def _official_chat_template(spec: dict[str, Any], registry: dict[str, Any]) -> Path | None:
+    if spec["model_family"] != "Ministral-3":
+        return None
+    hf_home = Path(os.environ.get("HF_HOME", Path.home() / ".cache/huggingface"))
+    hub_cache = Path(os.environ.get("HF_HUB_CACHE", hf_home / "hub"))
+    repository_dir = "models--" + spec["checkpoint"].replace("/", "--")
+    template = (
+        hub_cache
+        / repository_dir
+        / "snapshots"
+        / registry["revision"]
+        / "chat_template.jinja"
+    )
+    if not template.is_file():
+        raise RuntimeError(f"official checkpoint chat template is missing: {template}")
+    return template.resolve()
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def _gpu_snapshot() -> list[dict[str, Any]]:
     result = subprocess.run(
         [
@@ -237,6 +264,7 @@ def serve(key: str, max_model_len: int | None, gpu_memory_utilization: float | N
     memory = gpu_memory_utilization or runtime["gpu_memory_utilization"]
     log_path = REGISTRY_DIR / f"{key}_vllm.log"
     vllm_executable = _vllm_executable()
+    chat_template = _official_chat_template(spec, registry)
     command = [
         str(vllm_executable),
         "serve",
@@ -255,11 +283,10 @@ def serve(key: str, max_model_len: int | None, gpu_memory_utilization: float | N
         str(memory),
         "--generation-config",
         runtime["generation_config_source"],
-        "--host",
-        "127.0.0.1",
-        "--port",
-        "8000",
     ]
+    if chat_template is not None:
+        command.extend(["--chat-template", str(chat_template)])
+    command.extend(["--host", "127.0.0.1", "--port", "8000"])
     with log_path.open("a", encoding="utf-8") as log:
         log.write(f"\n[{datetime.now(UTC).isoformat()}] command={json.dumps(command)}\n")
         log.flush()
@@ -286,6 +313,15 @@ def serve(key: str, max_model_len: int | None, gpu_memory_utilization: float | N
             for name in RECORDED_ENVIRONMENT_KEYS
             if name in os.environ
         },
+        "chat_template": (
+            {
+                "source": "official checkpoint chat_template.jinja",
+                "path": str(chat_template),
+                "sha256": _sha256_file(chat_template),
+            }
+            if chat_template is not None
+            else None
+        ),
         "log_path": str(log_path.relative_to(ROOT)),
     }
     service_path = REGISTRY_DIR / f"{key}_service.json"
