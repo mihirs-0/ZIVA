@@ -25,11 +25,11 @@ elicitation_modes: [naturalistic, separated]
 sampling:
   repeats: 2               # independent samples per (scenario, treatment, mode, model)
   temperature: 1.0         # only sent to models whose config allows temperature
-  max_tokens: 600
+  max_tokens: 2000         # reasoning models bill thinking as output; headroom avoids truncation
 
 run:
   max_cost_usd: 25.0
-  concurrency: 4
+  concurrency: 8
   retries: 3
   retry_backoff_s: 2.0
   shuffle_seed: 7

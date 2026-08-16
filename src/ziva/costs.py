@@ -22,8 +22,10 @@ from .prompts import SYSTEM_PROMPT, compile_prompt
 from .treatments import get_reaction, get_treatment
 
 CHARS_PER_TOKEN = 4.0
-IMAGE_TOKENS_ESTIMATE = 1100          # ~800x620 PNG, provider-dependent; rough
-DEFAULT_OUTPUT_TOKENS = 220           # typical structured-JSON response length
+IMAGE_TOKENS_ESTIMATE = 1100          # data-card PNG, provider-dependent; rough
+# Reasoning models bill hidden reasoning tokens as output; live smoke tests on a
+# gpt-5.x reasoning model showed ~500-600 output tokens per structured answer.
+DEFAULT_OUTPUT_TOKENS = 600
 
 
 def estimate_tokens(text: str) -> int:

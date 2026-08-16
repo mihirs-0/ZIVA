@@ -1,0 +1,41 @@
+# Second-model replica of the pilot on gpt-5.2.
+# SAME physical scenarios as the Luna pilot (identical generator seed/count),
+# structured evidence only (avoids the text-mode reasoning-overrun failures),
+# both elicitation regimes, 2 repeats -> 768 trials, hard $8 cap.
+
+experiment_name: pilot_b52
+
+scenarios:
+  count: 30
+  year: 2026
+  seed: 20260815          # identical scenarios to the Luna pilot
+  include_case_000: true
+
+treatments:
+  families: [neutral, excited_positive, skeptical_negative]
+  variants_per_family: 2
+
+evidence_modes: [structured]
+elicitation_modes: [naturalistic, separated]
+
+sampling:
+  repeats: 2
+  temperature: 1.0
+  max_tokens: 2000
+
+run:
+  max_cost_usd: 8.0
+  concurrency: 8
+  retries: 3
+  retry_backoff_s: 2.0
+  shuffle_seed: 7
+
+experiments:
+  primary: true
+  evidence_update: false
+  commitment: false
+  web: false
+
+models_config: configs/models.b52.yaml
+data_dir: data
+results_dir: results
