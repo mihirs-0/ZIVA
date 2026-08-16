@@ -285,7 +285,9 @@ def serve(key: str, max_model_len: int | None, gpu_memory_utilization: float | N
         runtime["generation_config_source"],
     ]
     if chat_template is not None:
-        command.extend(["--chat-template", str(chat_template)])
+        command.extend(
+            ["--tokenizer-mode", "hf", "--chat-template", str(chat_template)]
+        )
     command.extend(["--host", "127.0.0.1", "--port", "8000"])
     with log_path.open("a", encoding="utf-8") as log:
         log.write(f"\n[{datetime.now(UTC).isoformat()}] command={json.dumps(command)}\n")
