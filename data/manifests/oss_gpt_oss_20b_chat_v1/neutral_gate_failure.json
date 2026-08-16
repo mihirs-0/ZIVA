@@ -1,6 +1,8 @@
 {
   "status": "FAILED_ENGINEERING_GATE",
   "passed": false,
+  "behavioral_interpretation": "NOT_ASSESSED",
+  "final_engineering_classification": "PROTOCOL_INCOMPATIBLE",
   "experiment_name": "oss_gpt_oss_20b_chat_v1",
   "recorded_at_utc": "2026-08-16T20:35:01Z",
   "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
@@ -56,6 +58,7 @@
     "reason": "The user-required frozen neutral engineering gate did not pass."
   },
   "artifacts": {
+    "serving_investigation": "data/manifests/oss_gpt_oss_20b_chat_v1/serving_investigation.json",
     "neutral_gate_records": "data/manifests/oss_gpt_oss_20b_chat_v1/neutral_smoke.json",
     "service_audit": "data/manifests/oss_model_registry/gpt_oss_20b_service.json",
     "shutdown_audit": "data/manifests/oss_model_registry/gpt_oss_20b_stop.json",

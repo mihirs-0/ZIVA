@@ -1,5 +1,8 @@
 # GPT-OSS-20B: ZIVA-Chat-v1 engineering-gate failure
 
+> This is an engineering/protocol incompatibility, not a behavioral result.
+> The neutral anchors were never successfully elicited as percentages.
+
 ## Decision
 
 The frozen neutral-only Chat-v1 engineering gate did not pass. Per protocol, no
