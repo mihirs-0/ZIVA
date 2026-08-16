@@ -66,6 +66,19 @@ class OpenAIAdapter(ProviderAdapter):
         }
         if request.temperature is not None and self.model.supports.temperature:
             kwargs["temperature"] = request.temperature
+        if self.model.top_p is not None:
+            kwargs["top_p"] = self.model.top_p
+        if self.model.presence_penalty is not None:
+            kwargs["presence_penalty"] = self.model.presence_penalty
+        extra_body: dict = {}
+        if self.model.top_k is not None:
+            extra_body["top_k"] = self.model.top_k
+        if self.model.min_p is not None:
+            extra_body["min_p"] = self.model.min_p
+        if self.model.chat_template_kwargs:
+            extra_body["chat_template_kwargs"] = self.model.chat_template_kwargs
+        if extra_body:
+            kwargs["extra_body"] = extra_body
         structured_mode = "prompt"
         if request.json_schema and self.model.supports.json_mode:
             kwargs["response_format"] = {
@@ -87,7 +100,18 @@ class OpenAIAdapter(ProviderAdapter):
             model_version=resp.model,
             stop_reason=choice.finish_reason,
             structured_mode=structured_mode,
-            raw={"id": resp.id, "system_fingerprint": getattr(resp, "system_fingerprint", None)},
+            raw={
+                "id": resp.id,
+                "system_fingerprint": getattr(resp, "system_fingerprint", None),
+                "generation_settings": {
+                    "temperature": request.temperature if self.model.supports.temperature else None,
+                    "top_p": self.model.top_p,
+                    "top_k": self.model.top_k,
+                    "min_p": self.model.min_p,
+                    "presence_penalty": self.model.presence_penalty,
+                    "chat_template_kwargs": self.model.chat_template_kwargs,
+                },
+            },
         )
 
     def _complete_web(self, request: CompletionRequest) -> CompletionResult:
