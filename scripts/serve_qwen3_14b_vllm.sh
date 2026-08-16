@@ -15,6 +15,7 @@ mkdir -p "${HOME}/.cache/huggingface" "${HOME}/.cache/torchinductor"
 
 docker run --detach \
   --name "${CONTAINER}" \
+  --restart on-failure:10 \
   --gpus all \
   --ipc=host \
   --network=host \
