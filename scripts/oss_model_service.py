@@ -25,6 +25,11 @@ from ziva.util import write_json
 ROOT = Path(__file__).resolve().parents[1]
 QUEUE_PATH = ROOT / "configs/oss_model_queue.yaml"
 REGISTRY_DIR = ROOT / "data/manifests/oss_model_registry"
+RECORDED_ENVIRONMENT_KEYS = (
+    "HF_HUB_DISABLE_XET",
+    "HF_HUB_OFFLINE",
+    "VLLM_USE_FLASHINFER_SAMPLER",
+)
 
 
 def _queue() -> dict[str, Any]:
@@ -276,6 +281,11 @@ def serve(key: str, max_model_len: int | None, gpu_memory_utilization: float | N
         "max_model_len": context,
         "gpu_memory_utilization": memory,
         "versions": _versions(vllm_executable),
+        "environment_overrides": {
+            name: os.environ[name]
+            for name in RECORDED_ENVIRONMENT_KEYS
+            if name in os.environ
+        },
         "log_path": str(log_path.relative_to(ROOT)),
     }
     service_path = REGISTRY_DIR / f"{key}_service.json"
