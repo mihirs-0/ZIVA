@@ -21,8 +21,7 @@ docker run --detach \
   --user "$(id -u):$(id -g)" \
   --volume /etc/passwd:/etc/passwd:ro \
   --volume /etc/group:/etc/group:ro \
-  --volume "${HOME}/.cache/huggingface:${HOME}/.cache/huggingface" \
-  --volume "${HOME}/.cache/torchinductor:${HOME}/.cache/torchinductor" \
+  --volume "${HOME}/.cache:${HOME}/.cache" \
   --env "HOME=${HOME}" \
   --env "HF_HOME=${HOME}/.cache/huggingface" \
   --env "TORCHINDUCTOR_CACHE_DIR=${HOME}/.cache/torchinductor" \
