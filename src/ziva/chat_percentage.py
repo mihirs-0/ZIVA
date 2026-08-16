@@ -296,6 +296,9 @@ class LocalVLLMChatClient:
         self.config = config
 
     def complete(self, messages: list[dict[str, str]], seed: int, max_tokens: int) -> dict[str, Any]:
+        template_kwargs = self.config["model"].get("chat_template_kwargs")
+        if template_kwargs is None:
+            template_kwargs = {"enable_thinking": self.config["model"].get("enable_thinking", False)}
         body = {
             "model": self.config["model"]["checkpoint"],
             "messages": messages,
@@ -306,7 +309,7 @@ class LocalVLLMChatClient:
             "presence_penalty": self.config["sampling"]["presence_penalty"],
             "max_tokens": max_tokens,
             "seed": seed,
-            "chat_template_kwargs": {"enable_thinking": self.config["model"]["enable_thinking"]},
+            "chat_template_kwargs": template_kwargs,
         }
         request = urllib.request.Request(
             self.endpoint + "/v1/chat/completions",
