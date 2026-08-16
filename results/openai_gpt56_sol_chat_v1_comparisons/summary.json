@@ -1,0 +1,94 @@
+{
+  "estimand": "D_s = treatment contrast Sol_s - treatment contrast comparator_s",
+  "n_scenarios": 32,
+  "bootstrap_samples": 5000,
+  "permutation_samples": 5000,
+  "comparisons": {
+    "luna": {
+      "contrasts": {
+        "excited_positive_minus_neutral": {
+          "n_pairs": 32,
+          "mean": 4.0781,
+          "ci95": [
+            0.9373,
+            7.5625
+          ],
+          "p_perm": 0.0208,
+          "cohens_dz": 0.4154,
+          "sd": 9.8172,
+          "sol_mean_effect": 4.125,
+          "comparator_mean_effect": 0.0469
+        },
+        "skeptical_negative_minus_neutral": {
+          "n_pairs": 32,
+          "mean": 2.068,
+          "ci95": [
+            -0.7851,
+            5.1477
+          ],
+          "p_perm": 0.18116,
+          "cohens_dz": 0.239,
+          "sd": 8.6525,
+          "sol_mean_effect": -0.0187,
+          "comparator_mean_effect": -2.0867
+        },
+        "negative_preference_minus_neutral": {
+          "n_pairs": 32,
+          "mean": -3.3523,
+          "ci95": [
+            -9.4916,
+            2.481
+          ],
+          "p_perm": 0.27674,
+          "cohens_dz": -0.1936,
+          "sd": 17.3182,
+          "sol_mean_effect": -6.6164,
+          "comparator_mean_effect": -3.2641
+        }
+      }
+    },
+    "terra": {
+      "contrasts": {
+        "excited_positive_minus_neutral": {
+          "n_pairs": 32,
+          "mean": 3.968,
+          "ci95": [
+            -0.5869,
+            9.4685
+          ],
+          "p_perm": 0.14517,
+          "cohens_dz": 0.2703,
+          "sd": 14.6819,
+          "sol_mean_effect": 4.125,
+          "comparator_mean_effect": 0.157
+        },
+        "skeptical_negative_minus_neutral": {
+          "n_pairs": 32,
+          "mean": 8.806,
+          "ci95": [
+            3.846,
+            14.6877
+          ],
+          "p_perm": 0.0004,
+          "cohens_dz": 0.5534,
+          "sd": 15.9135,
+          "sol_mean_effect": -0.0187,
+          "comparator_mean_effect": -8.8247
+        },
+        "negative_preference_minus_neutral": {
+          "n_pairs": 32,
+          "mean": 9.1477,
+          "ci95": [
+            3.7722,
+            15.0932
+          ],
+          "p_perm": 0.002,
+          "cohens_dz": 0.5501,
+          "sd": 16.6278,
+          "sol_mean_effect": -6.6164,
+          "comparator_mean_effect": -15.7641
+        }
+      }
+    }
+  }
+}
