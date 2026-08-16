@@ -1,0 +1,34 @@
+{
+  "experiment_name": "oss_qwen3_8b_chat_v1",
+  "frozen_at_utc": "2026-08-16T06:21:53.582039+00:00",
+  "git_commit": "46911174746aa8aee124d90197b2627faa87476d",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "model": {
+    "id": "qwen3_8b",
+    "checkpoint": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "parameter_scale": "8B",
+    "model_family": "Qwen3",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "enable_thinking": false
+  },
+  "source_hashes": {
+    "data/manifests/oss_qwen3_8b_chat_v1/trials.jsonl": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "data/manifests/oss_qwen3_8b_chat_v1/pairing_audit.json": "12bfe1fc63508af4be6fe3351932a40a3440f917755dc35062d789ff76dc287a",
+    "data/manifests/oss_qwen3_8b_chat_v1/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/oss_qwen3_8b_chat_v1/resolved_config.json": "fd93a795a0e287f44f8f2fa7aaa81ffc19a3700bfe8555a6a08e8b143bbe5939",
+    "data/manifests/oss_model_registry/qwen3_8b.json": "95a6a657b947fce432ffa000334bc2bc2f2a4356dc56b3b3d925be5215fa4e47",
+    "data/manifests/oss_chat_v1_protocol/freeze.json": "eb1f691a538e53dfd9071d9e4460acf17e360e4dfbb3e45bdc52c17878040a7b"
+  },
+  "experiment_fingerprint": "a7cd89b31c03c8af06e444d698b0ca7eb73e986e9814a9695026b38c6abb16a2"
+}
