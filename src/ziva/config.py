@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Literal
+from typing import Any, Literal
 
 import yaml
 from dotenv import load_dotenv
@@ -54,6 +54,16 @@ class ModelConfig(BaseModel):
     min_interval_s: float = 0.0
     max_tokens: int = 600
     temperature: float | None = None   # None -> omit the parameter entirely
+    top_p: float | None = None
+    top_k: int | None = None
+    min_p: float | None = None
+    presence_penalty: float | None = None
+    # OpenAI-compatible servers such as vLLM accept these through extra_body.
+    # Keeping them out of prompt text is essential for stimulus fidelity.
+    chat_template_kwargs: dict[str, Any] = Field(default_factory=dict)
+    # Reproducibility metadata for locally served/open-weight checkpoints.
+    # This is frozen and fingerprinted but is not sent to the model.
+    runtime_metadata: dict[str, Any] = Field(default_factory=dict)
 
     @property
     def key_env(self) -> str | None:

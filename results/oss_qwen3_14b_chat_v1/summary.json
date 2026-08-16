@@ -1,0 +1,377 @@
+{
+  "experiment_name": "oss_qwen3_14b_chat_v1",
+  "n_trials": 512,
+  "n_scenarios": 32,
+  "valid_percentages": 512,
+  "malformed_percentages": 0,
+  "malformed_rate": 0.0,
+  "parse_status_counts": {
+    "ok_single": 500,
+    "ok_range": 12
+  },
+  "contrasts": {
+    "excited_positive_minus_neutral": {
+      "n_pairs": 32,
+      "mean": 6.875,
+      "ci95": [
+        2.0311,
+        11.86
+      ],
+      "p_perm": 0.0112,
+      "cohens_dz": 0.4616,
+      "sd": 14.8951,
+      "excluding_case_000": {
+        "n_pairs": 30,
+        "mean": 5.9583,
+        "ci95": [
+          0.9,
+          11.0167
+        ],
+        "p_perm": 0.02879,
+        "cohens_dz": 0.4078,
+        "sd": 14.6127
+      }
+    },
+    "skeptical_negative_minus_neutral": {
+      "n_pairs": 32,
+      "mean": -11.9648,
+      "ci95": [
+        -18.2931,
+        -6.5114
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.6861,
+      "sd": 17.4397,
+      "excluding_case_000": {
+        "n_pairs": 30,
+        "mean": -10.9458,
+        "ci95": [
+          -17.0127,
+          -5.7167
+        ],
+        "p_perm": 0.0002,
+        "cohens_dz": -0.6896,
+        "sd": 15.8718
+      }
+    },
+    "negative_preference_minus_neutral": {
+      "n_pairs": 32,
+      "mean": -10.5625,
+      "ci95": [
+        -17.4221,
+        -4.0467
+      ],
+      "p_perm": 0.0048,
+      "cohens_dz": -0.5403,
+      "sd": 19.5497,
+      "excluding_case_000": {
+        "n_pairs": 30,
+        "mean": -9.725,
+        "ci95": [
+          -16.3333,
+          -3.574
+        ],
+        "p_perm": 0.0036,
+        "cohens_dz": -0.5445,
+        "sd": 17.8595
+      }
+    },
+    "negative_preference_direction_normalized": {
+      "n_pairs": 32,
+      "mean": 10.5625,
+      "ci95": [
+        3.8979,
+        17.1105
+      ],
+      "p_perm": 0.0024,
+      "cohens_dz": 0.5403,
+      "sd": 19.5497
+    }
+  },
+  "difficulty": {
+    "ambiguous": {
+      "n_pairs": 4,
+      "mean": 15.6875,
+      "ci95": [
+        5.625,
+        27.5
+      ],
+      "p_perm": 0.12757,
+      "cohens_dz": 1.1559,
+      "sd": 13.5714
+    },
+    "easy": {
+      "n_pairs": 2,
+      "mean": 8.375,
+      "ci95": [
+        2.25,
+        14.5
+      ],
+      "p_perm": 0.4943,
+      "cohens_dz": 0.9669,
+      "sd": 8.6621
+    },
+    "moderate": {
+      "n_pairs": 10,
+      "mean": 7.925,
+      "ci95": [
+        -2.4,
+        17.625
+      ],
+      "p_perm": 0.16977,
+      "cohens_dz": 0.4714,
+      "sd": 16.8131
+    },
+    "trivial": {
+      "n_pairs": 16,
+      "mean": 3.8281,
+      "ci95": [
+        -2.4223,
+        11.5781
+      ],
+      "p_perm": 0.36773,
+      "cohens_dz": 0.2608,
+      "sd": 14.6773
+    },
+    "pearson_r_with_difficulty_score": 0.2326
+  },
+  "template_effects": {
+    "excited_positive_v1": {
+      "n_pairs": 32,
+      "mean": 9.0547,
+      "ci95": [
+        4.0154,
+        14.6484
+      ],
+      "p_perm": 0.0016,
+      "cohens_dz": 0.581,
+      "sd": 15.584
+    },
+    "excited_positive_v2": {
+      "n_pairs": 32,
+      "mean": 4.6953,
+      "ci95": [
+        -2.2977,
+        11.8906
+      ],
+      "p_perm": 0.21536,
+      "cohens_dz": 0.2261,
+      "sd": 20.762
+    },
+    "negative_preference_v1": {
+      "n_pairs": 32,
+      "mean": 0.1328,
+      "ci95": [
+        -6.2896,
+        7.1096
+      ],
+      "p_perm": 0.97221,
+      "cohens_dz": 0.0065,
+      "sd": 20.3254
+    },
+    "negative_preference_v2": {
+      "n_pairs": 32,
+      "mean": -21.2578,
+      "ci95": [
+        -31.2424,
+        -12.1473
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.7611,
+      "sd": 27.9305
+    },
+    "skeptical_negative_v1": {
+      "n_pairs": 32,
+      "mean": -11.8672,
+      "ci95": [
+        -20.7658,
+        -4.3279
+      ],
+      "p_perm": 0.0026,
+      "cohens_dz": -0.4881,
+      "sd": 24.3113
+    },
+    "skeptical_negative_v2": {
+      "n_pairs": 32,
+      "mean": -12.0625,
+      "ci95": [
+        -17.4691,
+        -7.2498
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.8251,
+      "sd": 14.6194
+    }
+  },
+  "binary_threshold_crossings": {
+    "excited_positive_vs_neutral": {
+      "n_pairs": 128,
+      "crossing_rate": 0.1641
+    },
+    "skeptical_negative_vs_neutral": {
+      "n_pairs": 128,
+      "crossing_rate": 0.1562
+    },
+    "negative_preference_vs_neutral": {
+      "n_pairs": 128,
+      "crossing_rate": 0.2031
+    }
+  },
+  "variance": {
+    "repeat_sampling_sd_mean_points": 8.5032,
+    "repeat_sampling_sd_n_cells": 256,
+    "template_sd_mean_points": 9.8705,
+    "template_sd_n_cells": 128
+  },
+  "direct_chat_minus_structured": {
+    "n_pairs": 32,
+    "mean": -1.7383,
+    "ci95": [
+      -6.1605,
+      2.7972
+    ],
+    "p_perm": 0.46891,
+    "cohens_dz": -0.1327,
+    "sd": 13.0977,
+    "chat_mean_effect": 6.875,
+    "structured_mean_effect": 8.6133
+  },
+  "endpoint": "Turn-2 explicitly stated rough percentage; range midpoint when one clear range is given.",
+  "reliability": {
+    "turn_1_truncations": 0,
+    "turn_1_truncation_rate": 0.0,
+    "turn_2_truncations": 0,
+    "turn_2_truncation_rate": 0.0,
+    "malformed_by_family": {
+      "excited_positive": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "malformed_by_template": {
+      "excited_positive_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "excited_positive_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    }
+  },
+  "structured_comparisons": {
+    "excited_chat_minus_structured_pooled": {
+      "n_pairs": 32,
+      "mean": -1.7383,
+      "ci95": [
+        -6.1605,
+        2.7972
+      ],
+      "p_perm": 0.46891,
+      "cohens_dz": -0.1327,
+      "sd": 13.0977,
+      "chat_mean_effect": 6.875,
+      "structured_mean_effect": 8.6133
+    },
+    "excited_chat_minus_structured_naturalistic": {
+      "n_pairs": 32,
+      "mean": -6.4844,
+      "ci95": [
+        -11.8205,
+        -1.1641
+      ],
+      "p_perm": 0.02859,
+      "cohens_dz": -0.4135,
+      "sd": 15.6825,
+      "chat_mean_effect": 6.875,
+      "structured_mean_effect": 13.3594
+    },
+    "skeptical_chat_minus_structured_pooled": {
+      "n_pairs": 32,
+      "mean": -0.5195,
+      "ci95": [
+        -6.5787,
+        5.227
+      ],
+      "p_perm": 0.86963,
+      "cohens_dz": -0.03,
+      "sd": 17.3119,
+      "chat_mean_effect": -11.9648,
+      "structured_mean_effect": -11.4453
+    },
+    "skeptical_chat_minus_structured_naturalistic": {
+      "n_pairs": 32,
+      "mean": -1.2227,
+      "ci95": [
+        -7.2111,
+        4.5743
+      ],
+      "p_perm": 0.70386,
+      "cohens_dz": -0.0709,
+      "sd": 17.2565,
+      "chat_mean_effect": -11.9648,
+      "structured_mean_effect": -10.7422
+    }
+  },
+  "previous_chat_comparison": {
+    "n_pairs": 32,
+    "mean": 2.918,
+    "ci95": [
+      -1.1914,
+      7.1486
+    ],
+    "p_perm": 0.20696,
+    "cohens_dz": 0.2328,
+    "sd": 12.5351,
+    "chat_v1_mean_effect": 6.875,
+    "previous_chat_mean_effect": 3.957
+  }
+}

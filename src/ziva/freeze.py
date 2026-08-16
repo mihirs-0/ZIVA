@@ -129,6 +129,12 @@ def experiment_fingerprint(cfg: ExperimentConfig, models: list[ModelConfig]) -> 
                 "base_url": m.base_url,
                 "supports": m.supports.model_dump(),
                 "temperature": m.temperature,
+                "top_p": m.top_p,
+                "top_k": m.top_k,
+                "min_p": m.min_p,
+                "presence_penalty": m.presence_penalty,
+                "chat_template_kwargs": m.chat_template_kwargs,
+                "runtime_metadata": m.runtime_metadata,
                 "max_tokens": m.max_tokens,
             }
             for m in models

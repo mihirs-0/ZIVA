@@ -1,0 +1,11 @@
+{
+  "experiment_name": "pilot_qwen3_14b_chat_percentage",
+  "experiment_fingerprint": "17e594447a2ddd336961548e242e5158be45370af8537034f68c072846c7ec87",
+  "git_commit": "a0b591ba8afeef6c9b11656b93ca42ff3f37495c",
+  "stage": "neutral engineering smoke audit assembly",
+  "treatment_contrasts_inspected": false,
+  "error_type": "TypeError",
+  "error": "'ChatPercentageTrial' object is not subscriptable",
+  "cause": "The audit code indexed a typed manifest trial as a dictionary after the two neutral generations completed.",
+  "disposition": "Superseded after a bookkeeping-only fix; implementation tests and a new freeze are required before retrying the neutral smoke."
+}

@@ -1,0 +1,49 @@
+{
+  "comparison": "GPT-5.6 Terra minus GPT-5.6 Luna under frozen ZIVA-Chat-v1",
+  "n_scenarios": 32,
+  "estimand": "D_s = treatment contrast Terra_s - treatment contrast Luna_s",
+  "bootstrap_samples": 5000,
+  "permutation_samples": 5000,
+  "seed": 0,
+  "contrasts": {
+    "excited_positive_minus_neutral": {
+      "n_pairs": 32,
+      "mean": 0.1101,
+      "ci95": [
+        -3.4767,
+        3.789
+      ],
+      "p_perm": 0.95301,
+      "cohens_dz": 0.0103,
+      "sd": 10.6396,
+      "terra_mean_effect": 0.157,
+      "luna_mean_effect": 0.0469
+    },
+    "skeptical_negative_minus_neutral": {
+      "n_pairs": 32,
+      "mean": -6.7379,
+      "ci95": [
+        -11.675,
+        -2.5486
+      ],
+      "p_perm": 0.005,
+      "cohens_dz": -0.4985,
+      "sd": 13.5173,
+      "terra_mean_effect": -8.8247,
+      "luna_mean_effect": -2.0867
+    },
+    "negative_preference_minus_neutral": {
+      "n_pairs": 32,
+      "mean": -12.5,
+      "ci95": [
+        -20.1989,
+        -5.3381
+      ],
+      "p_perm": 0.0028,
+      "cohens_dz": -0.5684,
+      "sd": 21.9904,
+      "terra_mean_effect": -15.7641,
+      "luna_mean_effect": -3.2641
+    }
+  }
+}

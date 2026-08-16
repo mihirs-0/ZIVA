@@ -1,0 +1,32 @@
+{
+  "experiment_name": "oss_ministral3_8b_chat_v1",
+  "frozen_at_utc": "2026-08-16T06:58:45.913373+00:00",
+  "git_commit": "0cdae046f5ab1d5892307234763fca1330509779",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "model": {
+    "id": "ministral3_8b",
+    "checkpoint": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+    "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+    "tokenizer_revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+    "parameter_scale": "8B",
+    "model_family": "Ministral-3",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "chat_template_kwargs": {},
+    "enable_thinking": false
+  },
+  "source_hashes": {
+    "data/manifests/oss_ministral3_8b_chat_v1/trials.jsonl": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "data/manifests/oss_ministral3_8b_chat_v1/pairing_audit.json": "12bfe1fc63508af4be6fe3351932a40a3440f917755dc35062d789ff76dc287a",
+    "data/manifests/oss_ministral3_8b_chat_v1/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/oss_ministral3_8b_chat_v1/resolved_config.json": "41408608a26773408fe6caebca90adbae0aafbc5f4c54681700256ba7ef9832a",
+    "data/manifests/oss_model_registry/ministral3_8b.json": "5c3102c20dd09214ce4cdad1ddf9cc6fd4f229555cdae9a45b3b56e5839ecb8e",
+    "data/manifests/oss_chat_v1_protocol/freeze.json": "eb1f691a538e53dfd9071d9e4460acf17e360e4dfbb3e45bdc52c17878040a7b"
+  },
+  "experiment_fingerprint": "32674a3a3edb93c506cebeb33185daeee4008788df6a9abba760dcc98df72dc6"
+}

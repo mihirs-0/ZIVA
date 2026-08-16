@@ -1,0 +1,128 @@
+{
+  "direct_model_comparison": {
+    "found": {
+      "gpt_5_2": [],
+      "luna": []
+    },
+    "searched": {
+      "gpt_5_2": [
+        "results/pilot_b52/scenario_level_diffs.csv",
+        "data/raw/pilot_b52"
+      ],
+      "luna": [
+        "results/pilot/scenario_level_diffs.csv",
+        "data/raw/pilot"
+      ]
+    },
+    "status": "not_run_missing_historical_inputs"
+  },
+  "experiment": "pilot_qwen3_14b",
+  "experiment_fingerprint": "987fffbb48217d135952cfb3888fb758e4f0baabe4755826fb06b6058a084c79",
+  "first_execution_utc": "2026-08-16T01:46:59.812102Z",
+  "full_record_audit": {
+    "enable_thinking_false_records": 768,
+    "exact_prompt_hash_records": 768,
+    "parse_status_counts": {
+      "ok": 768
+    },
+    "records": 768,
+    "think_tag_records": 0
+  },
+  "full_run": {
+    "already_done_skipped": 12,
+    "budget_usd": 1.0,
+    "executed_ok": 756,
+    "executed_with_errors": 0,
+    "experiment_fingerprint": "987fffbb48217d135952cfb3888fb758e4f0baabe4755826fb06b6058a084c79",
+    "experiment_name": "pilot_qwen3_14b",
+    "experiment_total_spend_usd_estimate": 0.0,
+    "finished_at_utc": "2026-08-16T01:52:28Z",
+    "prior_spend_usd": 0.0,
+    "ran_dirty": false,
+    "retried_failed_trials": 0,
+    "run_spend_usd_estimate": 0.0,
+    "stopped_for_budget": false,
+    "total_trials": 768
+  },
+  "gpu_inventory": [
+    "0, NVIDIA GeForce RTX 3090, 580.173.02, 24576 MiB",
+    "1, NVIDIA GeForce RTX 3090, 580.173.02, 24576 MiB"
+  ],
+  "last_execution_utc": "2026-08-16T01:52:28.271439Z",
+  "manifest_trials": 768,
+  "model_config": {
+    "api_key_env": "VLLM_API_KEY",
+    "base_url": "http://127.0.0.1:8000/v1",
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "id": "qwen3_14b",
+    "max_concurrent": 8,
+    "max_tokens": 2000,
+    "min_interval_s": 0.0,
+    "min_p": 0.0,
+    "model": "Qwen/Qwen3-14B",
+    "presence_penalty": 0.0,
+    "pricing": {
+      "input_per_mtok": 0.0,
+      "output_per_mtok": 0.0
+    },
+    "provider": "openai_compatible",
+    "runtime_metadata": {
+      "checkpoint": "Qwen/Qwen3-14B",
+      "container_image": "vllm/vllm-openai@sha256:04563c302537a91aa49ebdfbceda96111c5712275999b7e8804fa598f0b5641d",
+      "cuda_runtime": "13.0",
+      "framework": "vllm",
+      "framework_version": "0.20.0",
+      "generation_config_source": "vllm",
+      "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+      "gpu_driver": "580.173.02",
+      "gpu_memory_utilization": 0.9,
+      "max_model_len": 8192,
+      "pytorch_version": "2.11.0+cu130",
+      "quantization": "none",
+      "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+      "tensor_parallel_size": 2,
+      "thinking_mode": "disabled via chat_template_kwargs enable_thinking=false",
+      "transformers_version": "5.6.2",
+      "weights_dtype": "bfloat16"
+    },
+    "supports": {
+      "images": false,
+      "json_mode": true,
+      "temperature": true,
+      "web_search": false
+    },
+    "temperature": 0.7,
+    "top_k": 20,
+    "top_p": 0.8
+  },
+  "physical_scenarios": 32,
+  "pooled_binary_flip_rate": 0.140625,
+  "smoke": {
+    "acceptance": {
+      "no_think_tags": true,
+      "parse_rate_at_least_0_90": true,
+      "prompt_fidelity_ok": true,
+      "settings_ok": true
+    },
+    "enable_thinking_false_recorded": true,
+    "exact_outbound_messages_hash_match": true,
+    "n_trials": 12,
+    "parse_status_counts": {
+      "ok": 12
+    },
+    "parse_success_rate": 1.0,
+    "passed": true,
+    "purpose": "engineering smoke only; no treatment effects inspected",
+    "system_prompt_exact_match": true,
+    "think_tag_count": 0
+  },
+  "smoke_max_gpu_utilization_percent": {
+    "0": 100,
+    "1": 100
+  },
+  "vllm_endpoint_version": {
+    "version": "0.20.0"
+  }
+}

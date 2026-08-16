@@ -1,0 +1,72 @@
+{
+  "status": "READY",
+  "key": "gpt_oss_20b",
+  "checkpoint": "openai/gpt-oss-20b",
+  "revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+  "pid": 108792,
+  "command": [
+    "/home/mihir/tg/vllmenv/bin/vllm",
+    "serve",
+    "openai/gpt-oss-20b",
+    "--revision",
+    "6cee5e81ee83917806bbde320786a8fb61efebee",
+    "--served-model-name",
+    "openai/gpt-oss-20b",
+    "--dtype",
+    "bfloat16",
+    "--tensor-parallel-size",
+    "2",
+    "--max-model-len",
+    "4096",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--generation-config",
+    "vllm",
+    "--reasoning-parser",
+    "openai_gptoss",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000"
+  ],
+  "started_at_utc": "2026-08-16T20:32:21.784978+00:00",
+  "dtype": "bfloat16",
+  "quantization": "checkpoint-native MXFP4 MoE weights",
+  "tensor_parallel_size": 2,
+  "max_model_len": 4096,
+  "gpu_memory_utilization": 0.9,
+  "versions": {
+    "vllm": "0.26.0",
+    "torch": "2.11.0",
+    "transformers": "5.14.1",
+    "tokenizers": "0.22.2",
+    "python": "3.12.13"
+  },
+  "environment_overrides": {
+    "HF_HUB_DISABLE_XET": "1",
+    "HF_HUB_OFFLINE": "1",
+    "VLLM_USE_FLASHINFER_SAMPLER": "0"
+  },
+  "chat_template": "official checkpoint Harmony template",
+  "reasoning_parser": "openai_gptoss",
+  "log_path": "data/manifests/oss_model_registry/gpt_oss_20b_vllm.log",
+  "ready_at_utc": "2026-08-16T20:33:21.824559+00:00",
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3090",
+      "uuid": "GPU-7d007960-54ef-9085-52e1-20babf88702b",
+      "driver_version": "580.173.02",
+      "memory_total_mib": 24576,
+      "memory_used_mib": 22317
+    },
+    {
+      "index": 1,
+      "name": "NVIDIA GeForce RTX 3090",
+      "uuid": "GPU-33cff1f4-659c-cb6e-a994-bef773e154ca",
+      "driver_version": "580.173.02",
+      "memory_total_mib": 24576,
+      "memory_used_mib": 22319
+    }
+  ]
+}

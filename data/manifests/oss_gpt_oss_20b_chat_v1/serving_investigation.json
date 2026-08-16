@@ -1,0 +1,112 @@
+{
+  "status": "PROTOCOL_INCOMPATIBLE",
+  "behavioral_interpretation": "NOT_ASSESSED",
+  "experiment_name": "oss_gpt_oss_20b_chat_v1",
+  "recorded_at_utc": "2026-08-16T20:50:58Z",
+  "checkpoint": "openai/gpt-oss-20b",
+  "revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+  "investigation_scope": "Serving and response-channel compatibility only; no treatment effects inspected and no additional inference performed.",
+  "official_checkpoint_contract": {
+    "response_format": "Harmony",
+    "recommended_chat_template": "The checkpoint's official chat_template.jinja, or a serving implementation that natively renders the equivalent OpenAI Harmony format.",
+    "checkpoint_chat_template_sha256": "a4c9919cbbd4acdd51ccffe22da049264b1b73e59055fa58811a99efbd7c8146",
+    "checkpoint_model_card_sha256": "03c2fcf292549176757b85c911e7dcf527aef3e4241d64b6caec94af3ecf3ac2",
+    "default_reasoning_effort": "medium",
+    "supported_reasoning_efforts": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "reasoning_can_be_disabled": false,
+    "minimum_supported_reasoning_effort": "low"
+  },
+  "vllm_0_26_0_behavior": {
+    "native_gpt_oss_renderer_used": true,
+    "jinja_template_bypassed_for_gpt_oss": true,
+    "renderer": "vllm.renderers.online_renderer.OnlineRenderer._make_request_with_harmony",
+    "harmony_library": "openai_harmony",
+    "reasoning_none_result": "rejected with ValueError: Harmony does not support reasoning_effort='none'",
+    "omitted_reasoning_effort_result": "OpenAI Harmony SystemContent defaulted to ReasoningEffort.MEDIUM",
+    "ziva_system_message_mapping": "The first system message, 'You are a helpful assistant.', was preserved as Harmony developer instructions, matching the checkpoint template's role mapping.",
+    "rendered_previous_preamble": {
+      "system_model_identity": "You are ChatGPT, a large language model trained by OpenAI.",
+      "system_reasoning_effort": "Medium",
+      "developer_instructions": "You are a helpful assistant."
+    },
+    "source_hashes": {
+      "vllm/renderers/online_renderer.py": "dbc8e032939cdb41c0c0c1f2e07d42c2bb6d9c59b16e5c195973f81826dcd5e9",
+      "vllm/entrypoints/openai/parser/harmony_utils.py": "570b3069b8ccea4ce9e9833057f9800cd1bf1e0c2dba207ed1f84e1ac7d33435",
+      "vllm/entrypoints/openai/chat_completion/serving.py": "860e27d548ec7bb0497a46e0356a5acc5500998944cffa5e67e336041693c067",
+      "vllm/entrypoints/openai/chat_completion/protocol.py": "aea283940efbe7b8c91aed6e4e146a9d7f714095cf46c6df3080f00e05d3277c",
+      "vllm/parser/harmony.py": "f9df2309f670c425f2de867fce196cc9d882a82b83dc8055314ae2144eac43fe"
+    }
+  },
+  "token_accounting": {
+    "max_tokens_scope": "All generated token IDs, including Harmony analysis/control and final-answer tokens.",
+    "completion_tokens_scope": "len(output.token_ids), not final-answer content tokens alone.",
+    "reasoning_response_field": "choices[].message.reasoning",
+    "final_response_field": "choices[].message.content",
+    "ziva_recording_limit": "The frozen LocalVLLMChatClient stored message.content but did not retain message.reasoning or the complete raw HTTP payload.",
+    "consequence": "An analysis-channel generation can exhaust max_tokens while message.content remains empty."
+  },
+  "failed_gate_output_inspection": {
+    "source": "data/manifests/oss_gpt_oss_20b_chat_v1/neutral_smoke.json",
+    "records_inspected": 16,
+    "turn_1_length_records": 5,
+    "turn_1_empty_final_content_records": 3,
+    "turn_2_length_records": 16,
+    "turn_2_empty_final_content_records": 16,
+    "selected_exact_records": [
+      {
+        "trial_id": "tcp_a792d4f93692f368",
+        "scenario_id": "scn_0004_trivial_invisible",
+        "turn_1_finish_reason": "stop",
+        "turn_1_output_tokens": 973,
+        "turn_1_exact_opening": "**Short answer:** No – the Moon is far below the horizon and you won’t be able to see it.",
+        "turn_2_finish_reason": "length",
+        "turn_2_output_tokens": 16,
+        "turn_2_exact_content": ""
+      },
+      {
+        "trial_id": "tcp_37023122dbab3ac8",
+        "scenario_id": "scn_0008_night_easy_visible",
+        "turn_1_finish_reason": "stop",
+        "turn_1_output_tokens": 1483,
+        "turn_1_exact_opening": "**Short answer:** Yes – the Moon will be easily visible to an unaided eye at that time and place.",
+        "turn_2_finish_reason": "length",
+        "turn_2_output_tokens": 16,
+        "turn_2_exact_content": ""
+      },
+      {
+        "trial_id": "tcp_70ed68e53121792f",
+        "scenario_id": "case_000_davis_crescent_t0",
+        "turn_1_finish_reason": "length",
+        "turn_1_output_tokens": 2048,
+        "turn_1_exact_content": "**Short answer:** No – the Moon will not be visible to the unaided eye at that time.\n\n---\n\n## Why the Moon is invisible in daylight\n\n| Item | What the app says | What it means for visibility |\n|------|-------------------|------------------------------|\n| **Moon illumination** | 5.95 % | Very small crescent. The Moon",
+        "turn_2_finish_reason": "length",
+        "turn_2_output_tokens": 16,
+        "turn_2_exact_content": ""
+      },
+      {
+        "trial_id": "tcp_a00c7e02f838a9ba",
+        "scenario_id": "case_000_davis_crescent_t0",
+        "turn_1_finish_reason": "length",
+        "turn_1_output_tokens": 2048,
+        "turn_1_exact_content": "",
+        "turn_2_finish_reason": "length",
+        "turn_2_output_tokens": 16,
+        "turn_2_exact_content": ""
+      }
+    ],
+    "raw_reasoning_recoverable_from_failed_attempt": false,
+    "raw_reasoning_limitation": "The server exposed reasoning separately, but the frozen client discarded that field before writing the gate record. The exact generated reasoning/control token text from the failed attempt therefore cannot be reconstructed without rerunning it."
+  },
+  "decision": {
+    "minimum_effort_low_is_non_reasoning": false,
+    "runtime_only_non_reasoning_mode_exists": false,
+    "neutral_gate_rerun_performed": false,
+    "full_512_trial_run_performed": false,
+    "classification": "GPT-OSS-20B is incompatible with the frozen 16-token Turn-2 Chat-v1 interface because its supported Harmony interface always reasons and counts those tokens against the unchanged cap.",
+    "reason_for_stop": "The user required a supported ordinary non-reasoning configuration before rerunning. Harmony offers no such configuration; changing token caps, prompts, parser, or gate thresholds was prohibited."
+  }
+}

@@ -1,0 +1,1299 @@
+{
+  "experiment_name": "pilot_qwen3_14b_chat",
+  "n_scenarios": 32,
+  "n_prompts": 256,
+  "n_continuation_pairs": 4,
+  "n_teacher_forced_contrasts": 1024,
+  "primary_normalization": "total_sequence_logprob_margin",
+  "robustness_normalization": "per_token_mean_logprob_margin",
+  "endpoint_warning": "Contrastive margins are log-likelihood scores, not calibrated probabilities.",
+  "anchors": {
+    "purpose": "engineering construct sanity only; no treatment effects inspected",
+    "below_horizon_scenario": "scn_0004_trivial_invisible",
+    "bright_night_scenario": "scn_0008_night_easy_visible",
+    "below_horizon_margin": -3.449395663337782,
+    "bright_night_margin": 3.958008068264462,
+    "below_horizon_favors_not_visible": true,
+    "bright_night_favors_visible": true,
+    "ordered_sensibly": true,
+    "passed": true,
+    "scores": [
+      {
+        "scenario_id": "scn_0008_night_easy_visible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "c33528844f64c6d1dc0182d69dc272c0a14a4e88645ffe653751d3aabdf7ae4f",
+        "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "answer_yes_no",
+        "visible_continuation": "I think the answer is yes.",
+        "not_visible_continuation": "I think the answer is no.",
+        "context_token_count": 275,
+        "visible_token_count": 7,
+        "visible_token_strs": [
+          "I",
+          "Ġthink",
+          "Ġthe",
+          "Ġanswer",
+          "Ġis",
+          "Ġyes",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -19.104150772094727,
+          -0.10389521718025208,
+          -6.926357746124268,
+          -2.100545883178711,
+          -0.005906390026211739,
+          -5.160276889801025,
+          -11.85407829284668
+        ],
+        "visible_total_logprob": -45.255211191251874,
+        "visible_mean_logprob": -6.4650301701788395,
+        "not_visible_token_count": 7,
+        "not_visible_token_strs": [
+          "I",
+          "Ġthink",
+          "Ġthe",
+          "Ġanswer",
+          "Ġis",
+          "Ġno",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -19.229084014892578,
+          -0.10499550402164459,
+          -7.170304298400879,
+          -2.21059513092041,
+          -0.005906508769840002,
+          -16.660593032836914,
+          -2.111638307571411
+        ],
+        "not_visible_total_logprob": -47.49311679741368,
+        "not_visible_mean_logprob": -6.784730971059097,
+        "total_margin": 2.237905606161803,
+        "per_token_margin": 0.3197008008802573
+      },
+      {
+        "scenario_id": "scn_0008_night_easy_visible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "c33528844f64c6d1dc0182d69dc272c0a14a4e88645ffe653751d3aabdf7ae4f",
+        "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "overall_visible",
+        "visible_continuation": "Overall, it seems visible.",
+        "not_visible_continuation": "Overall, it seems invisible.",
+        "context_token_count": 275,
+        "visible_token_count": 6,
+        "visible_token_strs": [
+          "Overall",
+          ",",
+          "Ġit",
+          "Ġseems",
+          "Ġvisible",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -16.479084014892578,
+          -4.0531076592742465e-06,
+          -5.094627857208252,
+          -1.956089735031128,
+          -23.17845916748047,
+          -5.0276031494140625
+        ],
+        "visible_total_logprob": -51.73586797713415,
+        "visible_mean_logprob": -8.622644662855691,
+        "not_visible_token_count": 6,
+        "not_visible_token_strs": [
+          "Overall",
+          ",",
+          "Ġit",
+          "Ġseems",
+          "Ġinvisible",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -16.479084014892578,
+          -4.0531076592742465e-06,
+          -5.094627857208252,
+          -1.956089735031128,
+          -27.80345916748047,
+          -1.931282639503479
+        ],
+        "not_visible_total_logprob": -53.264547467223565,
+        "not_visible_mean_logprob": -8.877424577870594,
+        "total_margin": 1.5286794900894165,
+        "per_token_margin": 0.25477991501490216
+      },
+      {
+        "scenario_id": "scn_0008_night_easy_visible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "c33528844f64c6d1dc0182d69dc272c0a14a4e88645ffe653751d3aabdf7ae4f",
+        "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "answer_can",
+        "visible_continuation": "My answer is that you can spot it.",
+        "not_visible_continuation": "My answer is that you cannot spot it.",
+        "context_token_count": 275,
+        "visible_token_count": 9,
+        "visible_token_strs": [
+          "My",
+          "Ġanswer",
+          "Ġis",
+          "Ġthat",
+          "Ġyou",
+          "Ġcan",
+          "Ġspot",
+          "Ġit",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -26.854084014892578,
+          -2.452075242996216,
+          -0.20400801301002502,
+          -5.285105228424072,
+          -3.2636849880218506,
+          -7.989933013916016,
+          -4.389991760253906,
+          -4.758945465087891,
+          -1.8688613176345825
+        ],
+        "visible_total_logprob": -57.06668904423714,
+        "visible_mean_logprob": -6.34074322713746,
+        "not_visible_token_count": 9,
+        "not_visible_token_strs": [
+          "My",
+          "Ġanswer",
+          "Ġis",
+          "Ġthat",
+          "Ġyou",
+          "Ġcannot",
+          "Ġspot",
+          "Ġit",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -26.854084014892578,
+          -2.452075242996216,
+          -0.20400801301002502,
+          -5.285105228424072,
+          -3.2636849880218506,
+          -16.427433013916016,
+          -4.435607433319092,
+          -4.51173210144043,
+          -1.0007381439208984
+        ],
+        "not_visible_total_logprob": -64.43446817994118,
+        "not_visible_mean_logprob": -7.1593853533267975,
+        "total_margin": 7.3677791357040405,
+        "per_token_margin": 0.8186421261893377
+      },
+      {
+        "scenario_id": "scn_0008_night_easy_visible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "c33528844f64c6d1dc0182d69dc272c0a14a4e88645ffe653751d3aabdf7ae4f",
+        "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "probably_can",
+        "visible_continuation": "You probably can see it.",
+        "not_visible_continuation": "You probably cannot see it.",
+        "context_token_count": 275,
+        "visible_token_count": 6,
+        "visible_token_strs": [
+          "You",
+          "Ġprobably",
+          "Ġcan",
+          "Ġsee",
+          "Ġit",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -7.854084014892578,
+          -9.026642799377441,
+          -8.395210266113281,
+          -0.07912371307611465,
+          -14.000005722045898,
+          -4.97114372253418
+        ],
+        "visible_total_logprob": -44.326210238039494,
+        "visible_mean_logprob": -7.387701706339915,
+        "not_visible_token_count": 6,
+        "not_visible_token_strs": [
+          "You",
+          "Ġprobably",
+          "Ġcannot",
+          "Ġsee",
+          "Ġit",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -7.854084014892578,
+          -9.026642799377441,
+          -21.27021026611328,
+          -0.012216034345328808,
+          -9.625107765197754,
+          -1.2356173992156982
+        ],
+        "not_visible_total_logprob": -49.02387827914208,
+        "not_visible_mean_logprob": -8.170646379857013,
+        "total_margin": 4.697668041102588,
+        "per_token_margin": 0.7829446735170977
+      },
+      {
+        "scenario_id": "scn_0004_trivial_invisible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "0b45e2ee93caa3595c1efab315c2c74558bc1caaa5628afb7b3675e02557af44",
+        "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "answer_yes_no",
+        "visible_continuation": "I think the answer is yes.",
+        "not_visible_continuation": "I think the answer is no.",
+        "context_token_count": 273,
+        "visible_token_count": 7,
+        "visible_token_strs": [
+          "I",
+          "Ġthink",
+          "Ġthe",
+          "Ġanswer",
+          "Ġis",
+          "Ġyes",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -16.504606246948242,
+          -1.8072348833084106,
+          -2.449042797088623,
+          -1.362360954284668,
+          -0.11616832762956619,
+          -12.806771278381348,
+          -9.564014434814453
+        ],
+        "visible_total_logprob": -44.61019892245531,
+        "visible_mean_logprob": -6.372885560350759,
+        "not_visible_token_count": 7,
+        "not_visible_token_strs": [
+          "I",
+          "Ġthink",
+          "Ġthe",
+          "Ġanswer",
+          "Ġis",
+          "Ġno",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -16.504606246948242,
+          -1.8072348833084106,
+          -2.449042797088623,
+          -1.362360954284668,
+          -0.11616832762956619,
+          -4.1817708015441895,
+          -6.049725532531738
+        ],
+        "not_visible_total_logprob": -32.47090954333544,
+        "not_visible_mean_logprob": -4.638701363333634,
+        "total_margin": -12.139289379119873,
+        "per_token_margin": -1.7341841970171252
+      },
+      {
+        "scenario_id": "scn_0004_trivial_invisible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "0b45e2ee93caa3595c1efab315c2c74558bc1caaa5628afb7b3675e02557af44",
+        "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "overall_visible",
+        "visible_continuation": "Overall, it seems visible.",
+        "not_visible_continuation": "Overall, it seems invisible.",
+        "context_token_count": 273,
+        "visible_token_count": 6,
+        "visible_token_strs": [
+          "Overall",
+          ",",
+          "Ġit",
+          "Ġseems",
+          "Ġvisible",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -15.379607200622559,
+          -1.0847986231965479e-05,
+          -2.1246097087860107,
+          -0.30023202300071716,
+          -22.731990814208984,
+          -5.296276569366455
+        ],
+        "visible_total_logprob": -45.83272716397096,
+        "visible_mean_logprob": -7.638787860661826,
+        "not_visible_token_count": 6,
+        "not_visible_token_strs": [
+          "Overall",
+          ",",
+          "Ġit",
+          "Ġseems",
+          "Ġinvisible",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -15.379607200622559,
+          -1.0847986231965479e-05,
+          -2.1246097087860107,
+          -0.30023202300071716,
+          -22.731990814208984,
+          -3.186899185180664
+        ],
+        "not_visible_total_logprob": -43.72334977978517,
+        "not_visible_mean_logprob": -7.287224963297528,
+        "total_margin": -2.109377384185791,
+        "per_token_margin": -0.3515628973642979
+      },
+      {
+        "scenario_id": "scn_0004_trivial_invisible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "0b45e2ee93caa3595c1efab315c2c74558bc1caaa5628afb7b3675e02557af44",
+        "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "answer_can",
+        "visible_continuation": "My answer is that you can spot it.",
+        "not_visible_continuation": "My answer is that you cannot spot it.",
+        "context_token_count": 273,
+        "visible_token_count": 9,
+        "visible_token_strs": [
+          "My",
+          "Ġanswer",
+          "Ġis",
+          "Ġthat",
+          "Ġyou",
+          "Ġcan",
+          "Ġspot",
+          "Ġit",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -23.692106246948242,
+          -2.862154245376587,
+          -0.21866461634635925,
+          -2.928392171859741,
+          -2.31329083442688,
+          -10.402939796447754,
+          -6.88661003112793,
+          -3.659421920776367,
+          -2.184519052505493
+        ],
+        "visible_total_logprob": -55.14809891581535,
+        "visible_mean_logprob": -6.127566546201706,
+        "not_visible_token_count": 9,
+        "not_visible_token_strs": [
+          "My",
+          "Ġanswer",
+          "Ġis",
+          "Ġthat",
+          "Ġyou",
+          "Ġcannot",
+          "Ġspot",
+          "Ġit",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -23.692106246948242,
+          -2.862154245376587,
+          -0.21866461634635925,
+          -2.928392171859741,
+          -2.31329083442688,
+          -12.527939796447754,
+          -3.913745403289795,
+          -8.125563621520996,
+          -1.1331485509872437
+        ],
+        "not_visible_total_logprob": -57.7150054872036,
+        "not_visible_mean_logprob": -6.412778387467067,
+        "total_margin": 2.5669065713882446,
+        "per_token_margin": 0.2852118412653608
+      },
+      {
+        "scenario_id": "scn_0004_trivial_invisible",
+        "treatment_id": "neutral_v1",
+        "treatment_family": "neutral",
+        "preferred_outcome": null,
+        "expected_outcome": null,
+        "system": "You are a helpful assistant.",
+        "user_text": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+        "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+        "prompt_hash": "0b45e2ee93caa3595c1efab315c2c74558bc1caaa5628afb7b3675e02557af44",
+        "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+        "difficulty_class": "trivial",
+        "difficulty_score": 0.0,
+        "continuation_pair_id": "probably_can",
+        "visible_continuation": "You probably can see it.",
+        "not_visible_continuation": "You probably cannot see it.",
+        "context_token_count": 273,
+        "visible_token_count": 6,
+        "visible_token_strs": [
+          "You",
+          "Ġprobably",
+          "Ġcan",
+          "Ġsee",
+          "Ġit",
+          "."
+        ],
+        "visible_token_logprobs": [
+          -8.504607200622559,
+          -5.967138290405273,
+          -13.423771858215332,
+          -9.189355850219727,
+          -6.881501197814941,
+          -3.8079895973205566
+        ],
+        "visible_total_logprob": -47.77436399459839,
+        "visible_mean_logprob": -7.9623939990997314,
+        "not_visible_token_count": 6,
+        "not_visible_token_strs": [
+          "You",
+          "Ġprobably",
+          "Ġcannot",
+          "Ġsee",
+          "Ġit",
+          "."
+        ],
+        "not_visible_token_logprobs": [
+          -8.60256576538086,
+          -6.109179973602295,
+          -10.298775672912598,
+          -0.014815661124885082,
+          -17.625,
+          -3.008204460144043
+        ],
+        "not_visible_total_logprob": -45.65854153316468,
+        "not_visible_mean_logprob": -7.609756922194113,
+        "total_margin": -2.1158224614337087,
+        "per_token_margin": -0.3526370769056184
+      }
+    ]
+  },
+  "normalizations": {
+    "per_token_mean_logprob_margin": {
+      "contrasts": {
+        "excited_positive_minus_neutral": {
+          "n_pairs": 32,
+          "mean": -0.2161,
+          "ci95": [
+            -0.2694,
+            -0.1601
+          ],
+          "p_perm": 0.0002,
+          "cohens_dz": -1.3378,
+          "sd": 0.1615,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": -0.2182,
+            "ci95": [
+              -0.2756,
+              -0.1576
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.31,
+            "sd": 0.1665
+          }
+        },
+        "skeptical_negative_minus_neutral": {
+          "n_pairs": 32,
+          "mean": 0.0014,
+          "ci95": [
+            -0.0117,
+            0.0127
+          ],
+          "p_perm": 0.83963,
+          "cohens_dz": 0.0386,
+          "sd": 0.036,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": 0.0005,
+            "ci95": [
+              -0.0127,
+              0.013
+            ],
+            "p_perm": 0.94381,
+            "cohens_dz": 0.0131,
+            "sd": 0.037
+          }
+        },
+        "negative_preference_minus_neutral": {
+          "n_pairs": 32,
+          "mean": -0.0764,
+          "ci95": [
+            -0.1528,
+            -0.0025
+          ],
+          "p_perm": 0.06459,
+          "cohens_dz": -0.3386,
+          "sd": 0.2256,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": -0.0909,
+            "ci95": [
+              -0.1742,
+              -0.0128
+            ],
+            "p_perm": 0.03659,
+            "cohens_dz": -0.4028,
+            "sd": 0.2257
+          }
+        },
+        "negative_preference_direction_normalized": {
+          "n_pairs": 32,
+          "mean": 0.0764,
+          "ci95": [
+            0.0013,
+            0.1547
+          ],
+          "p_perm": 0.06419,
+          "cohens_dz": 0.3386,
+          "sd": 0.2256,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": 0.0909,
+            "ci95": [
+              0.0134,
+              0.1739
+            ],
+            "p_perm": 0.03719,
+            "cohens_dz": 0.4028,
+            "sd": 0.2257
+          }
+        }
+      },
+      "difficulty": {
+        "ambiguous": {
+          "n_pairs": 4,
+          "mean": -0.2257,
+          "ci95": [
+            -0.2924,
+            -0.1739
+          ],
+          "p_perm": 0.12637,
+          "cohens_dz": -3.2513,
+          "sd": 0.0694
+        },
+        "easy": {
+          "n_pairs": 2,
+          "mean": -0.131,
+          "ci95": [
+            -0.1606,
+            -0.1013
+          ],
+          "p_perm": 0.4935,
+          "cohens_dz": -3.1221,
+          "sd": 0.042
+        },
+        "moderate": {
+          "n_pairs": 10,
+          "mean": -0.2282,
+          "ci95": [
+            -0.2954,
+            -0.1709
+          ],
+          "p_perm": 0.0032,
+          "cohens_dz": -2.1793,
+          "sd": 0.1047
+        },
+        "trivial": {
+          "n_pairs": 16,
+          "mean": -0.2167,
+          "ci95": [
+            -0.3142,
+            -0.1167
+          ],
+          "p_perm": 0.003,
+          "cohens_dz": -1.0198,
+          "sd": 0.2125
+        },
+        "pearson_r_with_difficulty_score": -0.0178
+      },
+      "template_effects": {
+        "excited_positive_v1": {
+          "n_pairs": 32,
+          "mean": -0.2905,
+          "ci95": [
+            -0.3515,
+            -0.2312
+          ],
+          "p_perm": 0.0002,
+          "cohens_dz": -1.6475,
+          "sd": 0.1763
+        },
+        "excited_positive_v2": {
+          "n_pairs": 32,
+          "mean": -0.1417,
+          "ci95": [
+            -0.1927,
+            -0.0888
+          ],
+          "p_perm": 0.0002,
+          "cohens_dz": -0.9448,
+          "sd": 0.15
+        },
+        "negative_preference_v1": {
+          "n_pairs": 32,
+          "mean": -0.0319,
+          "ci95": [
+            -0.1147,
+            0.0463
+          ],
+          "p_perm": 0.45291,
+          "cohens_dz": -0.1361,
+          "sd": 0.2344
+        },
+        "negative_preference_v2": {
+          "n_pairs": 32,
+          "mean": -0.1209,
+          "ci95": [
+            -0.2011,
+            -0.0465
+          ],
+          "p_perm": 0.0046,
+          "cohens_dz": -0.538,
+          "sd": 0.2247
+        },
+        "skeptical_negative_v1": {
+          "n_pairs": 32,
+          "mean": -0.0356,
+          "ci95": [
+            -0.0605,
+            -0.0098
+          ],
+          "p_perm": 0.0122,
+          "cohens_dz": -0.4828,
+          "sd": 0.0738
+        },
+        "skeptical_negative_v2": {
+          "n_pairs": 32,
+          "mean": 0.0384,
+          "ci95": [
+            0.0037,
+            0.0702
+          ],
+          "p_perm": 0.03199,
+          "cohens_dz": 0.399,
+          "sd": 0.0963
+        }
+      },
+      "continuation_pair_effects": {
+        "answer_can": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.0734,
+            "ci95": [
+              0.0574,
+              0.0895
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": 1.586,
+            "sd": 0.0463
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.0099,
+            "ci95": [
+              -0.0033,
+              0.0239
+            ],
+            "p_perm": 0.16957,
+            "cohens_dz": 0.2484,
+            "sd": 0.04
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.0053,
+            "ci95": [
+              -0.0328,
+              0.0219
+            ],
+            "p_perm": 0.71726,
+            "cohens_dz": -0.0656,
+            "sd": 0.08
+          }
+        },
+        "answer_yes_no": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.1619,
+            "ci95": [
+              -0.2086,
+              -0.1157
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.1843,
+            "sd": 0.1367
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.061,
+            "ci95": [
+              0.0205,
+              0.0992
+            ],
+            "p_perm": 0.0096,
+            "cohens_dz": 0.51,
+            "sd": 0.1196
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.0679,
+            "ci95": [
+              -0.0905,
+              0.218
+            ],
+            "p_perm": 0.40472,
+            "cohens_dz": 0.1488,
+            "sd": 0.456
+          }
+        },
+        "overall_visible": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.3706,
+            "ci95": [
+              -0.4586,
+              -0.2859
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.4296,
+            "sd": 0.2592
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.1056,
+            "ci95": [
+              -0.1243,
+              -0.0875
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.9093,
+            "sd": 0.0553
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.3165,
+            "ci95": [
+              -0.395,
+              -0.2366
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.3469,
+            "sd": 0.235
+          }
+        },
+        "probably_can": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.4053,
+            "ci95": [
+              -0.4891,
+              -0.3149
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.5875,
+            "sd": 0.2553
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.0403,
+            "ci95": [
+              0.0152,
+              0.0678
+            ],
+            "p_perm": 0.0048,
+            "cohens_dz": 0.5222,
+            "sd": 0.0771
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.0517,
+            "ci95": [
+              -0.1319,
+              0.0266
+            ],
+            "p_perm": 0.20956,
+            "cohens_dz": -0.2235,
+            "sd": 0.2312
+          }
+        }
+      },
+      "continuation_pair_variation": {
+        "excited_positive": {
+          "pair_effect_means": [
+            0.0734,
+            -0.1619,
+            -0.3706,
+            -0.4053
+          ],
+          "sd_across_pair_effect_means": 0.2209
+        },
+        "skeptical_negative": {
+          "pair_effect_means": [
+            0.0099,
+            0.061,
+            -0.1056,
+            0.0403
+          ],
+          "sd_across_pair_effect_means": 0.0744
+        },
+        "negative_preference": {
+          "pair_effect_means": [
+            -0.0053,
+            0.0679,
+            -0.3165,
+            -0.0517
+          ],
+          "sd_across_pair_effect_means": 0.1675
+        }
+      }
+    },
+    "total_sequence_logprob_margin": {
+      "contrasts": {
+        "excited_positive_minus_neutral": {
+          "n_pairs": 32,
+          "mean": -1.2819,
+          "ci95": [
+            -1.6215,
+            -0.9354
+          ],
+          "p_perm": 0.0002,
+          "cohens_dz": -1.2572,
+          "sd": 1.0196,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": -1.2942,
+            "ci95": [
+              -1.6718,
+              -0.9236
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.231,
+            "sd": 1.0513
+          }
+        },
+        "skeptical_negative_minus_neutral": {
+          "n_pairs": 32,
+          "mean": 0.031,
+          "ci95": [
+            -0.0605,
+            0.1141
+          ],
+          "p_perm": 0.4873,
+          "cohens_dz": 0.1244,
+          "sd": 0.2495,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": 0.0233,
+            "ci95": [
+              -0.0708,
+              0.1109
+            ],
+            "p_perm": 0.63387,
+            "cohens_dz": 0.0911,
+            "sd": 0.256
+          }
+        },
+        "negative_preference_minus_neutral": {
+          "n_pairs": 32,
+          "mean": -0.4453,
+          "ci95": [
+            -0.9672,
+            0.0497
+          ],
+          "p_perm": 0.10298,
+          "cohens_dz": -0.295,
+          "sd": 1.5099,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": -0.5417,
+            "ci95": [
+              -1.0782,
+              -0.0236
+            ],
+            "p_perm": 0.06179,
+            "cohens_dz": -0.3585,
+            "sd": 1.5108
+          }
+        },
+        "negative_preference_direction_normalized": {
+          "n_pairs": 32,
+          "mean": 0.4453,
+          "ci95": [
+            -0.0608,
+            0.9826
+          ],
+          "p_perm": 0.11498,
+          "cohens_dz": 0.295,
+          "sd": 1.5099,
+          "excluding_case_000": {
+            "n_pairs": 30,
+            "mean": 0.5417,
+            "ci95": [
+              0.0224,
+              1.0658
+            ],
+            "p_perm": 0.05899,
+            "cohens_dz": 0.3585,
+            "sd": 1.5108
+          }
+        }
+      },
+      "difficulty": {
+        "ambiguous": {
+          "n_pairs": 4,
+          "mean": -1.3291,
+          "ci95": [
+            -1.7403,
+            -0.9871
+          ],
+          "p_perm": 0.11958,
+          "cohens_dz": -3.0181,
+          "sd": 0.4404
+        },
+        "easy": {
+          "n_pairs": 2,
+          "mean": -0.7612,
+          "ci95": [
+            -0.9484,
+            -0.5739
+          ],
+          "p_perm": 0.4991,
+          "cohens_dz": -2.8738,
+          "sd": 0.2649
+        },
+        "moderate": {
+          "n_pairs": 10,
+          "mean": -1.3509,
+          "ci95": [
+            -1.7762,
+            -0.9767
+          ],
+          "p_perm": 0.0016,
+          "cohens_dz": -1.9816,
+          "sd": 0.6817
+        },
+        "trivial": {
+          "n_pairs": 16,
+          "mean": -1.292,
+          "ci95": [
+            -1.9445,
+            -0.6747
+          ],
+          "p_perm": 0.0018,
+          "cohens_dz": -0.9667,
+          "sd": 1.3365
+        },
+        "pearson_r_with_difficulty_score": -0.0109
+      },
+      "template_effects": {
+        "excited_positive_v1": {
+          "n_pairs": 32,
+          "mean": -1.7577,
+          "ci95": [
+            -2.1415,
+            -1.3826
+          ],
+          "p_perm": 0.0002,
+          "cohens_dz": -1.5651,
+          "sd": 1.123
+        },
+        "excited_positive_v2": {
+          "n_pairs": 32,
+          "mean": -0.8061,
+          "ci95": [
+            -1.1164,
+            -0.4827
+          ],
+          "p_perm": 0.0002,
+          "cohens_dz": -0.8578,
+          "sd": 0.9397
+        },
+        "negative_preference_v1": {
+          "n_pairs": 32,
+          "mean": -0.0784,
+          "ci95": [
+            -0.6321,
+            0.4351
+          ],
+          "p_perm": 0.77824,
+          "cohens_dz": -0.0497,
+          "sd": 1.5773
+        },
+        "negative_preference_v2": {
+          "n_pairs": 32,
+          "mean": -0.8123,
+          "ci95": [
+            -1.3351,
+            -0.3337
+          ],
+          "p_perm": 0.0042,
+          "cohens_dz": -0.5436,
+          "sd": 1.4943
+        },
+        "skeptical_negative_v1": {
+          "n_pairs": 32,
+          "mean": -0.2019,
+          "ci95": [
+            -0.3513,
+            -0.0377
+          ],
+          "p_perm": 0.0188,
+          "cohens_dz": -0.437,
+          "sd": 0.462
+        },
+        "skeptical_negative_v2": {
+          "n_pairs": 32,
+          "mean": 0.264,
+          "ci95": [
+            0.0365,
+            0.4759
+          ],
+          "p_perm": 0.03179,
+          "cohens_dz": 0.4043,
+          "sd": 0.6529
+        }
+      },
+      "continuation_pair_effects": {
+        "answer_can": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.661,
+            "ci95": [
+              0.5214,
+              0.8021
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": 1.586,
+            "sd": 0.4168
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.0894,
+            "ci95": [
+              -0.0339,
+              0.2105
+            ],
+            "p_perm": 0.16837,
+            "cohens_dz": 0.2484,
+            "sd": 0.36
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.0473,
+            "ci95": [
+              -0.2883,
+              0.1962
+            ],
+            "p_perm": 0.71986,
+            "cohens_dz": -0.0656,
+            "sd": 0.7202
+          }
+        },
+        "answer_yes_no": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -1.1331,
+            "ci95": [
+              -1.4529,
+              -0.8128
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.1843,
+            "sd": 0.9567
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.4269,
+            "ci95": [
+              0.1422,
+              0.7184
+            ],
+            "p_perm": 0.0072,
+            "cohens_dz": 0.51,
+            "sd": 0.8369
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.4751,
+            "ci95": [
+              -0.5894,
+              1.5562
+            ],
+            "p_perm": 0.39852,
+            "cohens_dz": 0.1488,
+            "sd": 3.1921
+          }
+        },
+        "overall_visible": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -2.2238,
+            "ci95": [
+              -2.7537,
+              -1.6996
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.4296,
+            "sd": 1.5555
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.6338,
+            "ci95": [
+              -0.7484,
+              -0.5222
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.9093,
+            "sd": 0.3319
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -1.8991,
+            "ci95": [
+              -2.3787,
+              -1.4482
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.3469,
+            "sd": 1.41
+          }
+        },
+        "probably_can": {
+          "excited_positive_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -2.4318,
+            "ci95": [
+              -2.9208,
+              -1.8914
+            ],
+            "p_perm": 0.0002,
+            "cohens_dz": -1.5875,
+            "sd": 1.5318
+          },
+          "skeptical_negative_minus_neutral": {
+            "n_pairs": 32,
+            "mean": 0.2416,
+            "ci95": [
+              0.0863,
+              0.3992
+            ],
+            "p_perm": 0.0052,
+            "cohens_dz": 0.5222,
+            "sd": 0.4627
+          },
+          "negative_preference_minus_neutral": {
+            "n_pairs": 32,
+            "mean": -0.3101,
+            "ci95": [
+              -0.8003,
+              0.1592
+            ],
+            "p_perm": 0.21876,
+            "cohens_dz": -0.2235,
+            "sd": 1.3874
+          }
+        }
+      },
+      "continuation_pair_variation": {
+        "excited_positive": {
+          "pair_effect_means": [
+            0.661,
+            -1.1331,
+            -2.2238,
+            -2.4318
+          ],
+          "sd_across_pair_effect_means": 1.415
+        },
+        "skeptical_negative": {
+          "pair_effect_means": [
+            0.0894,
+            0.4269,
+            -0.6338,
+            0.2416
+          ],
+          "sd_across_pair_effect_means": 0.4642
+        },
+        "negative_preference": {
+          "pair_effect_means": [
+            -0.0473,
+            0.4751,
+            -1.8991,
+            -0.3101
+          ],
+          "sd_across_pair_effect_means": 1.0226
+        }
+      }
+    }
+  },
+  "normalization_robustness": {
+    "excited_positive_minus_neutral": {
+      "same_direction": "True",
+      "same_significance_at_0_05": true
+    },
+    "skeptical_negative_minus_neutral": {
+      "same_direction": "True",
+      "same_significance_at_0_05": true
+    },
+    "negative_preference_minus_neutral": {
+      "same_direction": "True",
+      "same_significance_at_0_05": true
+    }
+  }
+}

@@ -69,6 +69,51 @@ def test_openai_adapter_request_shape(monkeypatch):
     assert result.input_tokens == 10
 
 
+def test_openai_compatible_sampling_and_nonthinking_are_transport_metadata(monkeypatch):
+    """OSS inference controls must be sent out-of-band, never appended to stimuli."""
+    from ziva.providers.openai_adapter import OpenAIAdapter
+
+    m = ModelConfig(
+        id="qwen",
+        provider="openai_compatible",
+        model="Qwen/Qwen3-14B",
+        api_key_env="VLLM_API_KEY",
+        top_p=0.8,
+        top_k=20,
+        min_p=0.0,
+        presence_penalty=0.0,
+        chat_template_kwargs={"enable_thinking": False},
+    )
+    monkeypatch.setenv("VLLM_API_KEY", "EMPTY")
+    adapter = OpenAIAdapter(m)
+    fake_resp = SimpleNamespace(
+        choices=[SimpleNamespace(message=SimpleNamespace(content='{"x":1}'), finish_reason="stop")],
+        usage=SimpleNamespace(prompt_tokens=10, completion_tokens=5),
+        model="Qwen/Qwen3-14B", id="qwen1", system_fingerprint=None,
+    )
+    client = MagicMock()
+    client.chat.completions.create.return_value = fake_resp
+    adapter.__dict__["_client"] = client
+
+    result = adapter.complete(_request(m, temperature=0.7))
+    kwargs = client.chat.completions.create.call_args.kwargs
+    assert kwargs["messages"] == [
+        {"role": "system", "content": "sys"},
+        {"role": "user", "content": "hello"},
+    ]
+    assert "/no_think" not in json.dumps(kwargs["messages"])
+    assert kwargs["temperature"] == 0.7
+    assert kwargs["top_p"] == 0.8
+    assert kwargs["presence_penalty"] == 0.0
+    assert kwargs["extra_body"] == {
+        "top_k": 20,
+        "min_p": 0.0,
+        "chat_template_kwargs": {"enable_thinking": False},
+    }
+    assert result.raw["request_messages_sha256"]
+    assert result.raw["generation_settings"]["chat_template_kwargs"] == {"enable_thinking": False}
+
+
 def test_anthropic_adapter_omits_temperature_when_unsupported(monkeypatch):
     from ziva.providers.anthropic_adapter import AnthropicAdapter
 

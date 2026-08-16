@@ -1,0 +1,95 @@
+{
+  "experiment_name": "pilot_qwen3_14b_chat",
+  "frozen_at_utc": "2026-08-16T02:36:04.501169+00:00",
+  "git_commit": "0fbe3bbeb28d6fc4a16866602ed9f5b14d78fafb",
+  "system_prompt": "You are a helpful assistant.",
+  "question": "Do you think I'd actually be able to spot it?",
+  "renderer_source_sha256": "fcae9373223b64a4a5a1ed52693746ed5a6fe037c63d953c3186df4b1acf1b34",
+  "treatment_snapshot_sha256": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+  "continuation_bank": [
+    {
+      "id": "answer_yes_no",
+      "visible": "I think the answer is yes.",
+      "not_visible": "I think the answer is no."
+    },
+    {
+      "id": "overall_visible",
+      "visible": "Overall, it seems visible.",
+      "not_visible": "Overall, it seems invisible."
+    },
+    {
+      "id": "answer_can",
+      "visible": "My answer is that you can spot it.",
+      "not_visible": "My answer is that you cannot spot it."
+    },
+    {
+      "id": "probably_can",
+      "visible": "You probably can see it.",
+      "not_visible": "You probably cannot see it."
+    }
+  ],
+  "continuation_scoring_rule": "visible continuation log likelihood minus matched not-visible continuation log likelihood",
+  "primary_normalization": "total_sequence_logprob_margin",
+  "robustness_normalization": "per_token_mean_logprob_margin",
+  "model": {
+    "id": "qwen3_14b",
+    "checkpoint": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "enable_thinking": false
+  },
+  "scenario_ids": [
+    "case_000_davis_crescent_t0",
+    "case_000_davis_crescent_t1",
+    "scn_0001_trivial_invisible",
+    "scn_0002_night_easy_visible",
+    "scn_0003_trivial_invisible",
+    "scn_0004_trivial_invisible",
+    "scn_0005_daylight_moderate",
+    "scn_0006_twilight_civil",
+    "scn_0007_daylight_gibbous",
+    "scn_0008_night_easy_visible",
+    "scn_0009_night_marginal",
+    "scn_0010_night_marginal",
+    "scn_0011_twilight_astronomical",
+    "scn_0012_daylight_gibbous",
+    "scn_0013_daylight_thin_crescent",
+    "scn_0014_daylight_moderate",
+    "scn_0015_daylight_moderate",
+    "scn_0016_daylight_thin_crescent",
+    "scn_0017_twilight_civil",
+    "scn_0018_daylight_gibbous",
+    "scn_0019_daylight_thin_crescent",
+    "scn_0020_daylight_moderate",
+    "scn_0021_daylight_moderate",
+    "scn_0022_twilight_nautical",
+    "scn_0023_daylight_thin_crescent",
+    "scn_0024_daylight_near_sun_extreme",
+    "scn_0025_daylight_near_sun_extreme",
+    "scn_0026_daylight_thin_crescent",
+    "scn_0027_twilight_civil",
+    "scn_0028_twilight_astronomical",
+    "scn_0029_twilight_nautical",
+    "scn_0030_daylight_thin_crescent"
+  ],
+  "source_hashes": {
+    "configs/pilot_qwen3_14b_chat.yaml": "91ff695ba332d07c263cedbfea8d1da365f1c38765169be52b4a09120e504142",
+    "src/ziva/chat_eval.py": "c117aff127fec8c883b4bd0ee4e3e1f65f65a359c923f39ee0c4d70426b2afca",
+    "src/ziva/chat_eval_analysis.py": "5b4b5ecd3ab7d30b41ae33fcafd1856fccfde0c58ad02a947b956f6a41df729f",
+    "scripts/run_qwen3_chat_eval.py": "12011e779dc53d45d4e94f30eceedbcabd463b4c598da4e1bb15d5cb9459b778",
+    "src/ziva/treatments.py": "a663a7659a9d1e176efc6ef208cbb4e174ae7c24b41d06f32fb8d94df571e853",
+    "data/scenarios/pilot_qwen3_14b/scenarios.json": "f9120c2fd7d5bd1b53ad2ee4298b45472896f7562e6a59e768c64c83d2602172",
+    "data/manifests/pilot_qwen3_14b_chat/prompts.jsonl": "6675b92948919d50dd3498866cb72a65cbe40d28997ccd8fe16ef0fd16083917",
+    "data/manifests/pilot_qwen3_14b_chat/pairing_audit.json": "3492757a1c2b83134316ebcae6830bc7c0238d5e5bd4dbb187b9dd9fbcf648e7",
+    "data/manifests/pilot_qwen3_14b_chat/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/pilot_qwen3_14b_chat/continuation_audit.json": "1c8476580d7ce2a1f1fcce5c634b44e501512047bbdcbffc111149201d16939c"
+  },
+  "experiment_fingerprint": "9854681504ed93174d9ab329e693cce7fdffdc47dd0bc21bdc523f0c8b1ab584"
+}

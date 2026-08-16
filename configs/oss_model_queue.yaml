@@ -1,0 +1,44 @@
+models:
+  - key: qwen3_14b
+    checkpoint: Qwen/Qwen3-14B
+    parameter_scale: 14B
+    model_family: Qwen3
+    required_revision: 40c069824f4251a91eefaf281ebe4c544efd3e18
+    chat_template_kwargs: {enable_thinking: false}
+  - key: qwen3_4b
+    checkpoint: Qwen/Qwen3-4B
+    parameter_scale: 4B
+    model_family: Qwen3
+    chat_template_kwargs: {enable_thinking: false}
+  - key: qwen3_8b
+    checkpoint: Qwen/Qwen3-8B
+    parameter_scale: 8B
+    model_family: Qwen3
+    chat_template_kwargs: {enable_thinking: false}
+  - key: ministral3_8b
+    checkpoint: mistralai/Ministral-3-8B-Instruct-2512-BF16
+    parameter_scale: 8B
+    model_family: Ministral-3
+    chat_template_kwargs: {}
+  - key: gemma4_12b
+    checkpoint: google/gemma-4-12B-it
+    parameter_scale: 12B
+    model_family: Gemma-4
+    chat_template_kwargs: {}
+  - key: ministral3_14b
+    checkpoint: mistralai/Ministral-3-14B-Instruct-2512-BF16
+    parameter_scale: 14B
+    model_family: Ministral-3
+    chat_template_kwargs: {}
+
+runtime:
+  dtype: bfloat16
+  quantization: none
+  framework: vllm
+  framework_version: 0.20.0
+  tensor_parallel_size: 2
+  gpu_configuration: 2x NVIDIA GeForce RTX 3090 24GB
+  max_model_len: 8192
+  gpu_memory_utilization: 0.90
+  generation_config_source: vllm
+  endpoint: http://127.0.0.1:8000

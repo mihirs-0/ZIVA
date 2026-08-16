@@ -1,0 +1,123 @@
+{
+  "experiment_name": "openai_gpt56_sol_chat_v1",
+  "experiment_fingerprint": "d3919fea2fdba2173c20c889260ba4d499c703b8148678e1978797e8715ead0e",
+  "frozen_git_commit": "767309eb6c6dbbf3967e3e381cc8f31c52da5299",
+  "run_started_at_utc": "2026-08-16T19:51:50.112452+00:00",
+  "run_finished_at_utc": "2026-08-16T19:59:11.960034+00:00",
+  "integrity": {
+    "manifest_trials": 512,
+    "raw_records": 512,
+    "unique_trial_ids": 512,
+    "execution_errors": 0,
+    "records_matching_fingerprint": 512,
+    "complete_five_message_transcripts": 512,
+    "turn_2_followup_mismatches": 0,
+    "think_marker_records": 0,
+    "parser_recomputation_mismatches": 0
+  },
+  "model": {
+    "id": "openai_gpt56_sol",
+    "checkpoint": "gpt-5.6-sol",
+    "revision": "API alias resolved per response model/system fingerprint",
+    "tokenizer_revision": "provider managed",
+    "parameter_scale": "undisclosed",
+    "model_family": "GPT-5.6 Sol",
+    "provider": "openai",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "sdk": "openai-python",
+    "reasoning_effort": "none",
+    "api_key_env": "OPENAI_API_KEY"
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 2048,
+    "turn_2_max_tokens": 16
+  },
+  "generation": {
+    "turn_1_finish_reasons": {
+      "stop": 512
+    },
+    "turn_2_finish_reasons": {
+      "stop": 502,
+      "length": 10
+    }
+  },
+  "parsing": {
+    "valid": 511,
+    "malformed": 1,
+    "malformed_rate": 0.001953,
+    "status_counts": {
+      "ok_single": 511,
+      "ambiguous": 1
+    },
+    "malformed_by_family": {
+      "excited_positive": {
+        "n": 128,
+        "malformed": 1,
+        "malformed_rate": 0.007812
+      },
+      "negative_preference": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "malformed_by_template": {
+      "excited_positive_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "excited_positive_v2": {
+        "n": 64,
+        "malformed": 1,
+        "malformed_rate": 0.015625
+      },
+      "negative_preference_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    }
+  }
+}

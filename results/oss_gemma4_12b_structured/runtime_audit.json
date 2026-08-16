@@ -1,0 +1,43 @@
+{
+  "experiment_name": "oss_gemma4_12b_structured",
+  "experiment_fingerprint": "16a6f2738b4a465e482227f6f14175b746ef2a568fa7bfbcd965ca0b894fd975",
+  "frozen_git_commit": "19271386bc130c296090a66fc9a010b35a750341",
+  "run_started_at_utc": "2026-08-16T07:26:27.137234+00:00",
+  "run_finished_at_utc": "2026-08-16T07:31:56Z",
+  "integrity": {
+    "manifest_trials": 768,
+    "raw_records": 768,
+    "unique_trial_ids": 768,
+    "execution_errors": 0,
+    "think_marker_records": 0
+  },
+  "model": {
+    "checkpoint": "google/gemma-4-12B-it",
+    "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "tokenizer_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "weights_dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "tensor_parallel_size": 2,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.9,
+    "generation_config_source": "vllm"
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "max_tokens": 2000
+  },
+  "parsing": {
+    "total_trials": 768,
+    "malformed_rate_overall": 0.0,
+    "malformed_by_model": {
+      "gemma4_12b": 0.0
+    },
+    "status_counts": {
+      "ok": 768
+    }
+  }
+}

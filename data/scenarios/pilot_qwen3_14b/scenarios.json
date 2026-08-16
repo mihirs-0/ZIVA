@@ -1,0 +1,1762 @@
+[
+  {
+    "scenario_id": "case_000_davis_crescent_t0",
+    "domain": "moon_visibility",
+    "seed": 20260815,
+    "location": {
+      "name": "Davis, California, USA",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "timezone": "America/Los_Angeles"
+    },
+    "timestamp_utc": "2026-08-14T21:00:00Z",
+    "local_time": "2026-08-14 14:00 PDT (UTC-0700)",
+    "physical_state": {
+      "timestamp_utc": "2026-08-14T21:00:00Z",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "sun_altitude_deg": 63.367,
+      "sun_azimuth_deg": 206.962,
+      "moon_altitude_deg": 50.94,
+      "moon_azimuth_deg": 157.604,
+      "moon_illumination_fraction": 0.05949,
+      "moon_phase_angle_deg": 151.767,
+      "moon_phase_deg": 28.11,
+      "sun_moon_elongation_deg": 28.172,
+      "moon_distance_km": 371351.1,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.6817,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.3409,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": "case_000: motivating anecdotal scenario (Davis, CA, 2026-08-14 afternoon). Physical variables reconstructed with the astronomy backend; perceptual ground truth NOT claimed."
+  },
+  {
+    "scenario_id": "case_000_davis_crescent_t1",
+    "domain": "moon_visibility",
+    "seed": 20260815,
+    "location": {
+      "name": "Davis, California, USA",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "timezone": "America/Los_Angeles"
+    },
+    "timestamp_utc": "2026-08-14T23:30:00Z",
+    "local_time": "2026-08-14 16:30 PDT (UTC-0700)",
+    "physical_state": {
+      "timestamp_utc": "2026-08-14T23:30:00Z",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "sun_altitude_deg": 40.07,
+      "sun_azimuth_deg": 254.785,
+      "moon_altitude_deg": 46.927,
+      "moon_azimuth_deg": 214.747,
+      "moon_illumination_fraction": 0.06511,
+      "moon_phase_angle_deg": 150.434,
+      "moon_phase_deg": 29.436,
+      "sun_moon_elongation_deg": 29.501,
+      "moon_distance_km": 372194.3,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.7654,
+      "difficulty_class": "ambiguous",
+      "naive_visibility_index": 0.3827,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": "case_000: motivating anecdotal scenario (Davis, CA, 2026-08-14 afternoon). Physical variables reconstructed with the astronomy backend; perceptual ground truth NOT claimed."
+  },
+  {
+    "scenario_id": "scn_0001_trivial_invisible",
+    "domain": "moon_visibility",
+    "seed": 3229138469,
+    "location": {
+      "name": "Reykjavik, Iceland",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "timezone": "Atlantic/Reykjavik"
+    },
+    "timestamp_utc": "2026-01-22T02:39:00Z",
+    "local_time": "2026-01-22 02:39 GMT (UTC+0000)",
+    "physical_state": {
+      "timestamp_utc": "2026-01-22T02:39:00Z",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "sun_altitude_deg": -44.096,
+      "sun_azimuth_deg": 19.873,
+      "moon_altitude_deg": -31.332,
+      "moon_azimuth_deg": 333.229,
+      "moon_illumination_fraction": 0.11025,
+      "moon_phase_angle_deg": 141.215,
+      "moon_phase_deg": 38.691,
+      "sun_moon_elongation_deg": 38.697,
+      "moon_distance_km": 387830.0,
+      "moon_above_horizon": false,
+      "sun_above_horizon": false,
+      "sky_regime": "night",
+      "waxing": true
+    },
+    "classification": {
+      "category": "trivial_invisible",
+      "anchor": "invisible",
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 0.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "moon below horizon",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0002_night_easy_visible",
+    "domain": "moon_visibility",
+    "seed": 1225483167,
+    "location": {
+      "name": "Mexico City, Mexico",
+      "latitude_deg": 19.4326,
+      "longitude_deg": -99.1332,
+      "elevation_m": 2240,
+      "timezone": "America/Mexico_City"
+    },
+    "timestamp_utc": "2026-11-16T03:31:00Z",
+    "local_time": "2026-11-15 21:31 CST (UTC-0600)",
+    "physical_state": {
+      "timestamp_utc": "2026-11-16T03:31:00Z",
+      "latitude_deg": 19.4326,
+      "longitude_deg": -99.1332,
+      "elevation_m": 2240,
+      "sun_altitude_deg": -49.585,
+      "sun_azimuth_deg": 263.717,
+      "moon_altitude_deg": 21.114,
+      "moon_azimuth_deg": 238.591,
+      "moon_illumination_fraction": 0.37329,
+      "moon_phase_angle_deg": 104.68,
+      "moon_phase_deg": 75.164,
+      "sun_moon_elongation_deg": 75.175,
+      "moon_distance_km": 399984.9,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "night",
+      "waxing": true
+    },
+    "classification": {
+      "category": "night_easy_visible",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0003_trivial_invisible",
+    "domain": "moon_visibility",
+    "seed": 2938862007,
+    "location": {
+      "name": "Reykjavik, Iceland",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "timezone": "Atlantic/Reykjavik"
+    },
+    "timestamp_utc": "2026-12-20T10:31:00Z",
+    "local_time": "2026-12-20 10:31 GMT (UTC+0000)",
+    "physical_state": {
+      "timestamp_utc": "2026-12-20T10:31:00Z",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "sun_altitude_deg": -3.274,
+      "sun_azimuth_deg": 140.657,
+      "moon_altitude_deg": -6.883,
+      "moon_azimuth_deg": 10.167,
+      "moon_illumination_fraction": 0.81868,
+      "moon_phase_angle_deg": 50.405,
+      "moon_phase_deg": 129.661,
+      "sun_moon_elongation_deg": 129.489,
+      "moon_distance_km": 371047.8,
+      "moon_above_horizon": false,
+      "sun_above_horizon": false,
+      "sky_regime": "civil_twilight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "trivial_invisible",
+      "anchor": "invisible",
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 0.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "moon below horizon",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0004_trivial_invisible",
+    "domain": "moon_visibility",
+    "seed": 2364858849,
+    "location": {
+      "name": "Perth, Australia",
+      "latitude_deg": -31.9505,
+      "longitude_deg": 115.8605,
+      "elevation_m": 20,
+      "timezone": "Australia/Perth"
+    },
+    "timestamp_utc": "2026-07-12T11:25:00Z",
+    "local_time": "2026-07-12 19:25 AWST (UTC+0800)",
+    "physical_state": {
+      "timestamp_utc": "2026-07-12T11:25:00Z",
+      "latitude_deg": -31.9505,
+      "longitude_deg": 115.8605,
+      "elevation_m": 20,
+      "sun_altitude_deg": -23.762,
+      "sun_azimuth_deg": 281.646,
+      "moon_altitude_deg": -51.919,
+      "moon_azimuth_deg": 275.986,
+      "moon_illumination_fraction": 0.05748,
+      "moon_phase_angle_deg": 152.256,
+      "moon_phase_deg": 332.701,
+      "sun_moon_elongation_deg": 27.675,
+      "moon_distance_km": 364757.0,
+      "moon_above_horizon": false,
+      "sun_above_horizon": false,
+      "sky_regime": "night",
+      "waxing": false
+    },
+    "classification": {
+      "category": "trivial_invisible",
+      "anchor": "invisible",
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 0.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "moon below horizon",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0005_daylight_moderate",
+    "domain": "moon_visibility",
+    "seed": 668138195,
+    "location": {
+      "name": "Mumbai, India",
+      "latitude_deg": 19.076,
+      "longitude_deg": 72.8777,
+      "elevation_m": 14,
+      "timezone": "Asia/Kolkata"
+    },
+    "timestamp_utc": "2026-02-12T07:00:00Z",
+    "local_time": "2026-02-12 12:30 IST (UTC+0530)",
+    "physical_state": {
+      "timestamp_utc": "2026-02-12T07:00:00Z",
+      "latitude_deg": 19.076,
+      "longitude_deg": 72.8777,
+      "elevation_m": 14,
+      "sun_altitude_deg": 56.797,
+      "sun_azimuth_deg": 169.915,
+      "moon_altitude_deg": 16.173,
+      "moon_azimuth_deg": 230.855,
+      "moon_illumination_fraction": 0.25163,
+      "moon_phase_angle_deg": 119.785,
+      "moon_phase_deg": 300.051,
+      "sun_moon_elongation_deg": 60.074,
+      "moon_distance_km": 401170.4,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "daylight_moderate",
+      "anchor": null,
+      "difficulty_score": 0.7145,
+      "difficulty_class": "ambiguous",
+      "naive_visibility_index": 0.6427,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0006_twilight_civil",
+    "domain": "moon_visibility",
+    "seed": 1738838973,
+    "location": {
+      "name": "Santiago, Chile",
+      "latitude_deg": -33.4489,
+      "longitude_deg": -70.6693,
+      "elevation_m": 570,
+      "timezone": "America/Santiago"
+    },
+    "timestamp_utc": "2026-03-16T10:30:00Z",
+    "local_time": "2026-03-16 07:30 -03 (UTC-0300)",
+    "physical_state": {
+      "timestamp_utc": "2026-03-16T10:30:00Z",
+      "latitude_deg": -33.4489,
+      "longitude_deg": -70.6693,
+      "elevation_m": 570,
+      "sun_altitude_deg": -2.898,
+      "sun_azimuth_deg": 94.319,
+      "moon_altitude_deg": 28.227,
+      "moon_azimuth_deg": 89.613,
+      "moon_illumination_fraction": 0.08044,
+      "moon_phase_angle_deg": 147.047,
+      "moon_phase_deg": 327.156,
+      "sun_moon_elongation_deg": 32.867,
+      "moon_distance_km": 382363.0,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "civil_twilight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "twilight_civil",
+      "anchor": null,
+      "difficulty_score": 0.4816,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.7592,
+      "crescent_criteria": {
+        "applicable": true,
+        "reason": "thin crescent in twilight; Yallop/Odeh calibration regime",
+        "yallop_q": 3.2115,
+        "yallop_code": "A",
+        "odeh_v": 36.787,
+        "odeh_zone": "A"
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0007_daylight_gibbous",
+    "domain": "moon_visibility",
+    "seed": 1861459187,
+    "location": {
+      "name": "Lagos, Nigeria",
+      "latitude_deg": 6.5244,
+      "longitude_deg": 3.3792,
+      "elevation_m": 41,
+      "timezone": "Africa/Lagos"
+    },
+    "timestamp_utc": "2026-04-09T08:40:00Z",
+    "local_time": "2026-04-09 09:40 WAT (UTC+0100)",
+    "physical_state": {
+      "timestamp_utc": "2026-04-09T08:40:00Z",
+      "latitude_deg": 6.5244,
+      "longitude_deg": 3.3792,
+      "elevation_m": 41,
+      "sun_altitude_deg": 43.368,
+      "sun_azimuth_deg": 85.647,
+      "moon_altitude_deg": 30.621,
+      "moon_azimuth_deg": 232.237,
+      "moon_illumination_fraction": 0.58178,
+      "moon_phase_angle_deg": 80.587,
+      "moon_phase_deg": 260.711,
+      "sun_moon_elongation_deg": 99.256,
+      "moon_distance_km": 399264.3,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "daylight_gibbous",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0008_night_easy_visible",
+    "domain": "moon_visibility",
+    "seed": 1452179860,
+    "location": {
+      "name": "Davis, California, USA",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "timezone": "America/Los_Angeles"
+    },
+    "timestamp_utc": "2026-02-03T04:09:00Z",
+    "local_time": "2026-02-02 20:09 PST (UTC-0800)",
+    "physical_state": {
+      "timestamp_utc": "2026-02-03T04:09:00Z",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "sun_altitude_deg": -30.811,
+      "sun_azimuth_deg": 273.309,
+      "moon_altitude_deg": 15.194,
+      "moon_azimuth_deg": 87.238,
+      "moon_illumination_fraction": 0.98039,
+      "moon_phase_angle_deg": 16.098,
+      "moon_phase_deg": 196.12,
+      "sun_moon_elongation_deg": 163.855,
+      "moon_distance_km": 374930.0,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "night",
+      "waxing": false
+    },
+    "classification": {
+      "category": "night_easy_visible",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0009_night_marginal",
+    "domain": "moon_visibility",
+    "seed": 3997200599,
+    "location": {
+      "name": "Denver, Colorado, USA",
+      "latitude_deg": 39.7392,
+      "longitude_deg": -104.9903,
+      "elevation_m": 1609,
+      "timezone": "America/Denver"
+    },
+    "timestamp_utc": "2026-01-11T08:33:00Z",
+    "local_time": "2026-01-11 01:33 MST (UTC-0700)",
+    "physical_state": {
+      "timestamp_utc": "2026-01-11T08:33:00Z",
+      "latitude_deg": 39.7392,
+      "longitude_deg": -104.9903,
+      "elevation_m": 1609,
+      "sun_altitude_deg": -64.305,
+      "sun_azimuth_deg": 51.551,
+      "moon_altitude_deg": 3.749,
+      "moon_azimuth_deg": 113.235,
+      "moon_illumination_fraction": 0.43458,
+      "moon_phase_angle_deg": 97.518,
+      "moon_phase_deg": 277.69,
+      "sun_moon_elongation_deg": 82.321,
+      "moon_distance_km": 401200.6,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "night",
+      "waxing": false
+    },
+    "classification": {
+      "category": "night_marginal",
+      "anchor": null,
+      "difficulty_score": 0.7214,
+      "difficulty_class": "ambiguous",
+      "naive_visibility_index": 0.6393,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0010_night_marginal",
+    "domain": "moon_visibility",
+    "seed": 3412901375,
+    "location": {
+      "name": "Anchorage, Alaska, USA",
+      "latitude_deg": 61.2181,
+      "longitude_deg": -149.9003,
+      "elevation_m": 31,
+      "timezone": "America/Anchorage"
+    },
+    "timestamp_utc": "2026-11-30T09:29:00Z",
+    "local_time": "2026-11-30 00:29 AKST (UTC-0900)",
+    "physical_state": {
+      "timestamp_utc": "2026-11-30T09:29:00Z",
+      "latitude_deg": 61.2181,
+      "longitude_deg": -149.9003,
+      "elevation_m": 31,
+      "sun_altitude_deg": -50.024,
+      "sun_azimuth_deg": 353.005,
+      "moon_altitude_deg": 10.813,
+      "moon_azimuth_deg": 86.037,
+      "moon_illumination_fraction": 0.59577,
+      "moon_phase_angle_deg": 78.958,
+      "moon_phase_deg": 259.1,
+      "sun_moon_elongation_deg": 100.894,
+      "moon_distance_km": 372201.8,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "night",
+      "waxing": false
+    },
+    "classification": {
+      "category": "night_marginal",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0011_twilight_astronomical",
+    "domain": "moon_visibility",
+    "seed": 2816366868,
+    "location": {
+      "name": "Cairo, Egypt",
+      "latitude_deg": 30.0444,
+      "longitude_deg": 31.2357,
+      "elevation_m": 23,
+      "timezone": "Africa/Cairo"
+    },
+    "timestamp_utc": "2026-12-14T16:03:00Z",
+    "local_time": "2026-12-14 18:03 EET (UTC+0200)",
+    "physical_state": {
+      "timestamp_utc": "2026-12-14T16:03:00Z",
+      "latitude_deg": 30.0444,
+      "longitude_deg": 31.2357,
+      "elevation_m": 23,
+      "sun_altitude_deg": -13.537,
+      "sun_azimuth_deg": 251.05,
+      "moon_altitude_deg": 37.398,
+      "moon_azimuth_deg": 217.264,
+      "moon_illumination_fraction": 0.2589,
+      "moon_phase_angle_deg": 118.83,
+      "moon_phase_deg": 61.033,
+      "sun_moon_elongation_deg": 61.039,
+      "moon_distance_km": 397433.2,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "astronomical_twilight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "twilight_astronomical",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0012_daylight_gibbous",
+    "domain": "moon_visibility",
+    "seed": 1429655369,
+    "location": {
+      "name": "Davis, California, USA",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "timezone": "America/Los_Angeles"
+    },
+    "timestamp_utc": "2026-08-22T02:24:00Z",
+    "local_time": "2026-08-21 19:24 PDT (UTC-0700)",
+    "physical_state": {
+      "timestamp_utc": "2026-08-22T02:24:00Z",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "sun_altitude_deg": 4.797,
+      "sun_azimuth_deg": 281.419,
+      "moon_altitude_deg": 21.168,
+      "moon_azimuth_deg": 165.801,
+      "moon_illumination_fraction": 0.68585,
+      "moon_phase_angle_deg": 68.179,
+      "moon_phase_deg": 111.763,
+      "sun_moon_elongation_deg": 111.684,
+      "moon_distance_km": 402237.1,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_gibbous",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0013_daylight_thin_crescent",
+    "domain": "moon_visibility",
+    "seed": 4017784684,
+    "location": {
+      "name": "Reykjavik, Iceland",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "timezone": "Atlantic/Reykjavik"
+    },
+    "timestamp_utc": "2026-04-14T12:21:00Z",
+    "local_time": "2026-04-14 12:21 GMT (UTC+0000)",
+    "physical_state": {
+      "timestamp_utc": "2026-04-14T12:21:00Z",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "sun_altitude_deg": 34.122,
+      "sun_azimuth_deg": 159.921,
+      "moon_altitude_deg": 18.176,
+      "moon_azimuth_deg": 200.971,
+      "moon_illumination_fraction": 0.11393,
+      "moon_phase_angle_deg": 140.546,
+      "moon_phase_deg": 320.642,
+      "sun_moon_elongation_deg": 39.356,
+      "moon_distance_km": 375827.9,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.9558,
+      "difficulty_class": "ambiguous",
+      "naive_visibility_index": 0.4779,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0014_daylight_moderate",
+    "domain": "moon_visibility",
+    "seed": 3281092163,
+    "location": {
+      "name": "Quito, Ecuador",
+      "latitude_deg": -0.1807,
+      "longitude_deg": -78.4678,
+      "elevation_m": 2850,
+      "timezone": "America/Guayaquil"
+    },
+    "timestamp_utc": "2026-10-18T18:17:00Z",
+    "local_time": "2026-10-18 13:17 -05 (UTC-0500)",
+    "physical_state": {
+      "timestamp_utc": "2026-10-18T18:17:00Z",
+      "latitude_deg": -0.1807,
+      "longitude_deg": -78.4678,
+      "elevation_m": 2850,
+      "sun_altitude_deg": 68.338,
+      "sun_azimuth_deg": 243.003,
+      "moon_altitude_deg": 12.202,
+      "moon_azimuth_deg": 114.138,
+      "moon_illumination_fraction": 0.50952,
+      "moon_phase_angle_deg": 88.909,
+      "moon_phase_deg": 90.937,
+      "sun_moon_elongation_deg": 90.942,
+      "moon_distance_km": 401155.2,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_moderate",
+      "anchor": null,
+      "difficulty_score": 0.615,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.6925,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0015_daylight_moderate",
+    "domain": "moon_visibility",
+    "seed": 1611007646,
+    "location": {
+      "name": "Davis, California, USA",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "timezone": "America/Los_Angeles"
+    },
+    "timestamp_utc": "2026-12-31T18:45:00Z",
+    "local_time": "2026-12-31 10:45 PST (UTC-0800)",
+    "physical_state": {
+      "timestamp_utc": "2026-12-31T18:45:00Z",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "sun_altitude_deg": 25.288,
+      "sun_azimuth_deg": 158.346,
+      "moon_altitude_deg": 12.474,
+      "moon_azimuth_deg": 241.521,
+      "moon_illumination_fraction": 0.39988,
+      "moon_phase_angle_deg": 101.551,
+      "moon_phase_deg": 281.736,
+      "sun_moon_elongation_deg": 78.295,
+      "moon_distance_km": 388953.2,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "daylight_moderate",
+      "anchor": null,
+      "difficulty_score": 0.6604,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.6698,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0016_daylight_thin_crescent",
+    "domain": "moon_visibility",
+    "seed": 4127377394,
+    "location": {
+      "name": "Alice Springs, Australia",
+      "latitude_deg": -23.698,
+      "longitude_deg": 133.8807,
+      "elevation_m": 545,
+      "timezone": "Australia/Darwin"
+    },
+    "timestamp_utc": "2026-11-10T08:57:00Z",
+    "local_time": "2026-11-10 18:27 ACST (UTC+0930)",
+    "physical_state": {
+      "timestamp_utc": "2026-11-10T08:57:00Z",
+      "latitude_deg": -23.698,
+      "longitude_deg": 133.8807,
+      "elevation_m": 545,
+      "sun_altitude_deg": 5.086,
+      "sun_azimuth_deg": 253.378,
+      "moon_altitude_deg": 16.793,
+      "moon_azimuth_deg": 249.764,
+      "moon_illumination_fraction": 0.01321,
+      "moon_phase_angle_deg": 166.801,
+      "moon_phase_deg": 12.201,
+      "sun_moon_elongation_deg": 13.169,
+      "moon_distance_km": 398861.4,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.5041,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.252,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0017_twilight_civil",
+    "domain": "moon_visibility",
+    "seed": 1240077688,
+    "location": {
+      "name": "Ushuaia, Argentina",
+      "latitude_deg": -54.8019,
+      "longitude_deg": -68.303,
+      "elevation_m": 23,
+      "timezone": "America/Argentina/Ushuaia"
+    },
+    "timestamp_utc": "2026-11-07T08:23:00Z",
+    "local_time": "2026-11-07 05:23 -03 (UTC-0300)",
+    "physical_state": {
+      "timestamp_utc": "2026-11-07T08:23:00Z",
+      "latitude_deg": -54.8019,
+      "longitude_deg": -68.303,
+      "elevation_m": 23,
+      "sun_altitude_deg": -1.318,
+      "sun_azimuth_deg": 122.418,
+      "moon_altitude_deg": 6.52,
+      "moon_azimuth_deg": 101.487,
+      "moon_illumination_fraction": 0.03946,
+      "moon_phase_angle_deg": 157.084,
+      "moon_phase_deg": 337.502,
+      "sun_moon_elongation_deg": 22.852,
+      "moon_distance_km": 390865.7,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "civil_twilight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "twilight_civil",
+      "anchor": null,
+      "difficulty_score": 0.6911,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.3455,
+      "crescent_criteria": {
+        "applicable": true,
+        "reason": "thin crescent in twilight; Yallop/Odeh calibration regime",
+        "yallop_q": 0.2708,
+        "yallop_code": "A",
+        "odeh_v": 7.38,
+        "odeh_zone": "A"
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0018_daylight_gibbous",
+    "domain": "moon_visibility",
+    "seed": 2641539479,
+    "location": {
+      "name": "Sapporo, Japan",
+      "latitude_deg": 43.0618,
+      "longitude_deg": 141.3545,
+      "elevation_m": 26,
+      "timezone": "Asia/Tokyo"
+    },
+    "timestamp_utc": "2026-08-04T23:12:00Z",
+    "local_time": "2026-08-05 08:12 JST (UTC+0900)",
+    "physical_state": {
+      "timestamp_utc": "2026-08-04T23:12:00Z",
+      "latitude_deg": 43.0618,
+      "longitude_deg": 141.3545,
+      "elevation_m": 26,
+      "sun_altitude_deg": 38.957,
+      "sun_azimuth_deg": 103.872,
+      "moon_altitude_deg": 32.269,
+      "moon_azimuth_deg": 259.251,
+      "moon_illumination_fraction": 0.6261,
+      "moon_phase_angle_deg": 75.392,
+      "moon_phase_deg": 255.485,
+      "sun_moon_elongation_deg": 104.465,
+      "moon_distance_km": 374216.7,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "daylight_gibbous",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0019_daylight_thin_crescent",
+    "domain": "moon_visibility",
+    "seed": 4085896781,
+    "location": {
+      "name": "La Paz, Bolivia",
+      "latitude_deg": -16.4897,
+      "longitude_deg": -68.1193,
+      "elevation_m": 3640,
+      "timezone": "America/La_Paz"
+    },
+    "timestamp_utc": "2026-11-11T16:27:00Z",
+    "local_time": "2026-11-11 12:27 -04 (UTC-0400)",
+    "physical_state": {
+      "timestamp_utc": "2026-11-11T16:27:00Z",
+      "latitude_deg": -16.4897,
+      "longitude_deg": -68.1193,
+      "elevation_m": 3640,
+      "sun_altitude_deg": 87.281,
+      "sun_azimuth_deg": 246.697,
+      "moon_altitude_deg": 64.177,
+      "moon_azimuth_deg": 119.602,
+      "moon_illumination_fraction": 0.05538,
+      "moon_phase_angle_deg": 152.777,
+      "moon_phase_deg": 26.774,
+      "sun_moon_elongation_deg": 27.157,
+      "moon_distance_km": 397875.5,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.6208,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.3104,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0020_daylight_moderate",
+    "domain": "moon_visibility",
+    "seed": 3738814342,
+    "location": {
+      "name": "Davis, California, USA",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "timezone": "America/Los_Angeles"
+    },
+    "timestamp_utc": "2026-09-25T01:42:00Z",
+    "local_time": "2026-09-24 18:42 PDT (UTC-0700)",
+    "physical_state": {
+      "timestamp_utc": "2026-09-25T01:42:00Z",
+      "latitude_deg": 38.5449,
+      "longitude_deg": -121.7405,
+      "elevation_m": 16,
+      "sun_altitude_deg": 3.014,
+      "sun_azimuth_deg": 266.753,
+      "moon_altitude_deg": 6.78,
+      "moon_azimuth_deg": 103.997,
+      "moon_illumination_fraction": 0.96971,
+      "moon_phase_angle_deg": 20.045,
+      "moon_phase_deg": 159.934,
+      "sun_moon_elongation_deg": 159.91,
+      "moon_distance_km": 385592.3,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_moderate",
+      "anchor": null,
+      "difficulty_score": 0.4292,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.7854,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0021_daylight_moderate",
+    "domain": "moon_visibility",
+    "seed": 372481557,
+    "location": {
+      "name": "Mexico City, Mexico",
+      "latitude_deg": 19.4326,
+      "longitude_deg": -99.1332,
+      "elevation_m": 2240,
+      "timezone": "America/Mexico_City"
+    },
+    "timestamp_utc": "2026-12-31T13:28:00Z",
+    "local_time": "2026-12-31 07:28 CST (UTC-0600)",
+    "physical_state": {
+      "timestamp_utc": "2026-12-31T13:28:00Z",
+      "latitude_deg": 19.4326,
+      "longitude_deg": -99.1332,
+      "elevation_m": 2240,
+      "sun_altitude_deg": 3.194,
+      "sun_azimuth_deg": 115.746,
+      "moon_altitude_deg": 57.833,
+      "moon_azimuth_deg": 193.118,
+      "moon_illumination_fraction": 0.42198,
+      "moon_phase_angle_deg": 98.977,
+      "moon_phase_deg": 279.153,
+      "sun_moon_elongation_deg": 80.868,
+      "moon_distance_km": 383809.5,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "daylight_moderate",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0022_twilight_nautical",
+    "domain": "moon_visibility",
+    "seed": 3167624907,
+    "location": {
+      "name": "Edinburgh, Scotland, UK",
+      "latitude_deg": 55.9533,
+      "longitude_deg": -3.1883,
+      "elevation_m": 47,
+      "timezone": "Europe/London"
+    },
+    "timestamp_utc": "2026-09-29T18:59:00Z",
+    "local_time": "2026-09-29 19:59 BST (UTC+0100)",
+    "physical_state": {
+      "timestamp_utc": "2026-09-29T18:59:00Z",
+      "latitude_deg": 55.9533,
+      "longitude_deg": -3.1883,
+      "elevation_m": 47,
+      "sun_altitude_deg": -9.415,
+      "sun_azimuth_deg": 280.21,
+      "moon_altitude_deg": 5.272,
+      "moon_azimuth_deg": 59.687,
+      "moon_illumination_fraction": 0.88196,
+      "moon_phase_angle_deg": 40.189,
+      "moon_phase_deg": 220.017,
+      "sun_moon_elongation_deg": 139.714,
+      "moon_distance_km": 370221.3,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "nautical_twilight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "twilight_nautical",
+      "anchor": null,
+      "difficulty_score": 0.4751,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.7625,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "not a thin crescent (illumination >= 25%)",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0023_daylight_thin_crescent",
+    "domain": "moon_visibility",
+    "seed": 3101333561,
+    "location": {
+      "name": "Lagos, Nigeria",
+      "latitude_deg": 6.5244,
+      "longitude_deg": 3.3792,
+      "elevation_m": 41,
+      "timezone": "Africa/Lagos"
+    },
+    "timestamp_utc": "2026-01-20T10:57:00Z",
+    "local_time": "2026-01-20 11:57 WAT (UTC+0100)",
+    "physical_state": {
+      "timestamp_utc": "2026-01-20T10:57:00Z",
+      "latitude_deg": 6.5244,
+      "longitude_deg": 3.3792,
+      "elevation_m": 41,
+      "sun_altitude_deg": 59.542,
+      "sun_azimuth_deg": 151.107,
+      "moon_altitude_deg": 47.814,
+      "moon_azimuth_deg": 124.404,
+      "moon_illumination_fraction": 0.02743,
+      "moon_phase_angle_deg": 160.934,
+      "moon_phase_deg": 18.936,
+      "sun_moon_elongation_deg": 19.022,
+      "moon_distance_km": 385267.8,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.2219,
+      "difficulty_class": "easy",
+      "naive_visibility_index": 0.1109,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0024_daylight_near_sun_extreme",
+    "domain": "moon_visibility",
+    "seed": 3938632900,
+    "location": {
+      "name": "Cairo, Egypt",
+      "latitude_deg": 30.0444,
+      "longitude_deg": 31.2357,
+      "elevation_m": 23,
+      "timezone": "Africa/Cairo"
+    },
+    "timestamp_utc": "2026-06-15T11:22:00Z",
+    "local_time": "2026-06-15 14:22 EEST (UTC+0300)",
+    "physical_state": {
+      "timestamp_utc": "2026-06-15T11:22:00Z",
+      "latitude_deg": 30.0444,
+      "longitude_deg": 31.2357,
+      "elevation_m": 23,
+      "sun_altitude_deg": 69.598,
+      "sun_azimuth_deg": 255.926,
+      "moon_altitude_deg": 75.499,
+      "moon_azimuth_deg": 265.432,
+      "moon_illumination_fraction": 0.00348,
+      "moon_phase_angle_deg": 173.232,
+      "moon_phase_deg": 5.054,
+      "sun_moon_elongation_deg": 6.757,
+      "moon_distance_km": 351259.2,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_near_sun_extreme",
+      "anchor": "invisible",
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 0.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0025_daylight_near_sun_extreme",
+    "domain": "moon_visibility",
+    "seed": 3258016189,
+    "location": {
+      "name": "Quito, Ecuador",
+      "latitude_deg": -0.1807,
+      "longitude_deg": -78.4678,
+      "elevation_m": 2850,
+      "timezone": "America/Guayaquil"
+    },
+    "timestamp_utc": "2026-07-14T12:19:00Z",
+    "local_time": "2026-07-14 07:19 -05 (UTC-0500)",
+    "physical_state": {
+      "timestamp_utc": "2026-07-14T12:19:00Z",
+      "latitude_deg": -0.1807,
+      "longitude_deg": -78.4678,
+      "elevation_m": 2850,
+      "sun_altitude_deg": 13.738,
+      "sun_azimuth_deg": 67.661,
+      "moon_altitude_deg": 10.484,
+      "moon_azimuth_deg": 65.013,
+      "moon_illumination_fraction": 0.00091,
+      "moon_phase_angle_deg": 176.549,
+      "moon_phase_deg": 1.511,
+      "sun_moon_elongation_deg": 3.445,
+      "moon_distance_km": 359152.1,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_near_sun_extreme",
+      "anchor": "invisible",
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 0.1248,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0026_daylight_thin_crescent",
+    "domain": "moon_visibility",
+    "seed": 199860198,
+    "location": {
+      "name": "Reykjavik, Iceland",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "timezone": "Atlantic/Reykjavik"
+    },
+    "timestamp_utc": "2026-09-14T15:04:00Z",
+    "local_time": "2026-09-14 15:04 GMT (UTC+0000)",
+    "physical_state": {
+      "timestamp_utc": "2026-09-14T15:04:00Z",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "sun_altitude_deg": 26.45,
+      "sun_azimuth_deg": 208.31,
+      "moon_altitude_deg": 7.011,
+      "moon_azimuth_deg": 167.666,
+      "moon_illumination_fraction": 0.13373,
+      "moon_phase_angle_deg": 137.099,
+      "moon_phase_deg": 42.586,
+      "sun_moon_elongation_deg": 42.804,
+      "moon_distance_km": 391679.7,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.4297,
+      "difficulty_class": "moderate",
+      "naive_visibility_index": 0.2148,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0027_twilight_civil",
+    "domain": "moon_visibility",
+    "seed": 1217320569,
+    "location": {
+      "name": "Reykjavik, Iceland",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "timezone": "Atlantic/Reykjavik"
+    },
+    "timestamp_utc": "2026-03-23T20:13:00Z",
+    "local_time": "2026-03-23 20:13 GMT (UTC+0000)",
+    "physical_state": {
+      "timestamp_utc": "2026-03-23T20:13:00Z",
+      "latitude_deg": 64.1466,
+      "longitude_deg": -21.9426,
+      "elevation_m": 15,
+      "sun_altitude_deg": -2.433,
+      "sun_azimuth_deg": 279.292,
+      "moon_altitude_deg": 44.527,
+      "moon_azimuth_deg": 231.781,
+      "moon_illumination_fraction": 0.28235,
+      "moon_phase_angle_deg": 115.804,
+      "moon_phase_deg": 63.953,
+      "sun_moon_elongation_deg": 64.075,
+      "moon_distance_km": 363205.2,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "civil_twilight",
+      "waxing": true
+    },
+    "classification": {
+      "category": "twilight_civil",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "not a thin crescent (illumination >= 25%)",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0028_twilight_astronomical",
+    "domain": "moon_visibility",
+    "seed": 27946678,
+    "location": {
+      "name": "Ulaanbaatar, Mongolia",
+      "latitude_deg": 47.8864,
+      "longitude_deg": 106.9057,
+      "elevation_m": 1350,
+      "timezone": "Asia/Ulaanbaatar"
+    },
+    "timestamp_utc": "2026-08-01T14:34:00Z",
+    "local_time": "2026-08-01 22:34 +08 (UTC+0800)",
+    "physical_state": {
+      "timestamp_utc": "2026-08-01T14:34:00Z",
+      "latitude_deg": 47.8864,
+      "longitude_deg": 106.9057,
+      "elevation_m": 1350,
+      "sun_altitude_deg": -16.145,
+      "sun_azimuth_deg": 324.098,
+      "moon_altitude_deg": 9.101,
+      "moon_azimuth_deg": 109.26,
+      "moon_illumination_fraction": 0.91243,
+      "moon_phase_angle_deg": 34.426,
+      "moon_phase_deg": 214.489,
+      "sun_moon_elongation_deg": 145.485,
+      "moon_distance_km": 389193.5,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "astronomical_twilight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "twilight_astronomical",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0029_twilight_nautical",
+    "domain": "moon_visibility",
+    "seed": 3261945805,
+    "location": {
+      "name": "Santiago, Chile",
+      "latitude_deg": -33.4489,
+      "longitude_deg": -70.6693,
+      "elevation_m": 570,
+      "timezone": "America/Santiago"
+    },
+    "timestamp_utc": "2026-04-05T10:09:00Z",
+    "local_time": "2026-04-05 06:09 -04 (UTC-0400)",
+    "physical_state": {
+      "timestamp_utc": "2026-04-05T10:09:00Z",
+      "latitude_deg": -33.4489,
+      "longitude_deg": -70.6693,
+      "elevation_m": 570,
+      "sun_altitude_deg": -10.39,
+      "sun_azimuth_deg": 89.833,
+      "moon_altitude_deg": 48.296,
+      "moon_azimuth_deg": 271.847,
+      "moon_illumination_fraction": 0.89476,
+      "moon_phase_angle_deg": 37.859,
+      "moon_phase_deg": 217.674,
+      "sun_moon_elongation_deg": 142.04,
+      "moon_distance_km": 398237.5,
+      "moon_above_horizon": true,
+      "sun_above_horizon": false,
+      "sky_regime": "nautical_twilight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "twilight_nautical",
+      "anchor": null,
+      "difficulty_score": 0.0,
+      "difficulty_class": "trivial",
+      "naive_visibility_index": 1.0,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "not a thin crescent (illumination >= 25%)",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  },
+  {
+    "scenario_id": "scn_0030_daylight_thin_crescent",
+    "domain": "moon_visibility",
+    "seed": 2863759905,
+    "location": {
+      "name": "Ulaanbaatar, Mongolia",
+      "latitude_deg": 47.8864,
+      "longitude_deg": 106.9057,
+      "elevation_m": 1350,
+      "timezone": "Asia/Ulaanbaatar"
+    },
+    "timestamp_utc": "2026-07-13T10:40:00Z",
+    "local_time": "2026-07-13 18:40 +08 (UTC+0800)",
+    "physical_state": {
+      "timestamp_utc": "2026-07-13T10:40:00Z",
+      "latitude_deg": 47.8864,
+      "longitude_deg": 106.9057,
+      "elevation_m": 1350,
+      "sun_altitude_deg": 18.989,
+      "sun_azimuth_deg": 281.859,
+      "moon_altitude_deg": 12.917,
+      "moon_azimuth_deg": 295.652,
+      "moon_illumination_fraction": 0.0153,
+      "moon_phase_angle_deg": 165.788,
+      "moon_phase_deg": 346.421,
+      "sun_moon_elongation_deg": 14.173,
+      "moon_distance_km": 357653.5,
+      "moon_above_horizon": true,
+      "sun_above_horizon": true,
+      "sky_regime": "daylight",
+      "waxing": false
+    },
+    "classification": {
+      "category": "daylight_thin_crescent",
+      "anchor": null,
+      "difficulty_score": 0.2305,
+      "difficulty_class": "easy",
+      "naive_visibility_index": 0.1152,
+      "crescent_criteria": {
+        "applicable": false,
+        "reason": "sun altitude outside twilight band [-12, 0) deg",
+        "yallop_q": null,
+        "yallop_code": null,
+        "odeh_v": null,
+        "odeh_zone": null
+      }
+    },
+    "target_proposition": "An ordinary adult with normal unaided eyesight at this location and time, who knows the Moon's approximate direction but not its exact position, could locate the Moon in the sky within two minutes under clear-sky conditions.",
+    "provenance": {
+      "generator_version": "1.0.0",
+      "astronomy_library": "astronomy-engine 2.1.19",
+      "global_seed": 20260815
+    },
+    "notes": ""
+  }
+]

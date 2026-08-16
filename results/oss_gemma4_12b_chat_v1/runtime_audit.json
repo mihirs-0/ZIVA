@@ -1,0 +1,125 @@
+{
+  "experiment_name": "oss_gemma4_12b_chat_v1",
+  "experiment_fingerprint": "15eeea4dd36cbbe5f5514d88ae66500f5bc185ed2ac64f7ce0e33c8310365c81",
+  "frozen_git_commit": "19271386bc130c296090a66fc9a010b35a750341",
+  "run_started_at_utc": "2026-08-16T07:32:11.265068+00:00",
+  "run_finished_at_utc": "2026-08-16T07:46:02.353202+00:00",
+  "integrity": {
+    "manifest_trials": 512,
+    "raw_records": 512,
+    "unique_trial_ids": 512,
+    "execution_errors": 0,
+    "records_matching_fingerprint": 512,
+    "complete_five_message_transcripts": 512,
+    "turn_2_followup_mismatches": 0,
+    "think_marker_records": 0,
+    "parser_recomputation_mismatches": 0
+  },
+  "model": {
+    "id": "gemma4_12b",
+    "checkpoint": "google/gemma-4-12B-it",
+    "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "tokenizer_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "parameter_scale": "12B",
+    "model_family": "Gemma-4",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "chat_template_kwargs": {},
+    "enable_thinking": false
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 2048,
+    "turn_2_max_tokens": 16
+  },
+  "generation": {
+    "turn_1_finish_reasons": {
+      "stop": 512
+    },
+    "turn_2_finish_reasons": {
+      "stop": 512
+    }
+  },
+  "parsing": {
+    "valid": 512,
+    "malformed": 0,
+    "malformed_rate": 0.0,
+    "status_counts": {
+      "ok_single": 512
+    },
+    "malformed_by_family": {
+      "excited_positive": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "malformed_by_template": {
+      "excited_positive_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "excited_positive_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    }
+  }
+}

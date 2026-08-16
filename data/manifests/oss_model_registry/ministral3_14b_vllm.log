@@ -1,0 +1,108 @@
+
+[2026-08-16T08:04:11.493407+00:00] command=["/home/mihir/tg/vllmenv/bin/vllm", "serve", "mistralai/Ministral-3-14B-Instruct-2512-BF16", "--revision", "3cea74c1ebaf5ce5f5a2553de470e2ceab825142", "--served-model-name", "mistralai/Ministral-3-14B-Instruct-2512-BF16", "--dtype", "bfloat16", "--tensor-parallel-size", "2", "--max-model-len", "8192", "--gpu-memory-utilization", "0.9", "--generation-config", "vllm", "--tokenizer-mode", "hf", "--chat-template", "/home/mihir/.cache/huggingface/hub/models--mistralai--Ministral-3-14B-Instruct-2512-BF16/blobs/47d042a08ca69e08195f6580c893fe31f58b1e0f", "--host", "127.0.0.1", "--port", "8000"]
+(APIServer pid=62351) INFO 08-16 08:04:26 [api_utils.py:345]
+(APIServer pid=62351) INFO 08-16 08:04:26 [api_utils.py:345]        █     █     █▄   ▄█
+(APIServer pid=62351) INFO 08-16 08:04:26 [api_utils.py:345]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.26.0
+(APIServer pid=62351) INFO 08-16 08:04:26 [api_utils.py:345]   █▄█▀ █     █     █     █  model   mistralai/Ministral-3-14B-Instruct-2512-BF16
+(APIServer pid=62351) INFO 08-16 08:04:26 [api_utils.py:345]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=62351) INFO 08-16 08:04:26 [api_utils.py:345]
+(APIServer pid=62351) INFO 08-16 08:04:26 [api_utils.py:273] non-default args: {'model_tag': 'mistralai/Ministral-3-14B-Instruct-2512-BF16', 'chat_template': '/home/mihir/.cache/huggingface/hub/models--mistralai--Ministral-3-14B-Instruct-2512-BF16/blobs/47d042a08ca69e08195f6580c893fe31f58b1e0f', 'host': '127.0.0.1', 'model': 'mistralai/Ministral-3-14B-Instruct-2512-BF16', 'tokenizer_mode': 'hf', 'dtype': 'bfloat16', 'revision': '3cea74c1ebaf5ce5f5a2553de470e2ceab825142', 'max_model_len': 8192, 'served_model_name': ['mistralai/Ministral-3-14B-Instruct-2512-BF16'], 'generation_config': 'vllm', 'tensor_parallel_size': 2, 'gpu_memory_utilization': 0.9}
+(APIServer pid=62351) INFO 08-16 08:04:26 [arg_utils.py:779] HF_HUB_OFFLINE is True, replace model_id [mistralai/Ministral-3-14B-Instruct-2512-BF16] to model_path [/home/mihir/.cache/huggingface/hub/models--mistralai--Ministral-3-14B-Instruct-2512-BF16/snapshots/3cea74c1ebaf5ce5f5a2553de470e2ceab825142]
+(APIServer pid=62351) INFO 08-16 08:04:29 [model.py:623] Resolved architecture: Mistral3ForConditionalGeneration
+(APIServer pid=62351) INFO 08-16 08:04:29 [model.py:1788] Using max model len 8192
+(APIServer pid=62351) INFO 08-16 08:04:29 [vllm.py:1109] Asynchronous scheduling is enabled.
+(APIServer pid=62351) INFO 08-16 08:04:29 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(APIServer pid=62351) [transformers] The tokenizer you are loading from '/home/mihir/.cache/huggingface/hub/models--mistralai--Ministral-3-14B-Instruct-2512-BF16/snapshots/3cea74c1ebaf5ce5f5a2553de470e2ceab825142' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+(APIServer pid=62351) [transformers] The tokenizer you are loading from '/home/mihir/.cache/huggingface/hub/models--mistralai--Ministral-3-14B-Instruct-2512-BF16/snapshots/3cea74c1ebaf5ce5f5a2553de470e2ceab825142' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+(APIServer pid=62351) Traceback (most recent call last):
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/context.py", line 270, in call_hf_processor
+(APIServer pid=62351)     output = hf_processor(**data, **allowed_kwargs)
+(APIServer pid=62351)              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/transformers/models/pixtral/processing_pixtral.py", line 175, in __call__
+(APIServer pid=62351)     self._check_special_mm_tokens(prompt_strings, text_inputs, modalities=["image"])
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/transformers/processing_utils.py", line 2336, in _check_special_mm_tokens
+(APIServer pid=62351)     raise ValueError(
+(APIServer pid=62351) ValueError: Mismatch in `image` token count between text and `input_ids`. Got ids=[0] and text=[1]. Likely due to `truncation='max_length'`. Please disable truncation or increase `max_length`.
+(APIServer pid=62351)
+(APIServer pid=62351) The above exception was the direct cause of the following exception:
+(APIServer pid=62351)
+(APIServer pid=62351) Traceback (most recent call last):
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/bin/vllm", line 10, in <module>
+(APIServer pid=62351)     sys.exit(main())
+(APIServer pid=62351)              ^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 95, in main
+(APIServer pid=62351)     args.dispatch_function(args)
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 148, in cmd
+(APIServer pid=62351)     uvloop.run(run_server(args))
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/uvloop/__init__.py", line 96, in run
+(APIServer pid=62351)     return __asyncio.run(
+(APIServer pid=62351)            ^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+(APIServer pid=62351)     return runner.run(main)
+(APIServer pid=62351)            ^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+(APIServer pid=62351)     return self._loop.run_until_complete(task)
+(APIServer pid=62351)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/uvloop/__init__.py", line 48, in wrapper
+(APIServer pid=62351)     return await main
+(APIServer pid=62351)            ^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 759, in run_server
+(APIServer pid=62351)     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 773, in run_server_worker
+(APIServer pid=62351)     async with build_async_engine_client(
+(APIServer pid=62351)                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+(APIServer pid=62351)     return await anext(self.gen)
+(APIServer pid=62351)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 139, in build_async_engine_client
+(APIServer pid=62351)     async with build_async_engine_client_from_engine_args(
+(APIServer pid=62351)                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+(APIServer pid=62351)     return await anext(self.gen)
+(APIServer pid=62351)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 175, in build_async_engine_client_from_engine_args
+(APIServer pid=62351)     async_llm = AsyncLLM.from_vllm_config(
+(APIServer pid=62351)                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 217, in from_vllm_config
+(APIServer pid=62351)     return cls(
+(APIServer pid=62351)            ^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 135, in __init__
+(APIServer pid=62351)     self.input_processor = InputProcessor(self.vllm_config, renderer)
+(APIServer pid=62351)                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/v1/engine/input_processor.py", line 62, in __init__
+(APIServer pid=62351)     mm_budget = MultiModalBudget(vllm_config, mm_registry)
+(APIServer pid=62351)                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/encoder_budget.py", line 87, in __init__
+(APIServer pid=62351)     all_mm_max_toks_per_item = get_mm_max_toks_per_item(
+(APIServer pid=62351)                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/encoder_budget.py", line 32, in get_mm_max_toks_per_item
+(APIServer pid=62351)     mm_inputs = mm_registry.get_dummy_mm_inputs(
+(APIServer pid=62351)                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/registry.py", line 256, in get_dummy_mm_inputs
+(APIServer pid=62351)     mm_inputs = processor.apply(
+(APIServer pid=62351)                 ^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/processor.py", line 1685, in apply
+(APIServer pid=62351)     ) = self._cached_apply_hf_processor(inputs, timing_ctx)
+(APIServer pid=62351)         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/processor.py", line 1474, in _cached_apply_hf_processor
+(APIServer pid=62351)     ) = self._apply_hf_processor_main(
+(APIServer pid=62351)         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/processor.py", line 1287, in _apply_hf_processor_main
+(APIServer pid=62351)     prompt_ids = self._apply_hf_processor_text_only(prompt, tokenization_kwargs)
+(APIServer pid=62351)                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/processor.py", line 1188, in _apply_hf_processor_text_only
+(APIServer pid=62351)     prompt_ids, _, _ = self._apply_hf_processor_text_mm(
+(APIServer pid=62351)                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/processor.py", line 1153, in _apply_hf_processor_text_mm
+(APIServer pid=62351)     processed_data = self._call_hf_processor(
+(APIServer pid=62351)                      ^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/model_executor/models/mistral3.py", line 243, in _call_hf_processor
+(APIServer pid=62351)     processed_outputs = super()._call_hf_processor(
+(APIServer pid=62351)                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/processor.py", line 1110, in _call_hf_processor
+(APIServer pid=62351)     return self.info.ctx.call_hf_processor(
+(APIServer pid=62351)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=62351)   File "/home/mihir/tg/vllmenv/lib/python3.12/site-packages/vllm/multimodal/processing/context.py", line 277, in call_hf_processor
+(APIServer pid=62351)     raise ValueError(msg) from exc
+(APIServer pid=62351) ValueError: Failed to apply PixtralProcessor on data={'text': '[IMG]'} with kwargs={'truncation': False, 'return_tensors': 'pt'}

@@ -1,0 +1,36 @@
+{
+  "experiment_name": "oss_deepseek_r1_distill_qwen_32b_chat_v1",
+  "frozen_at_utc": "2026-08-16T18:43:00.509733+00:00",
+  "git_commit": "0e78383a1d8e0c2d1fef920d36fd47d5e1e5f2d4",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "model": {
+    "id": "deepseek_r1_distill_qwen_32b",
+    "checkpoint": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "revision": "711ad2ea6aa40cfca18895e8aca02ab92df1a746",
+    "tokenizer_revision": "711ad2ea6aa40cfca18895e8aca02ab92df1a746",
+    "parameter_scale": "32B",
+    "model_family": "DeepSeek-R1-Distill-Qwen",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.26.0",
+    "vllm_model_runner": "V1 (VLLM_USE_V2_MODEL_RUNNER=0; required for UVA weight offload)",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "cpu_offload_gb_per_gpu": 16,
+    "max_model_len": 4096,
+    "gpu_memory_utilization": 0.9,
+    "chat_template_kwargs": {},
+    "thinking_mode": "official checkpoint default; no prompt-level control added"
+  },
+  "source_hashes": {
+    "data/manifests/oss_deepseek_r1_distill_qwen_32b_chat_v1/trials.jsonl": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "data/manifests/oss_deepseek_r1_distill_qwen_32b_chat_v1/pairing_audit.json": "12bfe1fc63508af4be6fe3351932a40a3440f917755dc35062d789ff76dc287a",
+    "data/manifests/oss_deepseek_r1_distill_qwen_32b_chat_v1/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/oss_deepseek_r1_distill_qwen_32b_chat_v1/resolved_config.json": "5119521114eb98890e20c1cede5e8bd307946dc2de70a26367edbb96ec748799",
+    "data/manifests/oss_model_registry/deepseek_r1_distill_qwen_32b.json": "60dd15216fdfc8eed123119bb8b64c0d15d1859ee6c971245686af75c808cdbb",
+    "data/manifests/oss_chat_v1_protocol/freeze.json": "eb1f691a538e53dfd9071d9e4460acf17e360e4dfbb3e45bdc52c17878040a7b"
+  },
+  "experiment_fingerprint": "c7352806d378796c5fb9e2d6eb6b5bb73a4f0afe92ba7bb349647821cfb5310b"
+}

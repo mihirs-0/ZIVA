@@ -1,0 +1,196 @@
+{
+  "experiment_name": "oss_qwen3_14b_chat_v1",
+  "experiment_fingerprint": "2a819e01af10f56ea420241173cbcb6ac9ebdacf8fac4307ae17aaf42c2d1b1e",
+  "frozen_git_commit": "482f13da4b3f90d2ab80e00a5d057cdb0ece0b72",
+  "run_started_at_utc": "2026-08-16T05:24:48.172485+00:00",
+  "run_finished_at_utc": "2026-08-16T05:42:54.853503+00:00",
+  "integrity": {
+    "manifest_trials": 512,
+    "raw_records": 512,
+    "unique_trial_ids": 512,
+    "execution_errors": 0,
+    "records_matching_fingerprint": 512,
+    "complete_five_message_transcripts": 512,
+    "turn_2_followup_mismatches": 0,
+    "think_marker_records": 0,
+    "parser_recomputation_mismatches": 0
+  },
+  "model": {
+    "id": "qwen3_14b",
+    "checkpoint": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "parameter_scale": "14B",
+    "model_family": "Qwen3",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "enable_thinking": false
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 2048,
+    "turn_2_max_tokens": 16
+  },
+  "generation": {
+    "turn_1_finish_reasons": {
+      "stop": 512
+    },
+    "turn_2_finish_reasons": {
+      "stop": 512
+    }
+  },
+  "parsing": {
+    "valid": 512,
+    "malformed": 0,
+    "malformed_rate": 0.0,
+    "status_counts": {
+      "ok_single": 500,
+      "ok_range": 12
+    },
+    "malformed_by_family": {
+      "excited_positive": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative": {
+        "n": 128,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "malformed_by_template": {
+      "excited_positive_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "excited_positive_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "negative_preference_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "neutral_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v1": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      },
+      "skeptical_negative_v2": {
+        "n": 64,
+        "malformed": 0,
+        "malformed_rate": 0.0
+      }
+    }
+  },
+  "service": {
+    "status": "READY_ADOPTED",
+    "key": "qwen3_14b",
+    "checkpoint": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "command": [
+      "vllm",
+      "serve",
+      "Qwen/Qwen3-14B",
+      "--revision",
+      "40c069824f4251a91eefaf281ebe4c544efd3e18",
+      "--served-model-name",
+      "Qwen/Qwen3-14B",
+      "--dtype",
+      "bfloat16",
+      "--tensor-parallel-size",
+      "2",
+      "--max-model-len",
+      "8192",
+      "--gpu-memory-utilization",
+      "0.90",
+      "--generation-config",
+      "vllm",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000"
+    ],
+    "versions": {
+      "vllm": "0.20.0",
+      "torch": "2.11.0+cu130",
+      "transformers": "5.6.2",
+      "tokenizers": "0.22.2"
+    },
+    "python": "3.12.3",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3090",
+        "uuid": "GPU-7d007960-54ef-9085-52e1-20babf88702b",
+        "driver_version": "580.173.02",
+        "memory_total_mib": 24576,
+        "memory_used_mib": 23289
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA GeForce RTX 3090",
+        "uuid": "GPU-33cff1f4-659c-cb6e-a994-bef773e154ca",
+        "driver_version": "580.173.02",
+        "memory_total_mib": 24576,
+        "memory_used_mib": 23289
+      }
+    ]
+  },
+  "gpu_monitor": {
+    "0": {
+      "samples": 992,
+      "active_sm_samples": 991,
+      "peak_sm_utilization_percent": 100,
+      "peak_resident_memory_mib": 23289
+    },
+    "1": {
+      "samples": 992,
+      "active_sm_samples": 991,
+      "peak_sm_utilization_percent": 100,
+      "peak_resident_memory_mib": 23289
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "experiment_name": "oss_gpt_oss_20b_chat_v1",
+  "frozen_at_utc": "2026-08-16T20:32:09.918804+00:00",
+  "git_commit": "91befcdce3c1bb79fc105e722865c05ed2c26bcf",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "model": {
+    "id": "gpt_oss_20b",
+    "checkpoint": "openai/gpt-oss-20b",
+    "revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+    "tokenizer_revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+    "parameter_scale": "20B (3.6B active)",
+    "model_family": "GPT-OSS",
+    "dtype": "bfloat16",
+    "quantization": "checkpoint-native MXFP4 MoE weights",
+    "framework": "vllm",
+    "framework_version": "0.26.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "max_model_len": 4096,
+    "gpu_memory_utilization": 0.9,
+    "chat_template_kwargs": {},
+    "reasoning_mode": "official checkpoint default; no prompt-level control added",
+    "reasoning_parser": "openai_gptoss"
+  },
+  "source_hashes": {
+    "data/manifests/oss_gpt_oss_20b_chat_v1/trials.jsonl": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "data/manifests/oss_gpt_oss_20b_chat_v1/pairing_audit.json": "12bfe1fc63508af4be6fe3351932a40a3440f917755dc35062d789ff76dc287a",
+    "data/manifests/oss_gpt_oss_20b_chat_v1/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/oss_gpt_oss_20b_chat_v1/resolved_config.json": "2cd1f474086e81fde6b72d46e0db773fc37e706cbcf04c499b0fe6899983e550",
+    "data/manifests/oss_model_registry/gpt_oss_20b.json": "f7f3b691fa0667c4a8f2cb116169597642cc50553678c9f874efdc28aa4891c6",
+    "data/manifests/oss_chat_v1_protocol/freeze.json": "eb1f691a538e53dfd9071d9e4460acf17e360e4dfbb3e45bdc52c17878040a7b"
+  },
+  "experiment_fingerprint": "718f78d3563f0c98d3b61aef3091020a47edfbf6a784e2678d8e0f778cbc7dee"
+}

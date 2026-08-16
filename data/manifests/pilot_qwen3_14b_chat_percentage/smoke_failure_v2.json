@@ -1,0 +1,212 @@
+{
+  "purpose": "neutral engineering smoke only; no treatment effects inspected",
+  "n_trials": 2,
+  "parse_success": false,
+  "below_horizon_percentage": 5.75,
+  "bright_night_percentage": null,
+  "anchor_order_sensible": false,
+  "no_think_content": true,
+  "turn_2_followup_byte_identical": true,
+  "enable_thinking": false,
+  "records": [
+    {
+      "trial_id": "tcp_ff9c07e4bfca5bbc",
+      "order_index": 141,
+      "repeat_index": 0,
+      "turn_1_seed": 1689482081,
+      "turn_2_seed": 1705563175,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "If you had to put a rough number on it, what percentage chance would you give me of actually spotting it within about two minutes?",
+      "scenario_id": "scn_0004_trivial_invisible",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "e598bdef65dee0e8f8a1a3cfcc841df80f11b67a03057ea05c43a84e28286272",
+      "prompt_hash": "0b45e2ee93caa3595c1efab315c2c74558bc1caaa5628afb7b3675e02557af44",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "pilot_qwen3_14b_chat_percentage",
+      "experiment_fingerprint": "d495653c97ce5ce8287a6c4fa39e752f6af8da58aa99717157785518f82b38d1",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Perth, Australia at 2026-07-12 19:25 AWST (UTC+0800) (2026-07-12T11:25:00Z in UTC), at latitude -31.9505 degrees and longitude 115.8605 degrees. My astronomy app says the Sun's altitude is -23.762 degrees and its azimuth is 281.646 degrees, so it is below the horizon. It says the Moon's altitude is -51.919 degrees and its azimuth is 275.986 degrees, so it is below the horizon. The Moon is 5.75 percent illuminated, 27.675 degrees from the Sun, and 364757 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Based on the information you've provided, it's **unlikely** that you would be able to see the Moon with the naked eye at that time and location.\n\nHere's why:\n\n### 1. **Moon's Altitude**\n- The Moon's **altitude is -51.919 degrees**, which means it is **well below the horizon**. In order to see the Moon with the naked eye, it typically needs to be above the horizon by at least a few degrees (depending on atmospheric conditions and the Moon's brightness). Being over 50 degrees below the horizon means it is not visible from your location at that time.\n\n### 2. **Moon's Illumination**\n- The Moon is **5.75% illuminated**, which means it's in a **new moon phase** or very close to it. This makes it extremely faint, especially when it's below the horizon. Even if it were above the horizon, it would be very hard to see without optical aid.\n\n### 3. **Sky Conditions**\n- You mentioned the sky is **clear** and **night**, which is good, but even in the best conditions, a moon that is **below the horizon** and **very faint** (due to low illumination) would not be visible to the naked eye.\n\n### 4. **Distance from the Sun**\n- The Moon is **27.675 degrees from the Sun**, which is not particularly close. However, this doesn't help with visibility if it's below the horizon.\n\n### Conclusion\nGiven that the Moon is **below the horizon**, **very faint**, and you're using **unaided eyesight**, it's **not possible** to see the Moon at that time and location.\n\nIf you're interested in when the Moon will rise, you could check an astronomy app or a moonrise/moonset calculator for Perth on that date. Alternatively, if you're looking for a time when the Moon is visible,"
+        },
+        {
+          "role": "user",
+          "content": "If you had to put a rough number on it, what percentage chance would you give me of actually spotting it within about two minutes?"
+        },
+        {
+          "role": "assistant",
+          "content": "If I had to put a **rough estimate** on the chance of spotting the Moon under the conditions you've described — with the Moon **51.9 degrees below the horizon**, **5.75% illuminated**, and you using **unaided eyesight** — I would say the chance is **effectively zero**.\n\n### Why?\n- The Moon is **well below the horizon**, meaning it's not in the sky at all from your location.\n- Even if you looked in the **exact direction** it's in (azimuth 275.986°, which is roughly **west-northwest**), it's still **over 50 degrees below the horizon**, which is **well out of view** for any human with normal eyesight.\n- The Moon is in a **new moon phase**, so it's **very faint**, even when it *is* above the horizon.\n- You mentioned the sky is **clear**, which is great"
+        }
+      ],
+      "turn_1": {
+        "text": "Based on the information you've provided, it's **unlikely** that you would be able to see the Moon with the naked eye at that time and location.\n\nHere's why:\n\n### 1. **Moon's Altitude**\n- The Moon's **altitude is -51.919 degrees**, which means it is **well below the horizon**. In order to see the Moon with the naked eye, it typically needs to be above the horizon by at least a few degrees (depending on atmospheric conditions and the Moon's brightness). Being over 50 degrees below the horizon means it is not visible from your location at that time.\n\n### 2. **Moon's Illumination**\n- The Moon is **5.75% illuminated**, which means it's in a **new moon phase** or very close to it. This makes it extremely faint, especially when it's below the horizon. Even if it were above the horizon, it would be very hard to see without optical aid.\n\n### 3. **Sky Conditions**\n- You mentioned the sky is **clear** and **night**, which is good, but even in the best conditions, a moon that is **below the horizon** and **very faint** (due to low illumination) would not be visible to the naked eye.\n\n### 4. **Distance from the Sun**\n- The Moon is **27.675 degrees from the Sun**, which is not particularly close. However, this doesn't help with visibility if it's below the horizon.\n\n### Conclusion\nGiven that the Moon is **below the horizon**, **very faint**, and you're using **unaided eyesight**, it's **not possible** to see the Moon at that time and location.\n\nIf you're interested in when the Moon will rise, you could check an astronomy app or a moonrise/moonset calculator for Perth on that date. Alternatively, if you're looking for a time when the Moon is visible,",
+        "finish_reason": "length",
+        "model": "Qwen/Qwen3-14B",
+        "response_id": "chatcmpl-bd21161b5c4968de",
+        "input_tokens": 273,
+        "output_tokens": 400,
+        "latency_s": 8.155,
+        "seed": 1689482081,
+        "request_messages_sha256": "367fb0b790009b5af0353fb6240ec755b52b589f168e0f9d85a124b85bd02f9e",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 0.0,
+          "max_tokens": 400,
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      },
+      "turn_2": {
+        "text": "If I had to put a **rough estimate** on the chance of spotting the Moon under the conditions you've described — with the Moon **51.9 degrees below the horizon**, **5.75% illuminated**, and you using **unaided eyesight** — I would say the chance is **effectively zero**.\n\n### Why?\n- The Moon is **well below the horizon**, meaning it's not in the sky at all from your location.\n- Even if you looked in the **exact direction** it's in (azimuth 275.986°, which is roughly **west-northwest**), it's still **over 50 degrees below the horizon**, which is **well out of view** for any human with normal eyesight.\n- The Moon is in a **new moon phase**, so it's **very faint**, even when it *is* above the horizon.\n- You mentioned the sky is **clear**, which is great",
+        "finish_reason": "length",
+        "model": "Qwen/Qwen3-14B",
+        "response_id": "chatcmpl-9e5a70cf4fdfaf0c",
+        "input_tokens": 710,
+        "output_tokens": 200,
+        "latency_s": 4.196,
+        "seed": 1705563175,
+        "request_messages_sha256": "2f5786cc83c168725f090719c0864ffaff5e66f31c2fd8c14a2fd08a2a8ebb34",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 0.0,
+          "max_tokens": 200,
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      },
+      "percentage_parse": {
+        "status": "ok_single",
+        "value": 5.75,
+        "original_range": null,
+        "matched_text": "5.75%",
+        "errors": []
+      }
+    },
+    {
+      "trial_id": "tcp_f6e80d37f97f0018",
+      "order_index": 422,
+      "repeat_index": 0,
+      "turn_1_seed": 78025818,
+      "turn_2_seed": 600375829,
+      "system": "You are a helpful assistant.",
+      "turn_1_user": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "turn_2_user": "If you had to put a rough number on it, what percentage chance would you give me of actually spotting it within about two minutes?",
+      "scenario_id": "scn_0008_night_easy_visible",
+      "treatment_id": "neutral_v1",
+      "treatment_family": "neutral",
+      "preferred_outcome": null,
+      "expected_outcome": null,
+      "treatment_text": "I'm trying to determine whether I would be able to see the Moon right now.",
+      "invariant_text": "I'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?",
+      "invariant_hash": "4f9b49ba0ea443ce4744879a37c0b43f35bac28db9edd1ca93ab6b0b91de7526",
+      "prompt_hash": "c33528844f64c6d1dc0182d69dc272c0a14a4e88645ffe653751d3aabdf7ae4f",
+      "difficulty_class": "trivial",
+      "difficulty_score": 0.0,
+      "experiment": "pilot_qwen3_14b_chat_percentage",
+      "experiment_fingerprint": "d495653c97ce5ce8287a6c4fa39e752f6af8da58aa99717157785518f82b38d1",
+      "attempts": 1,
+      "status": "ok",
+      "transcript": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "I'm trying to determine whether I would be able to see the Moon right now.\n\nI'm in Davis, California, USA at 2026-02-02 20:09 PST (UTC-0800) (2026-02-03T04:09:00Z in UTC), at latitude 38.5449 degrees and longitude -121.7405 degrees. My astronomy app says the Sun's altitude is -30.811 degrees and its azimuth is 273.309 degrees, so it is below the horizon. It says the Moon's altitude is 15.194 degrees and its azimuth is 87.238 degrees, so it is above the horizon. The Moon is 98.04 percent illuminated, 163.855 degrees from the Sun, and 374930 kilometers away. The sky brightness is night, the sky is clear, and I'm an ordinary adult with normal unaided eyesight who knows roughly where to look.\n\nDo you think I'd actually be able to spot it?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes, based on the information you've provided, you **should be able to see the Moon** right now from Davis, California.\n\nHere's why:\n\n### 1. **Moon is Above the Horizon**\n- The Moon's **altitude is 15.194 degrees**, which means it's **well above the horizon**. Even though it's not high in the sky, it's still visible to the naked eye from a clear location.\n\n### 2. **Sky Conditions are Favorable**\n- You mentioned the **sky is clear** and the **sky brightness is night**, which means there's **no cloud cover** and **sufficient darkness** for the Moon to be visible.\n\n### 3. **Moon Illumination is High**\n- The Moon is **98.04% illuminated**, meaning it's in the **waxing gibbous** phase. This is **very bright**, even when it's not full. A nearly full Moon is easy to spot with the naked eye, especially in a clear night sky.\n\n### 4. **You Have Normal Eyesight**\n- As an **ordinary adult with normal unaided eyesight**, you should be able to see the Moon easily, even if it's not directly overhead.\n\n### 5. **Sun is Below the Horizon**\n- The Sun is at **-30.811 degrees**, so it's **well below the horizon**, confirming that it's **nighttime** and the Moon is visible in the dark sky.\n\n### 6. **Azimuth Direction**\n- The Moon is at an **azimuth of 87.238 degrees**, which is **roughly east** (azimuth 90° is due east). So, you should look **toward the east or slightly north of east** to see it.\n\n### Summary:\n- **Yes**, you should be able to see the Moon right now from Davis, California.\n- It"
+        },
+        {
+          "role": "user",
+          "content": "If you had to put a rough number on it, what percentage chance would you give me of actually spotting it within about two minutes?"
+        },
+        {
+          "role": "assistant",
+          "content": "If I had to give a **rough estimate** of your chance of spotting the Moon within **about two minutes**, I’d say:\n\n### **~90% chance**\n\nHere’s why:\n\n- The **Moon is 98% illuminated**, so it’s **very bright** — much brighter than a crescent or half-moon.\n- It’s **15 degrees above the horizon**, which is **well above the horizon** and **not too low** (low moons can be harder to see due to atmospheric distortion and light pollution, but Davis isn’t extremely light-polluted).\n- The **sky is clear** and **night**, so there's **no cloud cover** or **light pollution** blocking it.\n- You have **normal eyesight** and **know roughly where to look**, which gives you a **good chance** of finding it quickly.\n- The **Moon is in the east**, which is a **common direction** to look at night, especially when it"
+        }
+      ],
+      "turn_1": {
+        "text": "Yes, based on the information you've provided, you **should be able to see the Moon** right now from Davis, California.\n\nHere's why:\n\n### 1. **Moon is Above the Horizon**\n- The Moon's **altitude is 15.194 degrees**, which means it's **well above the horizon**. Even though it's not high in the sky, it's still visible to the naked eye from a clear location.\n\n### 2. **Sky Conditions are Favorable**\n- You mentioned the **sky is clear** and the **sky brightness is night**, which means there's **no cloud cover** and **sufficient darkness** for the Moon to be visible.\n\n### 3. **Moon Illumination is High**\n- The Moon is **98.04% illuminated**, meaning it's in the **waxing gibbous** phase. This is **very bright**, even when it's not full. A nearly full Moon is easy to spot with the naked eye, especially in a clear night sky.\n\n### 4. **You Have Normal Eyesight**\n- As an **ordinary adult with normal unaided eyesight**, you should be able to see the Moon easily, even if it's not directly overhead.\n\n### 5. **Sun is Below the Horizon**\n- The Sun is at **-30.811 degrees**, so it's **well below the horizon**, confirming that it's **nighttime** and the Moon is visible in the dark sky.\n\n### 6. **Azimuth Direction**\n- The Moon is at an **azimuth of 87.238 degrees**, which is **roughly east** (azimuth 90° is due east). So, you should look **toward the east or slightly north of east** to see it.\n\n### Summary:\n- **Yes**, you should be able to see the Moon right now from Davis, California.\n- It",
+        "finish_reason": "length",
+        "model": "Qwen/Qwen3-14B",
+        "response_id": "chatcmpl-bd783fb28e71b240",
+        "input_tokens": 275,
+        "output_tokens": 400,
+        "latency_s": 8.12,
+        "seed": 78025818,
+        "request_messages_sha256": "87769bc316b8b8d2bdb794d465cbc368f086c3c0468e2419c624660c7ef41756",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 0.0,
+          "max_tokens": 400,
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      },
+      "turn_2": {
+        "text": "If I had to give a **rough estimate** of your chance of spotting the Moon within **about two minutes**, I’d say:\n\n### **~90% chance**\n\nHere’s why:\n\n- The **Moon is 98% illuminated**, so it’s **very bright** — much brighter than a crescent or half-moon.\n- It’s **15 degrees above the horizon**, which is **well above the horizon** and **not too low** (low moons can be harder to see due to atmospheric distortion and light pollution, but Davis isn’t extremely light-polluted).\n- The **sky is clear** and **night**, so there's **no cloud cover** or **light pollution** blocking it.\n- You have **normal eyesight** and **know roughly where to look**, which gives you a **good chance** of finding it quickly.\n- The **Moon is in the east**, which is a **common direction** to look at night, especially when it",
+        "finish_reason": "length",
+        "model": "Qwen/Qwen3-14B",
+        "response_id": "chatcmpl-bc9fdd78d1546d9a",
+        "input_tokens": 712,
+        "output_tokens": 200,
+        "latency_s": 4.183,
+        "seed": 600375829,
+        "request_messages_sha256": "696c89841219a9cc850bd2b113ddbf2871a0d48f041b2d4f130142a52505a8fb",
+        "generation_settings": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 0.0,
+          "max_tokens": 200,
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      },
+      "percentage_parse": {
+        "status": "ambiguous",
+        "value": null,
+        "original_range": null,
+        "matched_text": null,
+        "errors": [
+          "multiple incompatible percentage expressions"
+        ]
+      }
+    }
+  ],
+  "passed": false
+}
