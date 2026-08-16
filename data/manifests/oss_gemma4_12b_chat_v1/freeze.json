@@ -1,0 +1,32 @@
+{
+  "experiment_name": "oss_gemma4_12b_chat_v1",
+  "frozen_at_utc": "2026-08-16T07:22:34.378357+00:00",
+  "git_commit": "19271386bc130c296090a66fc9a010b35a750341",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "model": {
+    "id": "gemma4_12b",
+    "checkpoint": "google/gemma-4-12B-it",
+    "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "tokenizer_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "parameter_scale": "12B",
+    "model_family": "Gemma-4",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.20.0",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "chat_template_kwargs": {},
+    "enable_thinking": false
+  },
+  "source_hashes": {
+    "data/manifests/oss_gemma4_12b_chat_v1/trials.jsonl": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "data/manifests/oss_gemma4_12b_chat_v1/pairing_audit.json": "12bfe1fc63508af4be6fe3351932a40a3440f917755dc35062d789ff76dc287a",
+    "data/manifests/oss_gemma4_12b_chat_v1/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/oss_gemma4_12b_chat_v1/resolved_config.json": "df36f64ee9323ee6f1b1cb97bf2fe754e016dcfb1e827dc4e5ca8ab3030968be",
+    "data/manifests/oss_model_registry/gemma4_12b.json": "7dcbbf1e9c0593b7392679ad921d320b83a6aa529778e486c004403c6f6d740a",
+    "data/manifests/oss_chat_v1_protocol/freeze.json": "eb1f691a538e53dfd9071d9e4460acf17e360e4dfbb3e45bdc52c17878040a7b"
+  },
+  "experiment_fingerprint": "15eeea4dd36cbbe5f5514d88ae66500f5bc185ed2ac64f7ce0e33c8310365c81"
+}
