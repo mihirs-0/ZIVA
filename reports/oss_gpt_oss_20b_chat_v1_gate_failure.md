@@ -53,11 +53,13 @@ and model reasoning behavior were not tuned after observing this result.
   `data/manifests/oss_gpt_oss_20b_chat_v1/`
 - Full service audit:
   `data/manifests/oss_model_registry/gpt_oss_20b_service.json`
+- Shutdown audit:
+  `data/manifests/oss_model_registry/gpt_oss_20b_stop.json`
 - Complete vLLM log:
   `data/manifests/oss_model_registry/gpt_oss_20b_vllm.log`
 - Raw treatment records: 0
 - Analysis outputs: 0
 
-The pinned checkpoint cache and ready vLLM service remain installed on
-`mihir@idli` for reproducibility. No further inference was performed after the
-failed neutral gate.
+The pinned checkpoint cache remains installed on `mihir@idli` for
+reproducibility. The vLLM service was stopped after the failed gate and both
+GPUs returned to zero allocated MiB. No further inference was performed.
