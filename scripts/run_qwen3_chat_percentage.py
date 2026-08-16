@@ -167,7 +167,7 @@ def smoke(config: dict[str, Any], config_path: Path) -> None:
     no_think = all(
         "<think>" not in (row["turn_1"]["text"] + row["turn_2"]["text"]).lower() for row in records
     )
-    followups = {row["turn_2_user"] for row in selected}
+    followups = {row.turn_2_user for row in selected}
     record = {
         "purpose": "neutral engineering smoke only; no treatment effects inspected",
         "n_trials": len(records),
