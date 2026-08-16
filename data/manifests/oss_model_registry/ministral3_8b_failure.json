@@ -1,0 +1,8 @@
+{
+  "status": "SKIPPED_ENGINEERING",
+  "key": "ministral3_8b",
+  "checkpoint": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+  "stage": "chat_template_compatibility",
+  "message": "Structured neutral smoke passed 16/16. Frozen Chat-v1 requests failed HTTP 400 because vLLM Mistral tokenizers reject chat_template. Supplying the checkpoint official chat_template.jinja (sha256 74eeb55fd3341286ec3fd44e902b7120721acc81cd394e96b431f85e93a1ea56) did not change that rejection. Final documented --tokenizer-mode hf attempt failed startup with ValueError: This model requires --tokenizer-mode mistral. No non-neutral treatment data collected; protocol unchanged.",
+  "recorded_at_utc": "2026-08-16T07:06:04.378705+00:00"
+}

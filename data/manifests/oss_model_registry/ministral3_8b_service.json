@@ -1,0 +1,57 @@
+{
+  "status": "FAILED_STARTUP",
+  "key": "ministral3_8b",
+  "checkpoint": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+  "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+  "pid": 54809,
+  "command": [
+    "/home/mihir/tg/vllmenv/bin/vllm",
+    "serve",
+    "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+    "--revision",
+    "f6fae9795746f63c9be8344932f01275f3c63734",
+    "--served-model-name",
+    "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+    "--dtype",
+    "bfloat16",
+    "--tensor-parallel-size",
+    "2",
+    "--max-model-len",
+    "8192",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--generation-config",
+    "vllm",
+    "--tokenizer-mode",
+    "hf",
+    "--chat-template",
+    "/home/mihir/.cache/huggingface/hub/models--mistralai--Ministral-3-8B-Instruct-2512-BF16/blobs/53d9d80c00c32bcf67ff5f66f85203cfd4f7a696",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000"
+  ],
+  "started_at_utc": "2026-08-16T07:05:08.049919+00:00",
+  "max_model_len": 8192,
+  "gpu_memory_utilization": 0.9,
+  "versions": {
+    "vllm": "0.26.0",
+    "torch": "2.11.0",
+    "transformers": "5.14.1",
+    "tokenizers": "0.22.2",
+    "python": "3.12.13"
+  },
+  "environment_overrides": {
+    "HF_HUB_DISABLE_XET": "1",
+    "HF_HUB_OFFLINE": "1",
+    "VLLM_USE_FLASHINFER_SAMPLER": "0"
+  },
+  "chat_template": {
+    "source": "official checkpoint chat_template.jinja",
+    "path": "/home/mihir/.cache/huggingface/hub/models--mistralai--Ministral-3-8B-Instruct-2512-BF16/blobs/53d9d80c00c32bcf67ff5f66f85203cfd4f7a696",
+    "sha256": "74eeb55fd3341286ec3fd44e902b7120721acc81cd394e96b431f85e93a1ea56"
+  },
+  "log_path": "data/manifests/oss_model_registry/ministral3_8b_vllm.log",
+  "exit_code": 1,
+  "finished_at_utc": "2026-08-16T07:05:28.080991+00:00"
+}
