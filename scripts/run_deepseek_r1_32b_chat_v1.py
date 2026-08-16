@@ -52,7 +52,7 @@ def _config(runner) -> dict[str, Any]:
             "endpoint": "http://127.0.0.1:8000",
             "tensor_parallel_size": 2,
             "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
-            "cpu_offload_gb_per_gpu": 12,
+            "cpu_offload_gb_per_gpu": 16,
             "max_model_len": 4096,
             "gpu_memory_utilization": 0.90,
             # Empty kwargs means the official checkpoint template is applied
