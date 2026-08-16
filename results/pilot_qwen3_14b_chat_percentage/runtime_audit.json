@@ -1,0 +1,115 @@
+{
+  "experiment_name": "pilot_qwen3_14b_chat_percentage",
+  "experiment_fingerprint": "1b0f912b98cda0d5c16ffc6b587b47082924a43300caf22bb9865c88aa6cb33c",
+  "frozen_git_commit": "ca389752b867d0ae147c7d412a3deff691785218",
+  "run_started_at_utc": "2026-08-16T03:17:54.559410+00:00",
+  "run_finished_at_utc": "2026-08-16T03:34:22.327844+00:00",
+  "integrity": {
+    "manifest_trials": 512,
+    "raw_records": 512,
+    "unique_trial_ids": 512,
+    "execution_errors": 0,
+    "records_matching_fingerprint": 512,
+    "complete_five_message_transcripts": 512,
+    "turn_2_followup_mismatches": 0,
+    "think_marker_records": 0,
+    "attempt_counts": {
+      "1": 512
+    }
+  },
+  "model": {
+    "checkpoint": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "enable_thinking": false
+  },
+  "server": {
+    "framework": "vllm",
+    "vllm_version": "0.20.0",
+    "torch_version": "2.11.0+cu130",
+    "transformers_version": "5.6.2",
+    "tokenizers_version": "0.22.2",
+    "python_version": "3.12.3",
+    "invocation": "vllm serve Qwen/Qwen3-14B --revision 40c069824f4251a91eefaf281ebe4c544efd3e18 --served-model-name Qwen/Qwen3-14B --dtype bfloat16 --tensor-parallel-size 2 --max-model-len 8192 --gpu-memory-utilization 0.90 --generation-config vllm --host 127.0.0.1 --port 8000",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.9,
+    "generation_config_source": "vllm"
+  },
+  "generation": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 400,
+    "turn_2_max_tokens": 200,
+    "independent_seed_per_trial_and_turn": true,
+    "turn_1_finish_reasons": {
+      "length": 496,
+      "stop": 16
+    },
+    "turn_2_finish_reasons": {
+      "length": 512
+    }
+  },
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3090",
+      "uuid": "GPU-7d007960-54ef-9085-52e1-20babf88702b",
+      "driver_version": "580.173.02",
+      "memory_total_mib": 24576,
+      "resident_memory_mib": 23289,
+      "nonzero_utilization_samples": 979,
+      "peak_sm_utilization_percent": 100
+    },
+    {
+      "index": 1,
+      "name": "NVIDIA GeForce RTX 3090",
+      "uuid": "GPU-33cff1f4-659c-cb6e-a994-bef773e154ca",
+      "driver_version": "580.173.02",
+      "memory_total_mib": 24576,
+      "resident_memory_mib": 23289,
+      "nonzero_utilization_samples": 979,
+      "peak_sm_utilization_percent": 100
+    }
+  ],
+  "parsing": {
+    "valid": 386,
+    "malformed": 126,
+    "malformed_rate": 0.246094,
+    "status_counts": {
+      "ok_range": 263,
+      "ok_single": 123,
+      "ambiguous": 125,
+      "no_percentage": 1
+    },
+    "malformed_rate_by_family": {
+      "neutral": 0.242188,
+      "excited_positive": 0.171875,
+      "skeptical_negative": 0.234375,
+      "negative_preference": 0.335938
+    },
+    "malformed_rate_by_template": {
+      "neutral_v1": 0.28125,
+      "neutral_v2": 0.203125,
+      "excited_positive_v1": 0.109375,
+      "excited_positive_v2": 0.234375,
+      "skeptical_negative_v1": 0.203125,
+      "skeptical_negative_v2": 0.265625,
+      "negative_preference_v1": 0.265625,
+      "negative_preference_v2": 0.40625
+    }
+  },
+  "operational_notes": [
+    "Both GPUs were used throughout tensor-parallel inference and reached 100 percent SM utilization.",
+    "No trial required a retry, no execution error or OOM occurred, and the Qwen service remained resident after the run.",
+    "All Turn-2 generations and 496 of 512 Turn-1 generations reached the configured output-token cap; full truncated transcripts are preserved.",
+    "The model was not evicted or unloaded after completion."
+  ]
+}
