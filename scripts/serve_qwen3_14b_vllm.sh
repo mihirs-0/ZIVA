@@ -11,7 +11,7 @@ if docker container inspect "${CONTAINER}" >/dev/null 2>&1; then
   exit 1
 fi
 
-mkdir -p "${HOME}/.cache/huggingface" "${HOME}/.cache/torchinductor"
+mkdir -p "${HOME}/.cache/huggingface" "${HOME}/.cache/torchinductor" "${HOME}/.triton"
 
 docker run --detach \
   --name "${CONTAINER}" \
@@ -23,6 +23,7 @@ docker run --detach \
   --volume /etc/passwd:/etc/passwd:ro \
   --volume /etc/group:/etc/group:ro \
   --volume "${HOME}/.cache:${HOME}/.cache" \
+  --volume "${HOME}/.triton:${HOME}/.triton" \
   --env "HOME=${HOME}" \
   --env "HF_HOME=${HOME}/.cache/huggingface" \
   --env "HF_HUB_DISABLE_XET=1" \
