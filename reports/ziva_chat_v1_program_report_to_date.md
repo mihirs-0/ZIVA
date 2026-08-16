@@ -1,7 +1,7 @@
 # ZIVA program report to date
 
 **Status date:** 16 August 2026  
-**Scope:** ZIVA-Structured, the development path to ZIVA-Chat-v1, the finalized open-weight sweep, GPT-5.6 Luna, and the archival status of the earlier GPT-5.2/original-Luna work.
+**Scope:** ZIVA-Structured, the development path to ZIVA-Chat-v1, the finalized open-weight sweep, GPT-5.6 Luna and Terra, and the archival status of the earlier GPT-5.2/original-Luna work.
 
 ## Executive summary
 
@@ -18,8 +18,9 @@ Across the banked, directly comparable runs, the principal result is **strong mo
 - **Qwen3-8B** did not reproduce the 14B excited-positive effect: **+1.31** in Structured and **-1.17** in Chat-v1. Negative-direction movement was clearer, particularly the **-18.48** Chat-v1 negative-preference effect.
 - **Gemma 4 12B** behaved differently from Qwen. Its Structured excited effect was small and negative (**-1.50**), while its Chat-v1 excited effect was small and positive (**+1.44**). Its skeptical and negative-preference Chat-v1 effects were small and imprecise.
 - **GPT-5.6 Luna** produced essentially no excited-positive Chat-v1 movement: **+0.05 points**, 95% CI **[-1.24, +1.45]**, permutation **p=0.9528**, `d_z=0.012`. Negative framing produced modest downward estimates—**-2.09** skeptical and **-3.26** negative preference—but both pooled intervals included zero. One negative-preference template was large, revealing material wording sensitivity beneath the pooled estimate.
+- **GPT-5.6 Terra** also produced essentially no excited-positive movement (**+0.16**), but showed strong negative-direction effects: **-8.82** skeptical and **-15.76** negative preference. Direct paired Terra-minus-Luna interaction estimates were **+0.11** for excitement, **-6.74** for skepticism, and **-12.50** for negative preference. Thus, Terra and Luna were nearly identical on excitement but demonstrably different on negative framing.
 
-The finalized Chat-v1 implementation was technically clean across every completed model: **2,048/2,048 valid percentages, no malformed responses, and no Turn-1 or Turn-2 truncation**. Together with the three completed Structured runs, the primary cross-model bank contains **4,352 completed treatment trials** over the same 32 physical scenarios. Earlier Qwen development experiments add further evidence but are not interchangeable with the final frozen protocol.
+The finalized Chat-v1 implementation was technically strong across every completed model: **2,558/2,560 valid percentages**. Qwen3-14B, Qwen3-8B, Gemma, and Luna had no malformed responses or truncation; Terra had two malformed percentages and four Turn-2 truncations. Together with the three completed Structured runs, the primary cross-model bank contains **4,864 completed treatment trials** over the same 32 physical scenarios. Earlier Qwen development experiments add further evidence but are not interchangeable with the final frozen protocol.
 
 The strongest justified conclusion is therefore not that all models shift in the same way. It is that the benchmark discriminates sharply among model families and scales, and that Qwen3-14B's preference-conditioned movement is not merely an artifact of structured JSON elicitation. Negative-direction framing appears more portable across the Qwen models than excited-positive framing, but it is not uniform across families.
 
@@ -130,6 +131,7 @@ All effects below are scenario-level probability-point differences. Brackets con
 | Gemma 4 12B | Structured | **-1.50** [-2.23, -0.84] | **-1.52** [-2.50, -0.68] | n/a | 768/768 parsed |
 | Gemma 4 12B | Chat-v1 | **+1.44** [0.20, 3.13] | -1.60 [-4.25, 0.65] | -1.40 [-4.54, 0.73] | 512/512 parsed; no truncation |
 | GPT-5.6 Luna | Chat-v1 | +0.05 [-1.24, 1.45] | -2.09 [-4.19, 0.07] | -3.26 [-6.98, 0.20] | 512/512 parsed; no truncation |
+| GPT-5.6 Terra | Chat-v1 | +0.16 [-3.44, 3.88] | **-8.82** [-13.57, -4.79] | **-15.76** [-22.74, -9.16] | 510/512 parsed; 0.78% T2 truncation |
 
 Bold values have a reported unadjusted permutation `p<0.05`. This highlighting is descriptive and does not replace direct effect-size comparisons or multiple-testing judgment.
 
@@ -198,6 +200,29 @@ Luna's 50% crossing rates were **3.12%** excited, **1.56%** skeptical, and **10.
 
 The Luna report's “Structured versus Chat-v1” table uses Qwen3-14B Structured as a common external reference because no GPT-5.6 Luna Structured run exists. It is **not** a within-model Luna comparison and should not be interpreted as one.
 
+### 4.7 GPT-5.6 Terra and the direct Terra-Luna comparison
+
+Terra used the same OpenAI Chat Completions pathway and supported request settings as Luna, including `reasoning_effort="none"`, temperature 0.7, top-p 0.8, presence penalty 0, per-trial seeds, and identical token caps. Its neutral gate passed 16/16 before treatment collection.
+
+Terra's pooled Chat-v1 effects were:
+
+- excited-minus-neutral: **+0.16**, CI **[-3.44, 3.88]**, `p=0.9278`, `d_z=0.015`;
+- skeptical-minus-neutral: **-8.82**, CI **[-13.57, -4.79]**, `p=0.0002`, `d_z=-0.681`;
+- negative-preference-minus-neutral: **-15.76**, CI **[-22.74, -9.16]**, `p=0.0002`, `d_z=-0.778`;
+- direction-normalized negative preference: **+15.76**, CI **[9.22, 23.12]**, `p=0.0002`, `d_z=0.778`.
+
+The excited templates diverged (**-4.18** and **+4.49**) and canceled in the pooled estimate. Both skeptical templates were negative (**-11.33**, **-6.34**), as were both negative-preference templates (**-12.62**, **-18.91**), making Terra's negative-direction result more template-consistent than Luna's.
+
+The prerequested direct interaction analysis computed `D_s = delta_Terra_s - delta_Luna_s` for every shared scenario:
+
+- excited: **+0.11**, CI **[-3.48, 3.79]**, `p=0.9530`, `d_z=0.010`;
+- skeptical: **-6.74**, CI **[-11.68, -2.55]**, `p=0.0050`, `d_z=-0.499`;
+- negative preference: **-12.50**, CI **[-20.20, -5.34]**, `p=0.0028`, `d_z=-0.568`.
+
+This is direct evidence of Terra-Luna heterogeneity in response to negative framing, not an inference from different within-model significance labels. There is no corresponding Terra-Luna difference under excited framing.
+
+Terra completed all 512 API calls without execution errors. Two Turn-2 responses were ambiguous and malformed, and four reached the 16-token cap, yielding a **0.39% malformed rate** and **0.78% Turn-2 truncation rate**. No Turn-1 responses truncated and no reasoning tokens were recorded. Because the reliability gate is pre-treatment and passed unchanged, the full-run imperfections are reported rather than tuned or rerun.
+
 ## 5. Reliability and variance
 
 ### 5.1 Final Chat-v1 reliability
@@ -208,6 +233,7 @@ The Luna report's “Structured versus Chat-v1” table uses Qwen3-14B Structure
 | Qwen3-8B | 512/512 | 0% | 0% | 0% | 7.96 | 7.62 |
 | Gemma 4 12B | 512/512 | 0% | 0% | 0% | 1.41 | 3.06 |
 | GPT-5.6 Luna | 512/512 | 0% | 0% | 0% | 3.53 | 4.74 |
+| GPT-5.6 Terra | 510/512 | 0.39% | 0% | 0.78% | 3.58 | 6.11 |
 
 The endpoint is therefore operationally reliable. The larger scientific concern is no longer parsing failure; it is genuine variation across samples and paraphrases. Qwen3-14B's template SD exceeds its excited family mean, and several negative-preference templates diverge sharply. Reporting only pooled means would conceal this heterogeneity.
 
@@ -219,6 +245,7 @@ The endpoint is therefore operationally reliable. The larger scientific concern 
 | Qwen3-8B | 8.6% | 8.6% | 24.2% |
 | Gemma 4 12B | 1.6% | 4.7% | 1.6% |
 | GPT-5.6 Luna | 3.1% | 1.6% | 10.9% |
+| GPT-5.6 Terra | 7.1% | 13.4% | 25.8% |
 
 These rates show how often a paired prompt moved the stated estimate across the 50% decision threshold. They are policy-relevant complements to mean shifts: a modest mean can coexist with a meaningful number of changed binary recommendations, and vice versa.
 
@@ -235,6 +262,7 @@ The open-weight runs were conducted locally on `idli` under user `mihir`, using 
 | Ministral 3 8B BF16 | `f6fae9795746f63c9be8344932f01275f3c63734` | vLLM 0.26.0, BF16, TP=2 | Blocked by tokenizer/template compatibility |
 | Ministral 3 14B BF16 | `3cea74c1ebaf5ce5f5a2553de470e2ceab825142` | vLLM 0.26.0, BF16, TP=2 | Blocked by multimodal processor/tokenizer startup |
 | GPT-5.6 Luna | provider alias `gpt-5.6-luna` | OpenAI API, SDK 3.1.0, reasoning effort none | Chat-v1 completed |
+| GPT-5.6 Terra | provider alias `gpt-5.6-terra` | OpenAI API, SDK 3.1.0, reasoning effort none | Chat-v1 completed |
 
 The preservation audit covered 1,917 pre-existing files and found no missing, changed, or newly introduced files under preserved prefixes after the OSS sweep. Each successful experiment has its own manifest, freeze, fingerprint, raw-record namespace, audit, result tables, and report.
 
@@ -269,11 +297,11 @@ Qwen3-14B moved in the preference-consistent direction in both Structured and Ch
 
 ### 9.2 There is no universal model effect
 
-Qwen3-8B, Gemma 4 12B, and GPT-5.6 Luna do not reproduce the Qwen3-14B excited effect. Luna's estimate is especially close to zero. Gemma changes sign across protocols. Any claim that “models” generally move upward under an excited user would overstate the evidence.
+Qwen3-8B, Gemma 4 12B, GPT-5.6 Luna, and GPT-5.6 Terra do not reproduce the Qwen3-14B excited effect. Both GPT-5.6 estimates are especially close to zero, and their direct difference is also null. Gemma changes sign across protocols. Any claim that “models” generally move upward under an excited user would overstate the evidence.
 
 ### 9.3 Negative-direction movement is more portable within Qwen
 
-Both completed Qwen models show clearer movement in at least one negative-direction condition than under excitement. Qwen3-14B is consistent across skeptical and negative preference; Qwen3-8B is strongest under negative preference. Luna hints at the same asymmetry but with pooled intervals crossing zero, while Gemma does not clearly reproduce it in Chat-v1.
+Both completed Qwen models show clearer movement in at least one negative-direction condition than under excitement. Qwen3-14B is consistent across skeptical and negative preference; Qwen3-8B is strongest under negative preference. Terra strongly reproduces this asymmetry, whereas Luna's smaller pooled negative estimates cross zero and Gemma does not clearly reproduce it in Chat-v1. The paired Terra-Luna interactions establish that this is real within-family heterogeneity.
 
 ### 9.4 Template sensitivity is scientifically substantive
 
@@ -351,6 +379,8 @@ Per-model reports:
 - `reports/oss_gemma4_12b_structured_report.md`
 - `reports/oss_gemma4_12b_chat_v1_report.md`
 - `reports/openai_gpt56_luna_chat_v1_report.md`
+- `reports/openai_gpt56_terra_chat_v1_report.md`
+- `reports/openai_gpt56_terra_vs_luna_chat_v1_report.md`
 
 Developmental Chat reports:
 
@@ -365,6 +395,6 @@ GPT-5.2 configuration records currently available:
 
 ## Conclusion
 
-ZIVA has progressed from a single structured-model result into a frozen, reliability-audited, multi-model behavioral benchmark with an ordinary conversational endpoint. The data now reject both simple stories: the phenomenon is neither merely a JSON artifact nor a universal property shared uniformly by models. Qwen3-14B shows clear bidirectional preference-conditioned movement; Qwen3-8B shows a narrower negative-preference sensitivity; Gemma's effects are small and protocol-dependent; GPT-5.6 Luna is effectively invariant to excited framing in Chat-v1 but exhibits wording-sensitive negative-direction movement.
+ZIVA has progressed from a single structured-model result into a frozen, reliability-audited, multi-model behavioral benchmark with an ordinary conversational endpoint. The data now reject both simple stories: the phenomenon is neither merely a JSON artifact nor a universal property shared uniformly by models. Qwen3-14B shows clear bidirectional preference-conditioned movement; Qwen3-8B shows a narrower negative-preference sensitivity; Gemma's effects are small and protocol-dependent; both GPT-5.6 models are effectively invariant to excited framing, while Terra is substantially more sensitive than Luna to skeptical and negative-preference framing.
 
 That combination—reproducible effects in one model, clean nulls or reversals in others, and visible template heterogeneity—is scientifically more informative than a uniformly positive result. It shows that ZIVA can function as a discriminating behavioral instrument. The next phase should broaden model-family and task-domain coverage while preserving direct paired comparisons and the strict separation between banked evidence and historical claims whose artifacts have not yet been recovered.
