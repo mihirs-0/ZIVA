@@ -95,7 +95,7 @@ def test_openai_compatible_sampling_and_nonthinking_are_transport_metadata(monke
     client.chat.completions.create.return_value = fake_resp
     adapter.__dict__["_client"] = client
 
-    adapter.complete(_request(m, temperature=0.7))
+    result = adapter.complete(_request(m, temperature=0.7))
     kwargs = client.chat.completions.create.call_args.kwargs
     assert kwargs["messages"] == [
         {"role": "system", "content": "sys"},
@@ -110,6 +110,8 @@ def test_openai_compatible_sampling_and_nonthinking_are_transport_metadata(monke
         "min_p": 0.0,
         "chat_template_kwargs": {"enable_thinking": False},
     }
+    assert result.raw["request_messages_sha256"]
+    assert result.raw["generation_settings"]["chat_template_kwargs"] == {"enable_thinking": False}
 
 
 def test_anthropic_adapter_omits_temperature_when_unsupported(monkeypatch):

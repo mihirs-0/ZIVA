@@ -19,6 +19,7 @@ import base64
 import time
 from functools import cached_property
 
+from ..util import sha256_json
 from .base import CompletionRequest, CompletionResult, ProviderAdapter, ProviderNotConfiguredError
 
 
@@ -103,6 +104,7 @@ class OpenAIAdapter(ProviderAdapter):
             raw={
                 "id": resp.id,
                 "system_fingerprint": getattr(resp, "system_fingerprint", None),
+                "request_messages_sha256": sha256_json(messages),
                 "generation_settings": {
                     "temperature": request.temperature if self.model.supports.temperature else None,
                     "top_p": self.model.top_p,
