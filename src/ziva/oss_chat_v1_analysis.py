@@ -26,7 +26,7 @@ def _malformed_by(frame: pd.DataFrame, column: str) -> dict[str, Any]:
     for name, group in frame.groupby(column):
         malformed = int((~group["valid"]).sum())
         output[str(name)] = {
-            "n": int(len(group)),
+            "n": len(group),
             "malformed": malformed,
             "malformed_rate": round(malformed / len(group), 6),
         }
@@ -162,10 +162,14 @@ def render_chat_v1_report(summary: dict[str, Any]) -> str:
     lines = [head.rstrip(), "", "## Reliability", ""]
     lines.extend(
         [
-            f"- Turn-1 truncation: {reliability['turn_1_truncations']}/{summary['n_trials']} "
-            f"({reliability['turn_1_truncation_rate']:.2%})",
-            f"- Turn-2 truncation: {reliability['turn_2_truncations']}/{summary['n_trials']} "
-            f"({reliability['turn_2_truncation_rate']:.2%})",
+            (
+                f"- Turn-1 truncation: {reliability['turn_1_truncations']}/{summary['n_trials']} "
+                f"({reliability['turn_1_truncation_rate']:.2%})"
+            ),
+            (
+                f"- Turn-2 truncation: {reliability['turn_2_truncations']}/{summary['n_trials']} "
+                f"({reliability['turn_2_truncation_rate']:.2%})"
+            ),
             f"- Malformed percentage rate: {summary['malformed_rate']:.2%}",
             "- Malformed by family: "
             + ", ".join(
@@ -190,8 +194,10 @@ def render_chat_v1_report(summary: dict[str, Any]) -> str:
                 "",
                 "## Previous chat engineering-run comparison",
                 "",
-                f"- Chat-v1 minus previous chat excited effect: "
-                f"{_fmt(summary['previous_chat_comparison'])}",
+                (
+                    "- Chat-v1 minus previous chat excited effect: "
+                    f"{_fmt(summary['previous_chat_comparison'])}"
+                ),
             ]
         )
     lines.extend(
