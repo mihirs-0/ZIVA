@@ -54,6 +54,8 @@ _BETWEEN_RE = re.compile(
 _SINGLE_RE = re.compile(rf"(?<![\d.])(?P<value>{_NUMBER})\s*{_UNIT}(?!\w)", re.IGNORECASE)
 _CHANCE_SUFFIX_RE = re.compile(r"^\s*chance\b", re.IGNORECASE)
 _KNOWN_FACT_SUFFIX_RE = re.compile(r"^\s*(?:illuminated|illumination)\b", re.IGNORECASE)
+_CHANCE_PREFIX_RE = re.compile(r"\bchance\b[^.%\n]{0,140}$", re.IGNORECASE)
+_KNOWN_FACT_PREFIX_RE = re.compile(r"\b(?:moon\s+)?illumination\s*(?::|is|at|of|\()\s*$", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -99,6 +101,20 @@ def load_percentage_config(path: str | Path) -> dict[str, Any]:
         return yaml.safe_load(f)
 
 
+def _plain_context(text: str) -> str:
+    return re.sub(r"[*_`#]", "", text)
+
+
+def _chance_labeled(text: str, span: tuple[int, int]) -> bool:
+    prefix = _plain_context(text[max(0, span[0] - 160) : span[0]])
+    return bool(_CHANCE_SUFFIX_RE.match(text[span[1] :]) or _CHANCE_PREFIX_RE.search(prefix))
+
+
+def _known_physical_fact(text: str, span: tuple[int, int]) -> bool:
+    prefix = _plain_context(text[max(0, span[0] - 80) : span[0]])
+    return bool(_KNOWN_FACT_SUFFIX_RE.match(text[span[1] :]) or _KNOWN_FACT_PREFIX_RE.search(prefix))
+
+
 def parse_percentage(text: str) -> PercentageParse:
     """Extract one explicit answer percentage or range without semantic guessing.
 
@@ -124,19 +140,25 @@ def parse_percentage(text: str) -> PercentageParse:
             unique_ranges.append(item)
 
     covered = [row[3] for row in unique_ranges]
-    unique_ranges = [row for row in unique_ranges if not _KNOWN_FACT_SUFFIX_RE.match(text[row[3][1] :])]
+    unique_ranges = [row for row in unique_ranges if not _known_physical_fact(text, row[3])]
     singles = []
     for match in _SINGLE_RE.finditer(text):
         if any(start <= match.start() and match.end() <= end for start, end in covered):
             continue
-        if _KNOWN_FACT_SUFFIX_RE.match(text[match.end() :]):
+        if _known_physical_fact(text, match.span()):
             continue
         singles.append((float(match.group("value")), match.group(0), match.span()))
 
-    labeled_ranges = [row for row in unique_ranges if _CHANCE_SUFFIX_RE.match(text[row[3][1] :])]
-    labeled_singles = [row for row in singles if _CHANCE_SUFFIX_RE.match(text[row[2][1] :])]
+    labeled_ranges = [row for row in unique_ranges if _chance_labeled(text, row[3])]
+    labeled_singles = [row for row in singles if _chance_labeled(text, row[2])]
     labeled_values = {(row[0], row[1]) for row in labeled_ranges}
     labeled_values.update((row[0], row[0]) for row in labeled_singles)
+    candidate_values = {(row[0], row[1]) for row in unique_ranges}
+    candidate_values.update((row[0], row[0]) for row in singles)
+    if len(labeled_values) == 1 and len(candidate_values) > 1:
+        return PercentageParse(
+            "ambiguous", None, None, None, ["multiple incompatible percentage expressions"]
+        )
     if len(labeled_values) == 1:
         low, high = next(iter(labeled_values))
         if labeled_ranges:

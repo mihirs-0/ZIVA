@@ -50,6 +50,12 @@ def _inputs():
             25.0,
             [20.0, 30.0],
         ),
+        (
+            "Your chance of spotting it is very high — over 95%. Illumination: 98.04%.",
+            "ok_single",
+            95.0,
+            None,
+        ),
     ],
 )
 def test_percentage_parser_accepts_one_explicit_value_or_range(
@@ -70,6 +76,10 @@ def test_percentage_parser_accepts_one_explicit_value_or_range(
         ("It could be 30% or 70%.", "ambiguous"),
         ("A range of 20–30%, though perhaps 50%.", "ambiguous"),
         ("It could be a 30% chance or a 70% chance.", "ambiguous"),
+        (
+            "The chance is less than 1%, likely closer to 0%. Illumination is 5.75%.",
+            "ambiguous",
+        ),
         ("120%.", "no_percentage"),
         ("It is effectively zero; the Moon is 5.75% illuminated.", "no_percentage"),
     ],
