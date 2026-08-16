@@ -24,7 +24,9 @@ docker run --detach \
   --volume "${HOME}/.cache:${HOME}/.cache" \
   --env "HOME=${HOME}" \
   --env "HF_HOME=${HOME}/.cache/huggingface" \
+  --env "HF_HUB_DISABLE_XET=1" \
   --env "TORCHINDUCTOR_CACHE_DIR=${HOME}/.cache/torchinductor" \
+  --env "VLLM_NO_USAGE_STATS=1" \
   "${IMAGE}" \
   "${MODEL}" \
   --revision "${REVISION}" \
