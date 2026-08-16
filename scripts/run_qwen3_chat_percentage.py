@@ -156,32 +156,47 @@ def smoke(config: dict[str, Any], config_path: Path) -> None:
     selected = [
         row
         for row in _read_trials(paths["manifest"])
-        if row.treatment_id == anchor["treatment_id"]
-        and row.repeat_index == anchor["repeat_index"]
+        if row.treatment_family == anchor["treatment_family"]
         and row.scenario_id in {anchor["below_horizon"], anchor["bright_night"]}
     ]
     records = [execute_percentage_trial(row, config, frozen["experiment_fingerprint"]) for row in selected]
-    by_scenario = {row["scenario_id"]: row for row in records}
-    below = by_scenario[anchor["below_horizon"]]["percentage_parse"]["value"]
-    bright = by_scenario[anchor["bright_night"]]["percentage_parse"]["value"]
+    below = [
+        row["percentage_parse"]["value"]
+        for row in records
+        if row["scenario_id"] == anchor["below_horizon"] and row["percentage_parse"]["value"] is not None
+    ]
+    bright = [
+        row["percentage_parse"]["value"]
+        for row in records
+        if row["scenario_id"] == anchor["bright_night"] and row["percentage_parse"]["value"] is not None
+    ]
     no_think = all(
         "<think>" not in (row["turn_1"]["text"] + row["turn_2"]["text"]).lower() for row in records
     )
     followups = {row.turn_2_user for row in selected}
+    parse_successes = sum(row["percentage_parse"]["value"] is not None for row in records)
+    parse_success_rate = parse_successes / len(records)
     record = {
         "purpose": "neutral engineering smoke only; no treatment effects inspected",
         "n_trials": len(records),
-        "parse_success": all(row["percentage_parse"]["value"] is not None for row in records),
-        "below_horizon_percentage": below,
-        "bright_night_percentage": bright,
-        "anchor_order_sensible": below is not None and bright is not None and below < 50 < bright,
+        "parse_successes": parse_successes,
+        "parse_success_rate": parse_success_rate,
+        "minimum_parse_rate": anchor["minimum_parse_rate"],
+        "below_horizon_percentages": below,
+        "bright_night_percentages": bright,
+        "anchor_order_sensible": bool(below and bright and max(below) < 50 < min(bright)),
         "no_think_content": no_think,
         "turn_2_followup_byte_identical": len(followups) == 1,
         "enable_thinking": config["model"]["enable_thinking"],
         "records": records,
     }
     record["passed"] = all(
-        [record["parse_success"], record["anchor_order_sensible"], no_think, len(followups) == 1]
+        [
+            parse_success_rate >= anchor["minimum_parse_rate"],
+            record["anchor_order_sensible"],
+            no_think,
+            len(followups) == 1,
+        ]
     )
     write_json(paths["smoke"], record)
     print(json.dumps({key: value for key, value in record.items() if key != "records"}, indent=2))

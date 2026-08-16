@@ -38,6 +38,18 @@ def _inputs():
         ("I'd put it at 20 to 30 percent.", "ok_range", 25.0, [20.0, 30.0]),
         ("Between 20% and 30%.", "ok_range", 25.0, [20.0, 30.0]),
         ("My answer is 30%; in short, 30 percent.", "ok_single", 30.0, None),
+        (
+            "I'd say ~90% chance. The Moon is 98% illuminated.",
+            "ok_single",
+            90.0,
+            None,
+        ),
+        (
+            "I'd give it a 20–30% chance; it is 6% illuminated.",
+            "ok_range",
+            25.0,
+            [20.0, 30.0],
+        ),
     ],
 )
 def test_percentage_parser_accepts_one_explicit_value_or_range(
@@ -57,7 +69,9 @@ def test_percentage_parser_accepts_one_explicit_value_or_range(
         ("Maybe 0.3, very roughly.", "no_percentage"),
         ("It could be 30% or 70%.", "ambiguous"),
         ("A range of 20–30%, though perhaps 50%.", "ambiguous"),
+        ("It could be a 30% chance or a 70% chance.", "ambiguous"),
         ("120%.", "no_percentage"),
+        ("It is effectively zero; the Moon is 5.75% illuminated.", "no_percentage"),
     ],
 )
 def test_percentage_parser_rejects_missing_or_incompatible_values(text: str, status: str):

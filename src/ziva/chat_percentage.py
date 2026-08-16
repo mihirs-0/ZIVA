@@ -52,6 +52,8 @@ _BETWEEN_RE = re.compile(
     re.IGNORECASE,
 )
 _SINGLE_RE = re.compile(rf"(?<![\d.])(?P<value>{_NUMBER})\s*{_UNIT}(?!\w)", re.IGNORECASE)
+_CHANCE_SUFFIX_RE = re.compile(r"^\s*chance\b", re.IGNORECASE)
+_KNOWN_FACT_SUFFIX_RE = re.compile(r"^\s*(?:illuminated|illumination)\b", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -98,7 +100,13 @@ def load_percentage_config(path: str | Path) -> dict[str, Any]:
 
 
 def parse_percentage(text: str) -> PercentageParse:
-    """Extract one explicit percentage or one explicit range; never infer semantics."""
+    """Extract one explicit answer percentage or range without semantic guessing.
+
+    A percentage directly labeled ``chance`` is an unambiguous answer to the
+    invariant question. Percentages directly labeled as lunar illumination are
+    excluded because they are deterministic restatements of a supplied physical
+    fact, not estimates of the requested spotting chance.
+    """
     if not text or not text.strip():
         return PercentageParse("empty", None, None, None, ["empty response"])
 
@@ -116,11 +124,28 @@ def parse_percentage(text: str) -> PercentageParse:
             unique_ranges.append(item)
 
     covered = [row[3] for row in unique_ranges]
+    unique_ranges = [row for row in unique_ranges if not _KNOWN_FACT_SUFFIX_RE.match(text[row[3][1] :])]
     singles = []
     for match in _SINGLE_RE.finditer(text):
         if any(start <= match.start() and match.end() <= end for start, end in covered):
             continue
-        singles.append((float(match.group("value")), match.group(0)))
+        if _KNOWN_FACT_SUFFIX_RE.match(text[match.end() :]):
+            continue
+        singles.append((float(match.group("value")), match.group(0), match.span()))
+
+    labeled_ranges = [row for row in unique_ranges if _CHANCE_SUFFIX_RE.match(text[row[3][1] :])]
+    labeled_singles = [row for row in singles if _CHANCE_SUFFIX_RE.match(text[row[2][1] :])]
+    labeled_values = {(row[0], row[1]) for row in labeled_ranges}
+    labeled_values.update((row[0], row[0]) for row in labeled_singles)
+    if len(labeled_values) == 1:
+        low, high = next(iter(labeled_values))
+        if labeled_ranges:
+            matched = next(row[2] for row in labeled_ranges if (row[0], row[1]) == (low, high))
+            return PercentageParse("ok_range", (low + high) / 2, [low, high], matched, [])
+        matched = next(row[1] for row in labeled_singles if row[0] == low)
+        return PercentageParse("ok_single", low, None, matched, [])
+    if len(labeled_values) > 1:
+        return PercentageParse("ambiguous", None, None, None, ["multiple incompatible chance percentages"])
 
     if len(unique_ranges) == 1 and not singles:
         low, high, matched, _ = unique_ranges[0]
@@ -132,7 +157,7 @@ def parse_percentage(text: str) -> PercentageParse:
     if not singles:
         return PercentageParse("no_percentage", None, None, None, ["no explicit percentage found"])
 
-    values = {value for value, _ in singles}
+    values = {value for value, _, _ in singles}
     if len(values) == 1:
         value = next(iter(values))
         matched = singles[0][1]
