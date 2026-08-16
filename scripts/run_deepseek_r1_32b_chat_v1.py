@@ -49,6 +49,7 @@ def _config(runner) -> dict[str, Any]:
             "quantization": "none",
             "framework": "vllm",
             "framework_version": "0.26.0",
+            "vllm_model_runner": "V1 (VLLM_USE_V2_MODEL_RUNNER=0; required for UVA weight offload)",
             "endpoint": "http://127.0.0.1:8000",
             "tensor_parallel_size": 2,
             "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",

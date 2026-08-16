@@ -94,6 +94,7 @@ def serve() -> None:
             "HF_HUB_DISABLE_XET": "1",
             "HF_HUB_OFFLINE": "1",
             "VLLM_USE_FLASHINFER_SAMPLER": "0",
+            "VLLM_USE_V2_MODEL_RUNNER": "0",
         }
     )
     REGISTRY_DIR.mkdir(parents=True, exist_ok=True)
@@ -125,7 +126,12 @@ def serve() -> None:
         "versions": shared._versions(executable),
         "environment_overrides": {
             key: environment[key]
-            for key in ("HF_HUB_DISABLE_XET", "HF_HUB_OFFLINE", "VLLM_USE_FLASHINFER_SAMPLER")
+            for key in (
+                "HF_HUB_DISABLE_XET",
+                "HF_HUB_OFFLINE",
+                "VLLM_USE_FLASHINFER_SAMPLER",
+                "VLLM_USE_V2_MODEL_RUNNER",
+            )
         },
         "chat_template": "official checkpoint tokenizer chat template",
         "log_path": str(LOG_PATH.relative_to(ROOT)),
