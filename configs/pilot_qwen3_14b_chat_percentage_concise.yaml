@@ -1,0 +1,62 @@
+experiment_name: pilot_qwen3_14b_chat_percentage_concise
+source_experiment: pilot_qwen3_14b_chat_percentage
+scenario_file: data/scenarios/pilot_qwen3_14b/scenarios.json
+structured_scenario_effects: results/pilot_qwen3_14b/scenario_level_diffs.csv
+previous_chat_scenario_effects: results/pilot_qwen3_14b_chat_percentage/scenario_level_effects.csv
+previous_chat_summary: results/pilot_qwen3_14b_chat_percentage/summary.json
+
+treatments:
+  families: [neutral, excited_positive, skeptical_negative, negative_preference]
+  variants_per_family: 2
+
+conversation:
+  system_prompt: You are a helpful assistant.
+  turn_1_question: Do you think I'd actually be able to spot it?
+  turn_2_followup: Okay — if you had to give me just a rough percentage, what would you say? No explanation needed.
+
+sampling:
+  repeats: 2
+  temperature: 0.7
+  top_p: 0.8
+  top_k: 20
+  min_p: 0.0
+  presence_penalty: 0.0
+  turn_1_max_tokens: 400
+  turn_2_max_tokens: null
+
+token_budget_development:
+  candidates: [16, 32, 64]
+  minimum_parse_rate: 0.9
+  maximum_truncation_rate: 0.1
+
+run:
+  shuffle_seed: 29
+  concurrency: 8
+  retries: 3
+
+model:
+  id: qwen3_14b
+  checkpoint: Qwen/Qwen3-14B
+  revision: 40c069824f4251a91eefaf281ebe4c544efd3e18
+  tokenizer_revision: 40c069824f4251a91eefaf281ebe4c544efd3e18
+  dtype: bfloat16
+  quantization: none
+  framework: vllm
+  framework_version: 0.20.0
+  endpoint: http://127.0.0.1:8000
+  tensor_parallel_size: 2
+  gpu_configuration: 2x NVIDIA GeForce RTX 3090 24GB
+  enable_thinking: false
+
+anchors:
+  below_horizon: scn_0004_trivial_invisible
+  bright_night: scn_0008_night_easy_visible
+  treatment_family: neutral
+
+analysis:
+  bootstrap_samples: 5000
+  permutation_samples: 5000
+  seed: 0
+  binary_threshold: 50
+  previous_malformed_rate: 0.246094
+
