@@ -20,8 +20,8 @@ MODEL_ID = "qwen3_30b_a3b"
 CHECKPOINT = "Qwen/Qwen3-30B-A3B"
 REVISION = "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39"
 REGISTRY_DIR = ROOT / "data/manifests/oss_model_registry"
-SERVICE_PATH = REGISTRY_DIR / f"{MODEL_ID}_service.json"
-LOG_PATH = REGISTRY_DIR / f"{MODEL_ID}_vllm.log"
+SERVICE_PATH = REGISTRY_DIR / f"{MODEL_ID}_service_attempt2.json"
+LOG_PATH = REGISTRY_DIR / f"{MODEL_ID}_vllm_attempt2.log"
 
 
 def _shared():
@@ -65,7 +65,12 @@ def serve() -> None:
         "--tensor-parallel-size", "2",
         "--max-model-len", "8192",
         "--gpu-memory-utilization", "0.9",
-        "--cpu-offload-gb", "16",
+        "--cpu-offload-gb", "10",
+        # The benchmark never has more than eight in-flight requests. Avoid
+        # capturing hundreds of unused CUDA graph batch sizes and reserve a
+        # bounded cache for the actual <=8 concurrent, <=8192-token workload.
+        "--max-num-seqs", "8",
+        "--kv-cache-memory-bytes", "1536M",
         "--generation-config", "vllm",
         "--host", "127.0.0.1",
         "--port", "8000",
@@ -91,7 +96,8 @@ def serve() -> None:
         "revision": REVISION, "pid": process.pid, "command": command,
         "started_at_utc": datetime.now(UTC).isoformat(),
         "dtype": "bfloat16", "quantization": "none",
-        "tensor_parallel_size": 2, "cpu_offload_gb_per_gpu": 16,
+        "tensor_parallel_size": 2, "cpu_offload_gb_per_gpu": 10,
+        "max_num_seqs": 8, "kv_cache_memory_bytes_per_gpu": 1610612736,
         "max_model_len": 8192, "gpu_memory_utilization": 0.9,
         "versions": shared._versions(executable),
         "environment_overrides": {key: environment[key] for key in (
