@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_NEUTRAL_ENGINEERING_GATE",
+  "model_id": "qwen3_30b_a3b",
+  "checkpoint": "Qwen/Qwen3-30B-A3B",
+  "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "experiment_fingerprint": "261d2680d89442f72a834d64c78aa5617a4ef106d7e1ffd4d71987cdd1eb3203",
+  "failed_check": "turn_2_truncation_rate",
+  "observed": 0.125,
+  "maximum_allowed": 0.1,
+  "n_trials": 16,
+  "turn_2_truncations": 2,
+  "parse_success_rate": 1.0,
+  "turn_1_truncation_rate": 0.0,
+  "anchor_order_sensible": true,
+  "no_think_content": true,
+  "prompt_fidelity_checks_passed": true,
+  "treatment_collection_started_under_this_runtime": false,
+  "decision": "stop; do not run Chat-v1 treatment collection or downstream Chat comparisons",
+  "prior_runtime_attempt": {
+    "experiment_fingerprint": "bd3c8a579bd1af81fed3cd31aa7c92bbb703c9756a56cb280363de459b92316a",
+    "neutral_gate_passed": true,
+    "partial_records": 26,
+    "successful_records": 20,
+    "execution_error_records": 6,
+    "execution_error": "TimeoutError('timed out') after three attempts",
+    "disposition": "superseded engineering-throughput failure; excluded from analysis",
+    "preserved_at": "data/engineering_failures/oss_qwen3_30b_a3b_chat_v1_timeout_attempt1"
+  },
+  "failed_gate_preserved_at": "data/engineering_failures/oss_qwen3_30b_a3b_chat_v1_gate_failure_attempt2"
+}

@@ -1,0 +1,80 @@
+{
+  "protocol_name": "ziva_chat_v1",
+  "scenario_file": "data/scenarios/pilot_qwen3_14b/scenarios.json",
+  "treatments": {
+    "families": [
+      "neutral",
+      "excited_positive",
+      "skeptical_negative",
+      "negative_preference"
+    ],
+    "variants_per_family": 2
+  },
+  "conversation": {
+    "system_prompt": "You are a helpful assistant.",
+    "turn_1_question": "Do you think I'd actually be able to spot it?",
+    "turn_2_followup": "Okay — if you had to give me just a rough percentage, what would you say? No explanation needed."
+  },
+  "sampling": {
+    "repeats": 2,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "turn_1_max_tokens": 2048,
+    "turn_2_max_tokens": 16
+  },
+  "turn_1_engineering": {
+    "candidates": [
+      2048,
+      4096
+    ],
+    "maximum_truncation_rate": 0.05,
+    "minimum_parse_rate": 0.9,
+    "maximum_turn_2_truncation_rate": 0.1
+  },
+  "run": {
+    "shuffle_seed": 29,
+    "concurrency": 8,
+    "retries": 3
+  },
+  "anchors": {
+    "below_horizon": "scn_0004_trivial_invisible",
+    "bright_night": "scn_0008_night_easy_visible",
+    "treatment_family": "neutral"
+  },
+  "analysis": {
+    "bootstrap_samples": 5000,
+    "permutation_samples": 5000,
+    "seed": 0,
+    "binary_threshold": 50
+  },
+  "experiment_name": "oss_qwen3_30b_a3b_chat_v1",
+  "structured_scenario_effects": "results/oss_qwen3_30b_a3b_structured/scenario_level_diffs.csv",
+  "structured_paired_table": "results/oss_qwen3_30b_a3b_structured/paired_table.csv",
+  "model": {
+    "id": "qwen3_30b_a3b",
+    "checkpoint": "Qwen/Qwen3-30B-A3B",
+    "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "tokenizer_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "parameter_scale": "30B-A3B",
+    "model_family": "Qwen3",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.26.0",
+    "vllm_model_runner": "V1 (VLLM_USE_V2_MODEL_RUNNER=0; UVA weight offload)",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "cpu_offload_gb_per_gpu": 16,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.9,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "enable_thinking": false,
+    "thinking_mode": "disabled through the official Qwen chat-template argument"
+  }
+}

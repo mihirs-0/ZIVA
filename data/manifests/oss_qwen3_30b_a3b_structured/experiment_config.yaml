@@ -1,0 +1,35 @@
+experiment_name: oss_qwen3_30b_a3b_structured
+scenarios:
+  count: 30
+  year: 2026
+  seed: 20260815
+  include_case_000: true
+treatments:
+  families:
+  - neutral
+  - excited_positive
+  - skeptical_negative
+  variants_per_family: 2
+evidence_modes:
+- structured
+elicitation_modes:
+- naturalistic
+- separated
+sampling:
+  repeats: 2
+  temperature: 0.7
+  max_tokens: 2000
+run:
+  max_cost_usd: 1.0
+  concurrency: 8
+  retries: 3
+  retry_backoff_s: 2.0
+  shuffle_seed: 7
+experiments:
+  primary: true
+  evidence_update: false
+  commitment: false
+  web: false
+models_config: data/manifests/oss_qwen3_30b_a3b_structured/models.yaml
+data_dir: data
+results_dir: results

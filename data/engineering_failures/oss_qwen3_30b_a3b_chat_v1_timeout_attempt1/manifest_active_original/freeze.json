@@ -1,0 +1,39 @@
+{
+  "experiment_name": "oss_qwen3_30b_a3b_chat_v1",
+  "frozen_at_utc": "2026-08-16T23:05:32.368794+00:00",
+  "git_commit": "86e65946f63c832df546c5e9b641052ddaf36652",
+  "protocol_fingerprint": "cf6f58a1cc0f6bd4de504d3d2542a71bccacb8c243694346da21559b82e5b13f",
+  "model": {
+    "id": "qwen3_30b_a3b",
+    "checkpoint": "Qwen/Qwen3-30B-A3B",
+    "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "tokenizer_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "parameter_scale": "30B-A3B",
+    "model_family": "Qwen3",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "framework": "vllm",
+    "framework_version": "0.26.0",
+    "vllm_model_runner": "V1 (VLLM_USE_V2_MODEL_RUNNER=0; UVA weight offload)",
+    "endpoint": "http://127.0.0.1:8000",
+    "tensor_parallel_size": 2,
+    "gpu_configuration": "2x NVIDIA GeForce RTX 3090 24GB",
+    "cpu_offload_gb_per_gpu": 16,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.9,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "enable_thinking": false,
+    "thinking_mode": "disabled through the official Qwen chat-template argument"
+  },
+  "source_hashes": {
+    "data/manifests/oss_qwen3_30b_a3b_chat_v1/trials.jsonl": "945cd00d860d56f98a448082d1b98c53d29660b6887a6f258ab3bd64bb941ccd",
+    "data/manifests/oss_qwen3_30b_a3b_chat_v1/pairing_audit.json": "12bfe1fc63508af4be6fe3351932a40a3440f917755dc35062d789ff76dc287a",
+    "data/manifests/oss_qwen3_30b_a3b_chat_v1/treatments.json": "13c3fc4b06d7a62a897426c04868b9fd8ef04d67f620adc25d775dfdbe6ee9ad",
+    "data/manifests/oss_qwen3_30b_a3b_chat_v1/resolved_config.json": "78a06c0db05cd3473a88236392602eaac12d4d09a113f386b5ff8d147ea29c26",
+    "data/manifests/oss_model_registry/qwen3_30b_a3b.json": "e2ab368e5b9631a5c9a12623e354c9299001f5c8460fabf36aee7ef0be919972",
+    "data/manifests/oss_chat_v1_protocol/freeze.json": "eb1f691a538e53dfd9071d9e4460acf17e360e4dfbb3e45bdc52c17878040a7b"
+  },
+  "experiment_fingerprint": "bd3c8a579bd1af81fed3cd31aa7c92bbb703c9756a56cb280363de459b92316a"
+}

@@ -1,0 +1,320 @@
+{
+  "experiment_name": "oss_qwen3_30b_a3b_structured",
+  "generated_at_utc": "2026-08-16T23:05:08Z",
+  "SYNTHETIC_DATA": false,
+  "synthetic_note": null,
+  "providers": [
+    "openai_compatible"
+  ],
+  "models": [
+    "qwen3_30b_a3b"
+  ],
+  "experiment_fingerprints_in_data": [
+    "92f7bc87e09e16e86dce072165cb85c780530ddcea1e57291b3330a602be0390"
+  ],
+  "parse_stats": {
+    "total_trials": 768,
+    "malformed_rate_overall": 0.0,
+    "malformed_by_model": {
+      "qwen3_30b_a3b": 0.0
+    },
+    "status_counts": {
+      "ok": 768
+    }
+  },
+  "inferential_unit_note": "The physical scenario is the experimental unit. The pooled primary result aggregates each scenario's effect across model/evidence/elicitation cells before inference; per-cell results pair over scenarios. The row-level pooled mean is descriptive only.",
+  "n_physical_scenarios": 32,
+  "primary_pooled_excited_minus_neutral": {
+    "n_pairs": 32,
+    "mean": 7.5586,
+    "ci95": [
+      3.7891,
+      12.4414
+    ],
+    "p_perm": 0.0002,
+    "cohens_dz": 0.5973,
+    "sd": 12.6546
+  },
+  "primary_pooled_rowlevel_mean_descriptive_only": 7.5586,
+  "primary_by_model_mode_elicitation": {
+    "qwen3_30b_a3b|structured|naturalistic": {
+      "excited_minus_neutral": {
+        "n_pairs": 32,
+        "mean": 9.2969,
+        "ci95": [
+          3.6719,
+          16.5244
+        ],
+        "p_perm": 0.0002,
+        "cohens_dz": 0.4915,
+        "sd": 18.9171
+      },
+      "valence_range_mean": 16.094,
+      "skeptical_minus_neutral": {
+        "n_pairs": 32,
+        "mean": -4.0625,
+        "ci95": [
+          -8.9453,
+          1.0156
+        ],
+        "p_perm": 0.12697,
+        "cohens_dz": -0.2772,
+        "sd": 14.6567
+      },
+      "binary_flip_rate": 0.125,
+      "threshold_crossings_excited_vs_neutral": {
+        "25": 0.0312,
+        "50": 0.0938,
+        "75": 0.1875
+      },
+      "confidence_shift_excited_minus_neutral": {
+        "n_pairs": 32,
+        "mean": 2.3047,
+        "ci95": [
+          1.0156,
+          3.75
+        ],
+        "p_perm": 0.0022,
+        "cohens_dz": 0.5791,
+        "sd": 3.9797
+      },
+      "recommendation_shift_excited_minus_neutral": {
+        "n_pairs": 32,
+        "mean": 0.0859,
+        "ci95": [
+          0.0078,
+          0.1797
+        ],
+        "p_perm": 0.12657,
+        "cohens_dz": 0.3425,
+        "sd": 0.2509
+      }
+    },
+    "qwen3_30b_a3b|structured|separated": {
+      "excited_minus_neutral": {
+        "n_pairs": 32,
+        "mean": 5.8203,
+        "ci95": [
+          2.5781,
+          9.8057
+        ],
+        "p_perm": 0.0006,
+        "cohens_dz": 0.5445,
+        "sd": 10.69
+      },
+      "valence_range_mean": 19.219,
+      "skeptical_minus_neutral": {
+        "n_pairs": 32,
+        "mean": -13.0469,
+        "ci95": [
+          -18.3984,
+          -8.2422
+        ],
+        "p_perm": 0.0002,
+        "cohens_dz": -0.8885,
+        "sd": 14.684
+      },
+      "binary_flip_rate": 0.0625,
+      "threshold_crossings_excited_vs_neutral": {
+        "25": 0.0312,
+        "50": 0.0312,
+        "75": 0.1562
+      },
+      "confidence_shift_excited_minus_neutral": {
+        "n_pairs": 32,
+        "mean": 0.4297,
+        "ci95": [
+          -0.7031,
+          1.5234
+        ],
+        "p_perm": 0.5227,
+        "cohens_dz": 0.1311,
+        "sd": 3.2782
+      },
+      "recommendation_shift_excited_minus_neutral": {
+        "n_pairs": 32,
+        "mean": 0.0625,
+        "ci95": [
+          0.0156,
+          0.1172
+        ],
+        "p_perm": 0.06399,
+        "cohens_dz": 0.4018,
+        "sd": 0.1555
+      }
+    }
+  },
+  "effect_by_elicitation_regime": {
+    "naturalistic": {
+      "n_pairs": 32,
+      "mean": 9.2969,
+      "ci95": [
+        3.6719,
+        16.5244
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": 0.4915,
+      "sd": 18.9171
+    },
+    "separated": {
+      "n_pairs": 32,
+      "mean": 5.8203,
+      "ci95": [
+        2.5781,
+        9.8057
+      ],
+      "p_perm": 0.0006,
+      "cohens_dz": 0.5445,
+      "sd": 10.69
+    }
+  },
+  "family_effects_vs_neutral": {
+    "excited_positive": {
+      "n_pairs": 32,
+      "mean": 7.5586,
+      "ci95": [
+        3.7891,
+        12.4414
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": 0.5973,
+      "sd": 12.6546
+    },
+    "skeptical_negative": {
+      "n_pairs": 32,
+      "mean": -8.5547,
+      "ci95": [
+        -12.8125,
+        -4.7266
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.7147,
+      "sd": 11.9701
+    }
+  },
+  "template_effects_vs_neutral": {
+    "excited_positive_v1": {
+      "n_pairs": 32,
+      "mean": 7.9492,
+      "ci95": [
+        4.082,
+        12.8906
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": 0.6143,
+      "sd": 12.9401
+    },
+    "excited_positive_v2": {
+      "n_pairs": 32,
+      "mean": 7.168,
+      "ci95": [
+        3.3789,
+        12.0117
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": 0.564,
+      "sd": 12.7099
+    },
+    "skeptical_negative_v1": {
+      "n_pairs": 32,
+      "mean": -17.5195,
+      "ci95": [
+        -25.4492,
+        -10.4482
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": -0.7946,
+      "sd": 22.0477
+    },
+    "skeptical_negative_v2": {
+      "n_pairs": 32,
+      "mean": 0.4102,
+      "ci95": [
+        -4.3169,
+        5.6841
+      ],
+      "p_perm": 0.88842,
+      "cohens_dz": 0.0279,
+      "sd": 14.6976
+    }
+  },
+  "preference_direction_effects": {
+    "excited_positive": {
+      "n_pairs": 32,
+      "mean": 7.5586,
+      "ci95": [
+        3.7891,
+        12.4414
+      ],
+      "p_perm": 0.0002,
+      "cohens_dz": 0.5973,
+      "sd": 12.6546
+    }
+  },
+  "difficulty_interaction": {
+    "pearson_r_effect_vs_difficulty": 0.4389,
+    "by_difficulty_class": {
+      "ambiguous": {
+        "n_pairs": 4,
+        "mean": 6.4062,
+        "ci95": [
+          2.3438,
+          9.6875
+        ],
+        "p_perm": 0.13017,
+        "cohens_dz": 1.5294,
+        "sd": 4.1887
+      },
+      "easy": {
+        "n_pairs": 2,
+        "mean": 12.1875,
+        "ci95": [
+          2.5,
+          21.875
+        ],
+        "p_perm": 0.4879,
+        "cohens_dz": 0.8896,
+        "sd": 13.7002
+      },
+      "moderate": {
+        "n_pairs": 10,
+        "mean": 16.6875,
+        "ci95": [
+          6.875,
+          28.125
+        ],
+        "p_perm": 0.0038,
+        "cohens_dz": 0.8982,
+        "sd": 18.578
+      },
+      "trivial": {
+        "n_pairs": 16,
+        "mean": 1.5625,
+        "ci95": [
+          0.1953,
+          3.2041
+        ],
+        "p_perm": 0.08898,
+        "cohens_dz": 0.477,
+        "sd": 3.2755
+      }
+    }
+  },
+  "variance_comparison": {
+    "sampling_sd_mean_points": 1.97,
+    "sampling_sd_n_cells": 384,
+    "template_sd_mean_points": 6.795,
+    "template_sd_n_cells": 192,
+    "pooled_excited_minus_neutral_points": 7.5586,
+    "abs_effect_over_sampling_sd_ratio": 3.837,
+    "interpretation": "sampling_sd is generation noise for the EXACT same prompt; template_sd is paraphrase sensitivity. An |effect|/sampling_sd ratio well below 1 means the valence effect is smaller than ordinary repeated-sampling variability (a key falsification criterion); template robustness is judged separately from the per-template effects."
+  },
+  "evidence_update": {},
+  "commitment": {},
+  "web": {},
+  "secondary_pvalues_holm_adjusted": {
+    "skeptical|qwen3_30b_a3b|structured|separated": 0.0006,
+    "family|skeptical_negative": 0.0006,
+    "skeptical|qwen3_30b_a3b|structured|naturalistic": 0.12697
+  }
+}
